@@ -15,3 +15,13 @@ Note: If you have a specific problem that does not involve everyone, don’t spa
 
 ## Contributing
 Are you ready to start collaborating? Head to our [Trello board](https://trello.com/b/1ujX8BDZ/collab) and pick up a task.
+
+
+## Suggestion for app structure
+ - frontend: this is where the Next.js app will live
+ - backend: this is where the GraphQL server will live
+
+Each section of the app can be it's own separate unit, all things FE will be in the `frontend` and nothing but `frontend`,
+ and the same goes for the `backend` folder.
+
+The main benefit I see for this is that I find in organized :) and if we decide to host each part on a different platform, it's easier because they are already separated 
