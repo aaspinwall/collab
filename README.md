@@ -25,3 +25,7 @@ Each section of the app can be it's own separate unit, all things FE will be in 
  and the same goes for the `backend` folder.
 
 The main benefit I see for this is that I find in organized :) and if we decide to host each part on a different platform, it's easier because they are already separated 
+
+
+### Collab-ers:
+ - Shai 👋 👨‍💻 👨‍🏫 ⚛️
