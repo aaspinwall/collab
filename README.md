@@ -24,9 +24,10 @@ Are you ready to start collaborating? Head to our [Trello board](https://trello.
 Each section of the app can be it's own separate unit, all things FE will be in the `frontend` and nothing but `frontend`,
  and the same goes for the `backend` folder.
 
-The main benefit I see for this is that I find in organized :) and if we decide to host each part on a different platform, it's easier because they are already separated 
+The main benefit I see for this is that I find in organized :) and if we decide to host each part on a different platform, it's easier because they are already separated
 
 
 ### Collab-ers:
- - Shai 👋 👨‍💻 👨‍🏫 ⚛️
+ - Andrew 🐦🦩🦚🐧
  - Kolby 🖖 👨🏼‍💻 🏌🏼 ⚛️
+ - Shai 👋 👨‍💻 👨‍🏫 ⚛️
