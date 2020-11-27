@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
         word: { type: GraphQLString },
       },
       resolve(_, { word }) {
-        return { test_field: word };
+        return { test_field: word.split("").reverse().join("") };
       },
     },
   },
