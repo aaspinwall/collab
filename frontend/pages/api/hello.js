@@ -1,6 +1,7 @@
+// This is a sample of a serverless function
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default (req, res) => {
-  res.statusCode = 200
-  res.json({ name: 'John Doe' })
-}
+  res.statusCode = 200;
+  res.json({ name: "John Doe" });
+};
