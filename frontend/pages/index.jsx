@@ -30,7 +30,14 @@ export default function Home() {
             <p>
               Check <code>pages/index.jsx </code> to see what's going on
             </p>
-            <SampleButton onClick={handleClick}>Click me!</SampleButton>
+            <SampleButton
+              onClick={handleClick}
+              size='large'
+              background='rgba(127,103,218,1)'
+              label='Button'
+            >
+              Click me!
+            </SampleButton>
           </div>
 
           <div className={"grid"}>

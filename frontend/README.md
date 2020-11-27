@@ -1,4 +1,3 @@
-
 ## Getting Started
 
 First, run the development server:
@@ -20,6 +19,17 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Storybook
 
+```bash
+npm run storybook
+# or
+yarn run storybook
+```
 
+This will start a local server running on port 6006:
+![Screen Shot 2020-11-27 at 3 02 00 PM](https://user-images.githubusercontent.com/17233773/100481275-91ed4700-30c1-11eb-8816-c65e870afcd8.png)
+
+You'll see a playground where each component will be isolated. Click on the **docs** tab to see what each control does. Each control translates to a prop going into the react component.
+
+You can read more about Storybook on their [getting started guide](https://storybook.js.org/docs/react/get-started/introduction).
