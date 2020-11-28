@@ -6,19 +6,15 @@
   "author": "Collab Team",
   "license": "UNLICENSED",
   "scripts": {
-    "dev:apollo": "nodemon index.js",
-    "dev:graphql": "nodemon server.js",
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "lint": "eslint .",
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
     "lint-test": "eslint . && jest --no-cache ./*"
   },
   "dependencies": {
-    "apollo": "^2.31.1",
     "apollo-server": "^2.19.0",
-    "express": "^4.17.1",
-    "express-graphql": "^0.12.0",
     "graphql": "^15.4.0"
   },
   "devDependencies": {
