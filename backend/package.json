@@ -6,7 +6,8 @@
   "author": "Collab Team",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev:apollo": "nodemon index.js",
+    "dev:graphql": "nodemon server.js",
     "start": "node server.js",
     "lint": "eslint .",
     "test": "jest --no-cache ./*",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "apollo": "^2.31.1",
+    "apollo-server": "^2.19.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.4.0"
