@@ -12,6 +12,16 @@ const LayoutWrapper = styled.div`
     align-items: center;
   }
 
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    color: #fb8500;
+    background-color: #293241;
+    font-weight: bold;
+    padding : 1rem;
+  }
+
+
   .main {
     padding: 5rem 0;
     flex: 1;
@@ -28,6 +38,7 @@ const LayoutWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-style: italic;
   }
 
   .footer img {
