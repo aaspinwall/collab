@@ -5,8 +5,7 @@ const { ApolloServer, gql } = require('apollo-server');
 // your data.
 const typeDefs = gql`
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
+  # ID (serialized as a String): A unique identifier that's often used to refetch an object or as the key for a cache. Although it's serialized as a String, an ID is not intended to be human‐readable.
   "the type of a user"
   type User {
     "Full name of user"
@@ -18,8 +17,7 @@ const typeDefs = gql`
   }
 
   # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  # clients can execute, along with the return type for each. 
   "All the queries we can do"
   type Query {
     "Get all users"
