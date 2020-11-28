@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Footer from "../ui/footer";
+import Navbar from '../ui/navbar'
 import LayoutWrapper from "./elements";
 
 //styles live inside the elements file
@@ -13,6 +14,7 @@ const Layout = ({ children, title }) => {
         <title>{title}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <Navbar />
 
       {/* Children passes all the page content */}
       {children}
