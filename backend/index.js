@@ -7,18 +7,95 @@ const typeDefs = gql`
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
+  "the type of a user"
   type User {
-    name: String
-    email: String
+    "Full name of user"
+    name: String!
+    "Email address of user"
+    email: String!
+    "a unique id"
+    id: ID!
   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
+  "All the queries we can do"
   type Query {
+    "Get all users"
     users: [User]
+    "a test function, returns 'cool beans!'"
     test: String
+    """
+    a test function
+    accept a 'word' string variable
+    return the same string, reversed
+    """
     repeat (word: String) : String
+  }
+
+  "All the Mutations we can do"
+  type Mutation {
+    """
+    POST: accepts {name: string, email: string}
+    returns a User type
+    """
+    addUser(user: NewUserInput): AddUserMutationResponse
+    """
+    DELETE: accepts ID
+    returns boolean of success
+    """
+    deleteUser(id: ID!): DeleteUserMutationResponse
+    """
+    UPDATE: accepts ID, and new email
+    returns User
+    """
+    updateUserEmail(id: ID!, email: String!): UpdateUserEmailMutationResponse
+    """
+    UPDATE: accepts ID, and new name
+    returns User
+    """
+    updateUserName(id: ID!, name: String!): UpdateUserNameMutationResponse
+  }
+
+  input NewUserInput {
+    "Full name of user"
+    name: String
+    "Email of user"
+    email: String
+  }
+
+  interface MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+  }
+
+  type UpdateUserEmailMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    user: User
+  }
+
+  type UpdateUserNameMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    user: User
+  }
+
+  type DeleteUserMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+  }
+
+  type AddUserMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    user: User
   }
 `;
 
