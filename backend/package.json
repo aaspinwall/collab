@@ -39,5 +39,8 @@
   "engines": {
     "npm": ">=6.X",
     "node": ">=13.X"
+  },
+  "dependencies": {
+    "apollo-server": "^2.19.0"
   }
 }
