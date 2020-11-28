@@ -6,7 +6,7 @@
   "author": "Collab Team",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon index.js",
     "start": "node server.js",
     "lint": "eslint .",
     "test": "jest --no-cache ./*",

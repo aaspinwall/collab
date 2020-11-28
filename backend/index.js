@@ -101,12 +101,15 @@ const users = [
   {
     name: "test1",
     email: "email1",
+    id: '1',
   },
   {
     name: "test2",
     email: "email2",
+    id: '2',
   },
 ]
+let idIndex = 3
 
 const resolvers = {
   Query: {
@@ -118,6 +121,81 @@ const resolvers = {
       return args.word.split("").reverse().join("")
     }
   },
+  Mutation: {
+    addUser(parent, args, context, info) {
+      console.log('args',args)
+      const user = args.user;
+      idIndex ++;
+      const newUser = {
+        name: user.name,
+        email: user.email,
+        id: (idIndex).toString(),
+      }
+      console.log('newUser',newUser)
+      users.push(newUser)
+      return {
+        code: '200',
+        success: true,
+        message: 'user added',
+        user: newUser,
+      }
+    },
+    deleteUser(parent, args, context, info) {
+      const foundUserIndex = users.findIndex(user => user.id = args.id)
+      if (foundUserIndex > -1) {
+        users.splice(foundUserIndex, 1)
+        return {
+          code: '200',
+          success: true,
+          message: 'user removed'
+        }
+      } else {
+        return {
+          code: '404',
+          success: false,
+          message: 'user not found',
+        }
+      }
+    },
+    updateUserEmail(parent, args, context, info) {
+      const foundUserIndex = users.findIndex(user => user.id = args.id)
+      if (foundUserIndex > -1) {
+        const newUser = {...users[foundUserIndex]}
+        newUser.email = args.email;
+        return {
+          code: '200',
+          success: true,
+          message: 'user updates',
+          user: newUser
+        }
+      } else {
+        return {
+          code: '404',
+          success: false,
+          message: 'user not found',
+        }
+      }
+    },
+    updateUserName(parent, args, context, info) {
+      const foundUserIndex = users.findIndex(user => user.id = args.id)
+      if (foundUserIndex > -1) {
+        const newUser = {...users[foundUserIndex]}
+        newUser.email = args.name;
+        return {
+          code: '200',
+          success: true,
+          message: 'user updates',
+          user: newUser
+        }
+      } else {
+        return {
+          code: '404',
+          success: false,
+          message: 'user not found',
+        }
+      }
+    },
+  }
 };
 
 // The ApolloServer constructor requires two parameters: your schema
