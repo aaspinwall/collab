@@ -1,37 +1,28 @@
 import { useQuery, gql } from '@apollo/client';
 
-import styled from 'styled-components';
+import Layout from "../components/layout";
+import SampleButton from "../components/ui/sample_button";
 
-const GET_ALL_USERS = gql`
-  query GetAllUsers {
-    users {
-      name
-      email
-      id
-    }
-  }
-`;
+import styled from 'styled-components';
+import GetAllUsers from '../components/polloTest/GetAllUsers';
+import CreateUser from '../components/polloTest/CreateUser';
+import DeleteUser from '../components/polloTest/DeleteUser';
 
 const ApolloTest = () => {
-  const { loading, error, data } = useQuery(GET_ALL_USERS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  console.log('data',data)
+  
   return (
-    <Wrapper>
-      <h1>ApolloTest</h1>
-      <div>
-        <ul>
-          {data.users.map(user => <li key={user.id + user.name}>
-            <p>user: {user.name}</p>
-            <p>email: {user.email}</p>
-            <p>id: {user.id}</p>
-          </li>)}
-        </ul>
-      </div>
-    </Wrapper>
+    <Layout
+      /* Title is metadata, good for SEO  */
+      title='Apollo Test'
+      >
+      <Wrapper>
+        <h1>ApolloTest</h1>
+        <p>all the components and comments are in <code>components/polloTest</code></p>
+        <GetAllUsers />
+        <CreateUser />
+        <DeleteUser />
+      </Wrapper>
+    </Layout>
     );
 }
 

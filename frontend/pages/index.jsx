@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Layout from "../components/layout";
 import SampleButton from "../components/ui/sample_button";
 
@@ -39,7 +41,7 @@ export default function Home() {
               Click me!
             </SampleButton>
           </div>
-
+          <h2>checkout the apollo client implementation at <Link href="/apolloTest"><a><code>pages/apolloTest.js</code></a></Link></h2>
           <div className={"grid"}>
             <a href='https://nextjs.org/learn' className={"card"}>
               <h3>Learn &rarr;</h3>
