@@ -4,7 +4,7 @@
 
 
 - First, install the dependencies: `yarn install`
-- Then, start the development server: `yarn dev`
+- Then, start the development server: `yarn dev:graphql`
 
 Open [http://localhost:4000/graphql](http://localhost:4000/graphql) to start testing out GraphQL queries!
 
@@ -23,8 +23,7 @@ This works similarly to how an express endpoint wold work. When given some query
 this file holds the Apollo server, made following [this tutorial](https://www.apollographql.com/docs/apollo-server/schema/schema/).
 
 how to run:
- - make sure you `yarn install` the new dependencies
- - `yarn dev`
+ - `yarn dev:apollo`
  - play with the queries to see what's what:
      - go to playground `http://localhost:4000/`
      - queries:
@@ -96,7 +95,7 @@ how to run:
             }
           }
         ```
-        
+
 ## Contributing
 Ready to contribute? To get started, spin up the development server and try out a query in GraphiQL. We're all new to GraphQL, so try out creating your own query for practice!
 
