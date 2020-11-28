@@ -1,16 +1,15 @@
-const express = require("express");
-const { graphqlHTTP } = require('express-graphql');
-const schema = require("./schema");
+const { ApolloServer } = require("apollo-server");
+const typeDefs = require("./schema/schema.root");
+const resolvers = require("./resolvers/resolvers.root");
 
-const app = express();
-const PORT = process.env.PORT || 4000;
+// The ApolloServer constructor requires two parameters: your schema
+// definition and your set of resolvers.
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+// The `listen` method launches a web server.
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
