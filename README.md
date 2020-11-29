@@ -19,10 +19,42 @@ Note: If you have a specific problem that does not involve everyone, don’t spa
 
 Are you ready to start collaborating? Head to our [Trello board](https://trello.com/b/1ujX8BDZ/collab) and pick up a task.
 
-## Suggestion for app structure
+## Getting Started
 
-- frontend: this is where the Next.js app will live
-- backend: this is where the GraphQL server will live
+**1. Clone this repository:**
+
+```bash
+git clone git@github.com:ShaiGilboa/collab.git collab
+
+cd collab
+```
+
+**2. Install the dependencies and start the local server.**
+
+On the command line, run:
+
+```bash
+npm run start
+# or
+yarn start
+```
+
+Open your browser on [localhost:3000](http://localhost:3000/). This will take you to the homepage.
+
+**3. Next time you want to open the app.**
+
+On the command line, run:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+## App structure
+
+- frontend: Next.js app
+- backend: GraphQL server
 
 Each section of the app can be it's own separate unit, all things FE will be in the `frontend` and nothing but `frontend`,
 and the same goes for the `backend` folder.
