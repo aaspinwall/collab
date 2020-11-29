@@ -1,15 +1,28 @@
-import styled from 'styled-components'
-import Layout from '../../components/layout'
+import styled from "styled-components";
+import Layout from "../../components/layout";
 
 export default function LandingPage() {
 	return (
-	  <Layout title="Temporary Landing Page">
-	  	<Header>This is where the temporary landing page will be to test out various styling options!</Header>
-	  </Layout>
+		<Layout title="Temporary Landing Page">
+			<Container>
+				<Header>
+					Agora
+				</Header>
+			</Container>
+		</Layout>
 	);
-  }
+}
 
-  const Header = styled.h1`
+const Container = styled.div`
+	/* background-color: #eb5e28; */
+    background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
+	height: 100vh;
+`;
+
+const Header = styled.h1`
 	color: #293241;
 	text-align: center;
-  `;
+	margin-top: 0;
+	padding-top: 15px;
+	font-size: 3rem;
+`;
