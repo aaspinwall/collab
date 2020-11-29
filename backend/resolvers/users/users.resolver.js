@@ -69,7 +69,6 @@ const UsersResolver = {
   },
 
   deleteUser(_, args) {
-    console.log('args',args)
     const foundUserIndex = users.findIndex(user => user.id === args.id);
     if (foundUserIndex > -1) {
       users.splice(foundUserIndex, 1)
