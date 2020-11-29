@@ -15,7 +15,8 @@ export default function LandingPage() {
 
 const Container = styled.div`
 	/* background-color: #eb5e28; */
-    background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
+    /* background: linear-gradient(to left top, #fff 50%, #eb5e28 50%); */
+		background: linear-gradient(to left top,#fff 49.5%,#eb5e28 50.4%);
 	height: 100vh;
 `;
 
