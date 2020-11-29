@@ -3,7 +3,14 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
+/* +++++ testing the "CreateUser endpoint" ++++ */
 
+// this is the query
+/***
+ * @argument $name String
+ * @argument $email String
+ * @returns UserObject, code (http rules), success (Boolean), message (String)
+ */
 const ADD_USER = gql`
   mutation AddUser($name: String!, $email: String!){
     addUser(user: {name: $name, email: $email}){
@@ -20,11 +27,17 @@ const ADD_USER = gql`
 `
 
 const CreateUser = () => {
+  /* ++++ form control ++++ */
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [addUser, { data }] = useMutation(ADD_USER);
 
-  console.log('data',data)
+  /* ++++ GraphQL Apollo Mutation query hook ++++ */
+  /**
+   * addUser - the name of the mutation query in the BackEnd
+   * { data } - the return object
+   * ADD_USER - the query we created up there ^
+   */
+  const [addUser, { data }] = useMutation(ADD_USER);
 
   return (
     <div>
