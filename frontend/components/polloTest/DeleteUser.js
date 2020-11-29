@@ -3,7 +3,11 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
-
+// this is the query
+/***
+ * @argument $id ID
+ * @returns code (http rules), success (Boolean), message (String)
+ */
 const DELETE_USER = gql`
   mutation DeleteUser($id: ID!){
     deleteUser(id: $id){
@@ -15,8 +19,17 @@ const DELETE_USER = gql`
 `
 
 const DeleteUser = () => {
+  /* ++++ form control ++++ */
   const [userID, setUserID] = useState('');
+
+  /* ++++ GraphQL Apollo Mutation query hook ++++ */
+  /**
+   * deleteUser - the name of the mutation query in the BackEnd
+   * { data } - the return object
+   * DELETE_USER - the query we created up there ^
+   */
   const [deleteUser, { data }] = useMutation(DELETE_USER);
+  
   return (
     <div>
       <h3>delete user:</h3>
