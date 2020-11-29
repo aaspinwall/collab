@@ -3,8 +3,11 @@ import { useQuery, gql } from '@apollo/client';
 import SampleButton from "../ui/sample_button";
 
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 
+// this is the query
+/***
+ * @returns UserObject[]
+ */
 const GET_ALL_USERS = gql`
   query GetAllUsers {
     users {
@@ -16,6 +19,14 @@ const GET_ALL_USERS = gql`
 `;
 
 const GetAllUsers = () => {
+  /* ++++ GraphQL Apollo Query query hook ++++ */
+  /**
+   * loading - while the query waits for response (Boolean)
+   * error - if there is an error (Object?)
+   * data - the response
+   * refetch - if we want to "refetch" (Function)
+   * GET_ALL_USERS - the query we created up there ^
+   */
   const { loading, error, data, refetch } = useQuery(GET_ALL_USERS);
 
   if (loading) return <p>Loading...</p>;
