@@ -27,7 +27,7 @@ const UsersResolver = {
   },
 
   updateUserEmail(_, args) {
-    const foundUserIndex = users.findIndex(user => user.id = args.id);
+    const foundUserIndex = users.findIndex(user => user.id === args.id);
 
     if (foundUserIndex > -1) {
       const newUser = {...users[foundUserIndex]}
@@ -48,7 +48,7 @@ const UsersResolver = {
   },
 
   updateUserName(_, args) {
-    const foundUserIndex = users.findIndex(user => user.id = args.id);
+    const foundUserIndex = users.findIndex(user => user.id === args.id);
 
     if (foundUserIndex > -1) {
       const newUser = { ...users[foundUserIndex] }
@@ -69,7 +69,7 @@ const UsersResolver = {
   },
 
   deleteUser(_, args) {
-    const foundUserIndex = users.findIndex(user => user.id = args.id);
+    const foundUserIndex = users.findIndex(user => user.id === args.id);
 
     if (foundUserIndex > -1) {
       users.splice(foundUserIndex, 1)
