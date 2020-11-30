@@ -9,6 +9,7 @@ const QueryType = gql`
   type Query {
     "Get all users"
     users: [User]
+    customers: Customers
 
     "a test function, returns 'cool beans!'"
     test: String
