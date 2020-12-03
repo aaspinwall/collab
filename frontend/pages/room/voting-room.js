@@ -1,16 +1,20 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../../components/layout";
+import Timer from "../../components/timer";
 
 export default function LandingPage() {
   return (
-    <Layout title="Now Voting!">
+    <Layout title='Now Voting!'>
       <Container>
         <Header>Voting Page</Header>
+
+        <Timer key={200} onTimeIsUp={(message) => alert(message)} />
+
         <Description>
           This page will be where the voting itself takes place
         </Description>
-		<Link href="/landing">
+        <Link href='/landing'>
           <Button>Home</Button>
         </Link>
       </Container>

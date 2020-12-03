@@ -1,6 +1,5 @@
 import Layout from "../components/layout";
 import SampleButton from "../components/ui/sample_button";
-import { Timer } from '../components/timer';
 
 export default function Home() {
   // This is called by the onClick event
@@ -40,8 +39,6 @@ export default function Home() {
               Click me!
             </SampleButton>
           </div>
-          {/* In component timer if not prop time is passed the default value is 180sec */}
-          <Timer time={20} />
 
           <div className={"grid"}>
             <a href='https://nextjs.org/learn' className={"card"}>
