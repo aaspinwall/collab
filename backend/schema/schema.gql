@@ -1,9 +1,21 @@
+#Check the schema.md file for resources
+
 type Room {
   name: String!
   timeLimit: String!
+  choices: [Choice] @relation
+}
+type Choice {
+  name: String!
+  room: Room
+}
+
+type User {
+  name: String!
 }
 type Query {
   allRooms: [Room!]
+  allUsers: [User!]
   getRoomByName(name: String!): [Room]
 }
 type Mutation {
