@@ -11,7 +11,7 @@ export default function LandingPage() {
           This page will be used to create a room / have the configurations for
           the room
         </Description>
-		<Link href="/landing">
+        <Link href="/landing">
           <Button>Home</Button>
         </Link>
       </Container>
