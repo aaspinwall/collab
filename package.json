@@ -11,7 +11,10 @@
     "dev:backend": "cd backend && yarn dev",
     "start:frontend": "cd frontend && yarn",
     "start:backend": "cd backend && yarn",
-    "start": "run-s start:backend start:frontend dev"
+    "start": "run-s start:backend start:frontend dev",
+    "lint": "yarn lint:frontend && yarn lint:backend",
+    "lint:frontend": "cd frontend && yarn lint",
+    "lint:backend": "cd backend && yarn lint"
   },
   "devDependencies": {
     "nodemon": "^2.0.6",
