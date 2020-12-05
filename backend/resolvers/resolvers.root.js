@@ -5,12 +5,12 @@ const TestQuery = require('./test.query');
 const resolvers = {
   Query: {
     ...UsersQuery,
-    ...TestQuery,
+    ...TestQuery
   },
 
   Mutation: {
-    ...UsersResolver,
-  },
-};
+    ...UsersResolver
+  }
+}
 
-module.exports = resolvers;
+module.exports = resolvers
