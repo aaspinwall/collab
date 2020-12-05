@@ -5,6 +5,7 @@ type Room {
   timeLimit: String!
   choices: [Choice] @relation
 }
+
 type Choice {
   name: String!
   room: Room
@@ -13,11 +14,13 @@ type Choice {
 type User {
   name: String!
 }
+
 type Query {
   allRooms: [Room!]
   allUsers: [User!]
   getRoomByName(name: String!): [Room]
 }
+
 type Mutation {
   addRoom(name: String!, timeLimit: String!): Room! @resolver
 }
