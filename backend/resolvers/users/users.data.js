@@ -1,12 +1,12 @@
 const users = [
   {
-    name: "test1",
-    email: "email1",
+    name: 'test1',
+    email: 'email1',
     id: '1',
   },
   {
-    name: "test2",
-    email: "email2",
+    name: 'test2',
+    email: 'email2',
     id: '2',
   },
 ];
