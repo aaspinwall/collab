@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../../components/layout";
 import Timer from "../../components/timer";
+import UserForm from '../../components/UserForm'
 
 export default function LandingPage() {
   return (
@@ -18,6 +19,7 @@ export default function LandingPage() {
           <Button>Home</Button>
         </Link>
       </Container>
+      <UserForm />
     </Layout>
   );
 }
