@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createRef } from "react";
 
 const Timer = ({ time = 180, onTimeIsUp }) => {
   const [seconds, setSeconds] = useState(time);
-  const [userTime, setUserTime] = useState('');
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setUserTime(value);
-  };
+  const userTime = createRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSeconds(userTime);
-    setUserTime('');
+    const userTimeElement = userTime.current
+    setSeconds(userTimeElement.value);
+    userTimeElement.value = ''
   };
 
   useEffect(() => {
@@ -33,7 +29,7 @@ const Timer = ({ time = 180, onTimeIsUp }) => {
         <span>{seconds} s</span>
         <p>Timer component</p>
         <form onSubmit={handleSubmit}>
-          <input value={userTime} onChange={handleChange}  type="number" />
+          <input ref={userTime} type="number" />
           <button type="submit">Set Time</button>
         </form>
       </div>
