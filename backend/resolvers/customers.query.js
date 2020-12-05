@@ -1,3 +1,4 @@
+
 const FaunaClient = require('../fauna.config');
 const faunadb = require("faunadb");
 
