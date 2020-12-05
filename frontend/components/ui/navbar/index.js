@@ -29,7 +29,7 @@ const Navbar = () => {
 						<a>Start a Vote</a>
 					</Link>
 					{/* Temp href for the time being until pages are set up */}
-					<Link href="/temp/temp-landing">
+					<Link href="/landing">
 						<a>Temp Landing</a>
 					</Link>
 				</div>

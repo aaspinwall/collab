@@ -1,11 +1,8 @@
-require("dotenv").config();
+
+const FaunaClient = require('../fauna.config');
 const faunadb = require("faunadb");
 
 const { Get, Index, Match } = faunadb.query;
-
-const client = new faunadb.Client({
-  secret: process.env.FAUNA_DB,
-});
 
 // Dark JavaScript Magic
 // Declaring a function inside an Object:
@@ -15,7 +12,7 @@ const client = new faunadb.Client({
 
 const CustomersQuery = {
   async customers() {
-    const { data: customerData } = await client.query(
+    const { data: customerData } = await FaunaClient.query(
       Get(Match(Index("all_customers")))
     );
 
