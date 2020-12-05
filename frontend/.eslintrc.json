@@ -1,24 +1,33 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
+  "plugins": ["react", "react-hooks", "jsx-a11y"],
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "eslint:recommended",
+    "plugin:prettier/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-        "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
   },
-  "plugins": [
-      "react",
-      "@typescript-eslint"
-  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "globals": {
+    "expect": true
+  },
+  "settings": {
+    "react": {
+      "version": "16.8"
+    }
+  },
   "rules": {
+    "react/react-in-jsx-scope": "off"
   }
 }
