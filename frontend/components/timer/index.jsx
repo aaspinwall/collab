@@ -32,8 +32,10 @@ const Timer = ({ time = 180, onTimeIsUp }) => {
       <div className='card'>
         <span>{seconds} s</span>
         <p>Timer component</p>
-        <input value={userTime} onChange={handleChange}  type="number" />
-        <button onClick={handleSubmit}>Set Time</button>
+        <form onSubmit={handleSubmit}>
+          <input value={userTime} onChange={handleChange}  type="number" />
+          <button type="submit">Set Time</button>
+        </form>
       </div>
     </div>
   );
