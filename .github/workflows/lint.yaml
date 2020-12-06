@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/actions-yarn@v2.0.0
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run install:all
-      - run: npm run lint
+      - run: yarn ci
+      - run: yarn run install:all
+      - run: yarn run lint
