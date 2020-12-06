@@ -17,7 +17,10 @@
     "lint:backend": "cd backend && yarn lint",
     "install:all": "run-s install:backend install:frontend",
     "install:frontend": "cd frontend && yarn install",
-    "install:backend": "cd backend && yarn install"
+    "install:backend": "cd backend && yarn install",
+    "test": "run-s test:frontend test:backend",
+    "test:frontend": "cd frontend && yarn test",
+    "test:backend": "cd backend && yarn test"
   },
   "devDependencies": {
     "nodemon": "^2.0.6",
