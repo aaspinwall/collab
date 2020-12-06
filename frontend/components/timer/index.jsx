@@ -26,7 +26,7 @@ const Timer = ({ time = 180, onTimeIsUp }) => {
   return (
     <div className='grid'>
       <div className='card'>
-        <span>{seconds} s</span>
+        <span className='timer-seconds'>{seconds} s</span>
         <p>Timer component</p>
         <form onSubmit={handleSubmit}>
           <input ref={userTime} type="number" />
