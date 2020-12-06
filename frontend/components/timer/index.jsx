@@ -1,5 +1,4 @@
 import React, { useEffect, useState, createRef } from "react";
-import NameGenerator from '../userNames'
 
 const Timer = ({ time = null, onTimeIsUp }) => {
   const [seconds, setSeconds] = useState(time);
@@ -34,7 +33,6 @@ const Timer = ({ time = null, onTimeIsUp }) => {
           <button type="submit">Set Time</button>
         </form>
       </div>
-      <NameGenerator />
 
     </div>
   );

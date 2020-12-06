@@ -2,8 +2,6 @@ import names from "./userNames.json";
 import styled from "styled-components";
 
 const NameGenerator = () => {
-    // testing
-    // testing 2
 	const animals = names.a;
 	const adjectives = names.b;
 	const animalsLength = Math.floor(Math.random() * animals.length);
