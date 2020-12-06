@@ -10,6 +10,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn ci
-      - run: yarn run install:all
-      - run: yarn run lint
+      - run: npm ci
+      - run: npm run install:all
+      - run: npm run lint
