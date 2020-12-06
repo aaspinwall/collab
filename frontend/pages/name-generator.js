@@ -1,4 +1,4 @@
-import NameGenerator from '../components/userNames'
+import NameGenerator from "../components/userNames";
 
 import Link from "next/link";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ export default function LandingPage() {
     <Layout title="Name Generator">
       <Container>
         <Header>Name Generator</Header>
-       <NameGenerator />
+        <NameGenerator />
         <Link href="/landing">
           <Button>Home</Button>
         </Link>
@@ -34,7 +34,6 @@ const Header = styled.h1`
   padding-top: 15px;
   font-size: 3rem;
 `;
-
 
 const Button = styled.button`
   margin-top: 15px;
