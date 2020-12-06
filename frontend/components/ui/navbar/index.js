@@ -21,7 +21,7 @@ const Navbar = () => {
           Where Democracy Meets
         </p>
         <div style={{ display: menu ? "flex" : "none" }}>
-          <Link href="/">
+          <Link href="/landing">
             <a>Home</a>
           </Link>
           {/* Next.js uses Link to wrap an <a> tag which allows for users to navigate between pages - The code above will return the user to the home page located at localhost:3000/ */}
