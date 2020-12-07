@@ -12,7 +12,7 @@
     "start:frontend": "cd frontend && npm install",
     "start:backend": "cd backend && npm install",
     "start": "run-s start:backend start:frontend dev",
-    "lint": "npm run lint:frontend && npm lint:backend",
+    "lint": "npm run lint:frontend && npm run lint:backend",
     "lint:frontend": "cd frontend && npm run lint",
     "lint:backend": "cd backend && npm run lint",
     "install:all": "run-s install:backend install:frontend",
