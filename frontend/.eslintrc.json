@@ -1,10 +1,6 @@
 {
   "plugins": ["react", "react-hooks", "jsx-a11y"],
-  "extends": [
-    "react/recommended",
-    "eslint:recommended",
-    "prettier/recommended"
-  ],
+  "extends": ["plugin:prettier/recommended"],
   "env": {
     "browser": true,
     "node": true,
