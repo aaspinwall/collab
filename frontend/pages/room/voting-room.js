@@ -9,7 +9,7 @@ export default function LandingPage() {
       <Container>
         <Header>Voting Page</Header>
 
-        <Timer key={200} onTimeIsUp={(message) => alert(message)} />
+        <Timer onTimeIsUp={(message) => alert(message)} />
 
         <Description>
           This page will be where the voting itself takes place
