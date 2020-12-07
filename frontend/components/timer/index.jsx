@@ -24,15 +24,15 @@ const Timer = ({ time, onTimeIsUp }) => {
   }, [seconds]);
 
   return (
-    <div className='grid'>
-      <div className='card'>
-        <span className='timer-seconds'>
+    <div className="grid">
+      <div className="card">
+        <span className="timer-seconds">
           {seconds >= 1 ? seconds + "s" : "Time is up!"}
         </span>
         <p>Timer component</p>
         <form onSubmit={handleSubmit}>
-          <input ref={userTime} type='number' />
-          <button type='submit'>Set Time</button>
+          <input ref={userTime} type="number" />
+          <button type="submit">Set Time</button>
         </form>
       </div>
     </div>

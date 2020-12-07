@@ -9,7 +9,7 @@ describe("Timer", () => {
   });
 
   it("should set a defined time", () => {
-    const wrapper = shallow(<Timer time='4444' />);
+    const wrapper = shallow(<Timer time="4444" />);
 
     expect(wrapper.find(".timer-seconds").text()).toBe("4444s");
   });
