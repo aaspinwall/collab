@@ -14,7 +14,7 @@ const RoomType = gql`
     "Time limit"
     timeLimit: String!
     "a unique id"
-    id: ID!
+    id: String!
   }
 `;
 
@@ -30,9 +30,25 @@ const RoomMutationResponse = gql`
 const NewRoomInput = gql`
   input NewRoomInput {
     "Name of the room"
-    name: String
+    name: String!
     "Time limit"
-    timeLimit: String
+    timeLimit: String!
+    id: String!
+  }
+`;
+
+const NewUserToRoomInput = gql`
+  input NewUserToRoomInput {
+    name: String!
+  }
+`;
+
+const UserToRoomMutationResponse = gql`
+  type AddUserToRoomMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    roomData: Room
   }
 `;
 
@@ -40,4 +56,6 @@ module.exports = gql`
   ${RoomType}
   ${RoomMutationResponse}
   ${NewRoomInput}
+  ${NewUserToRoomInput}
+  ${UserToRoomMutationResponse}
 `;
