@@ -6,15 +6,13 @@ import Layout from "../components/layout";
 
 export default function LandingPage() {
   return (
-    <Layout title="Name Generator">
-      <Container>
-        <Header>Name Generator</Header>
-        <NameGenerator />
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Name Generator</Header>
+      <NameGenerator />
+      <Link href="/landing">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 

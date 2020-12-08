@@ -2,19 +2,17 @@ import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../../components/layout";
 
-export default function LandingPage() {
+export default function ResultsPage() {
   return (
-    <Layout title="Results">
-      <Container>
-        <Header>Results</Header>
-        <Description>
-          This page will be used to display the results of the vote
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Results</Header>
+      <Description>
+        This page will be used to display the results of the vote
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 

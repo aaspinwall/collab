@@ -2,20 +2,18 @@ import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../../components/layout";
 
-export default function LandingPage() {
+export default function CreateRoom() {
   return (
-    <Layout title="Create A Room">
-      <Container>
-        <Header>Create A Room Page</Header>
-        <Description>
-          This page will be used to create a room / have the configurations for
-          the room
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Create A Room Page</Header>
+      <Description>
+        This page will be used to create a room / have the configurations for
+        the room
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 

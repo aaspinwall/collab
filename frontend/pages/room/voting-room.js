@@ -3,22 +3,20 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import Timer from "../../components/timer";
 
-export default function LandingPage() {
+export default function VotingRoom() {
   return (
-    <Layout title="Now Voting!">
-      <Container>
-        <Header>Voting Page</Header>
+    <Container>
+      <Header>Voting Page</Header>
 
-        <Timer onTimeIsUp={(message) => alert(message)} />
+      <Timer onTimeIsUp={(message) => alert(message)} />
 
-        <Description>
-          This page will be where the voting itself takes place
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+      <Description>
+        This page will be where the voting itself takes place
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
