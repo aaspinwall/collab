@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 import AssignmentOutlinedIcon from "@material-ui/icons/AssignmentOutlined";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // Reverted to using both clipboard_api and execCommand
 // we pass the text string as  props to the child component CopyToClipBoardButton
@@ -11,6 +11,19 @@ import styled from "styled-components";
 //Paste away!!
 
 //TODO: finetune styling.
+
+const fadeIn = keyframes`
+  from {
+    transform: rotate(0deg) scale(0.1);
+    opacity: 0;
+    
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+`;
 
 const CopyToClipBoardButton = ({ text }) => {
   const [copy, setCopy] = useState(false);
@@ -44,7 +57,10 @@ const CopyToClipBoardButton = ({ text }) => {
       </IconWrapper>
       {copy ? (
         <IconWrapper>
+          <div className="checked">
           <CheckCircleOutlineIcon color="primary" />
+          <span>Copied To Clipboard!</span>
+          </div>
         </IconWrapper>
       ) : (
         <></>
@@ -72,6 +88,11 @@ const Input = styled.input`
 `;
 
 //I wrap the icon(an svg) in a div so it's easier to manipulate and place where we want. Couldn't do it without doing that.
-const IconWrapper = styled.div``;
+const IconWrapper = styled.div`
+  .checked {
+    animation: ${fadeIn} 0.8s linear;
+  }
+  
+`;
 
 export default CopyToClipBoardButton;
