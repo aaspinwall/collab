@@ -112,6 +112,9 @@ mutation {
       name
       timeLimit
     }
+    users {
+      [name]
+    }
   }
 }
 ```

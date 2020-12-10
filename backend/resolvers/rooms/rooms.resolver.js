@@ -58,7 +58,14 @@ async function addUserToRoom(_, { userData: { name }, roomID }) {
     )
   );
 
-  console.log(data, data.users)
+  const userData = Object.entries(data.users).map(([name, voteData]) => {
+    return {
+      name,
+      voteData
+    }
+  });
+
+  console.log(userData, 'HELLOOOOOOOOOOOOOOOOOOO')
 
   return {
     code: "200",
@@ -69,6 +76,7 @@ async function addUserToRoom(_, { userData: { name }, roomID }) {
       name: data.name,
       timeLimit: data.timeLimit,
     },
+    userData,
   }
 }
 
