@@ -13,14 +13,6 @@ function MyApp({ Component, pageProps }) {
   
   // test query without hooks
   // the response is console.logged
-  ApolloClient.query({
-    query: gql`
-      query {
-        test
-      }
-    `
-  })
-  .then((res)=>console.log('res',res))
   return (
     // so that we can make the calls anywhere in the app
     // we wrap it in a provider.
