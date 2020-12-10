@@ -4,23 +4,20 @@ import Layout from "../../components/layout";
 import Timer from "../../components/timer";
 import UserForm from '../../components/UserForm'
 
-export default function LandingPage() {
+export default function VotingRoom() {
   return (
-    <Layout title="Now Voting!">
-      <Container>
-        <Header>Voting Page</Header>
+    <Container>
+      <Header>Voting Page</Header>
 
-        <Timer onTimeIsUp={(message) => alert(message)} />
+      <Timer onTimeIsUp={(message) => alert(message)} />
 
-        <Description>
-          This page will be where the voting itself takes place
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-      <UserForm />
-    </Layout>
+      <Description>
+        This page will be where the voting itself takes place
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 

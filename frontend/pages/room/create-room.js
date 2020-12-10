@@ -2,64 +2,19 @@ import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../../components/layout";
-import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
-import { useMutation } from "@apollo/client";
-export default function LandingPage() {
-  const [options, setOptions] = useState([]);
-  const [addRoom] = useMutation(ADD_ROOM);
 
-  const optionData = createRef(null);
-  const optionsPush = () => {
-    setOptions([optionData.current.value, ...options]);
-    optionData.current.value = "";
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    optionsPush();
-  };
-
-  const submitRoom = () => {
-    addRoom({
-      variables: {
-        name: "Testing Room", // to change
-        id: "123", // we will generate this on backend
-        timeLimit: "500",
-        voteOptions: options,
-      },
-    });
-  };
-
+export default function CreateRoom() {
   return (
-    <Layout title="Create A Room">
-      <Container>
-        <Header>Create A Room Page</Header>
-        <Description>
-          This page will be used to create a room / have the configurations for
-          the room
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-        <FormContainer>
-          <form onSubmit={handleSubmit}>
-            {/* Fix variable names */}
-            {/* useRef for the two below input to validate variables: name, timelimit*/}
-            {/* <input type="text" placeholder="Room Name" />
-            <input type="number" placeholder="Time Limit in seconds" /> */}
-
-            <input type="text" placeholder="Options" ref={optionData} />
-            <input type="submit" />
-          </form>
-          <div>
-            {options.map((option) => (
-              <p>{option}</p>
-            ))}
-          </div>
-          <button onClick={submitRoom}>Submit Room</button>
-        </FormContainer>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Create A Room Page</Header>
+      <Description>
+        This page will be used to create a room / have the configurations for
+        the room
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 

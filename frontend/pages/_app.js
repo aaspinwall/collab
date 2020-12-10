@@ -1,5 +1,6 @@
-import { gql } from '@apollo/client';
-import { ApolloProvider } from '@apollo/client';
+import PropTypes from "prop-types";
+import Layout from "../components/layout";
+import "../styles/globals.css";
 
 import '../styles/globals.css'
 
@@ -10,17 +11,11 @@ import '../styles/globals.css'
 import ApolloClient from '../apollo';
 
 function MyApp({ Component, pageProps }) {
-  
-  // test query without hooks
-  // the response is console.logged
   return (
-    // so that we can make the calls anywhere in the app
-    // we wrap it in a provider.
-    // this way we can use the hooks in the app
-    <ApolloProvider client={ApolloClient}>
+    <Layout>
       <Component {...pageProps} />
-    </ApolloProvider>
-  )
+    </Layout>
+  );
 }
 
 export default MyApp;
