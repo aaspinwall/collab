@@ -15,6 +15,8 @@ const RoomType = gql`
     timeLimit: String!
     "a unique id"
     id: String!
+    "Voting Options"
+    voteOptions: [String!]
   }
 `;
 
@@ -34,6 +36,7 @@ const NewRoomInput = gql`
     "Time limit"
     timeLimit: String!
     id: String!
+    voteOptions: [String!]
   }
 `;
 
@@ -59,6 +62,7 @@ const UserToRoomMutationResponse = gql`
     userData: [UserInRoom]!
   }
 `;
+
 
 module.exports = gql`
   ${RoomType}
