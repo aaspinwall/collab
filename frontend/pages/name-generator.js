@@ -6,20 +6,18 @@ import Layout from "../components/layout";
 
 export default function LandingPage() {
   return (
-    <Layout title="Name Generator">
-      <Container>
-        <Header>Name Generator</Header>
-        <NameGenerator />
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Name Generator</Header>
+      <NameGenerator />
+      <Link href="/landing">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
+  /* background-color: ${COLORS.MAIN}; */
   background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
   height: 100vh;
   display: flex;

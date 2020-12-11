@@ -14,7 +14,8 @@
     "lint": "eslint **/*.{js,ts,tsx} --ignore-path .eslintignore",
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
-    "lint-test": "eslint . && jest --no-cache ./*"
+    "lint-test": "eslint . && jest --no-cache ./*",
+    "lint-local": "eslint . --ignore-path .eslintignore"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",

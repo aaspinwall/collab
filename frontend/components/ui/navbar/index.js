@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import React, { useState } from "react";
+import { COLORS } from "../../../styles/colors";
 
 // import MenuIcon from "../../hamburgerMenu/index";
 // HamburgerMenu svg can be used in place of the current → being used
@@ -21,16 +22,16 @@ const Navbar = () => {
           Where Democracy Meets
         </p>
         <div style={{ display: menu ? "flex" : "none" }}>
-          <Link href="/landing">
+          <Link href="/">
             <a>Home</a>
           </Link>
           {/* Next.js uses Link to wrap an <a> tag which allows for users to navigate between pages - The code above will return the user to the home page located at localhost:3000/ */}
-          <Link href="/">
+          <Link href="/room/create-room">
             <a>Start a Vote</a>
           </Link>
           {/* Temp href for the time being until pages are set up */}
-          <Link href="/landing">
-            <a>Temp Landing</a>
+          <Link href="/info">
+            <a>About</a>
           </Link>
         </div>
         <Button
@@ -54,7 +55,7 @@ export default Navbar;
 const Nav = styled.nav`
   background-color: #1d3557;
   position: relative;
-  color: #eb5e28;
+  color: ${COLORS.MAIN};
   padding: 15px;
   display: flex;
   justify-content: space-evenly;
@@ -90,6 +91,6 @@ const Button = styled.button`
 `;
 
 const ButtonText = styled.span`
-  color: #eb5e28;
+  color: ${COLORS.MAIN};
   font-size: 26px;
 `;
