@@ -6,5 +6,9 @@ export const COLORS = {
     BLACK: "#020202",
     OFFWHITE: "ghostwhite",
   },
+  PURPLES: {
+    LIGHT: "#CFC0EE",
+    MAIN: "#3220A0",
+  },
   MAIN: "#eb5e28",
 };
