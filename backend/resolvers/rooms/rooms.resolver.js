@@ -1,35 +1,88 @@
-require("dotenv").config();
-const rooms = require("./rooms.data");
+const FaunaClient = require("../../fauna.config");
 const faunadb = require("faunadb");
 
-const client = new faunadb.Client({
-  secret: process.env.FAUNA_DB,
-});
-const { Create, Collection } = faunadb.query;
+// TODO
+// MAKKKE DA FOOD 🥓
+// MAKKE DA CODE BETTER
+// TOGGLE DA VOTE
+// MAKKE DA FAUNAFUNK
 
-const RoomsResolver = {
-  //the second argument is what's passed by the query
-  async addRoom(_, args) {
-    const {
-      room: { name, timeLimit },
-    } = args;
-    console.log(name, timeLimit);
+const {
+  Create,
+  Collection,
+  Get,
+  Index,
+  Match,
+  Select,
+  Update,
+} = faunadb.query;
 
-    const response = await client.query(
-      Create(Collection("rooms"), { data: { name, timeLimit } })
-    );
+async function addRoom(_, args) {
+  const {
+    room: {
+      name,
+      timeLimit,
+      id,
+      voteOptions
+    },
+  } = args;
 
+  const { data } = await FaunaClient.query(
+    Create(Collection("rooms"), { data: { name, timeLimit, id, voteOptions } })
+  );
+
+  return {
+    code: "200",
+    success: true,
+    message: "room added",
+    room: {
+      name: data.name,
+      id: data.id,
+      timeLimit: data.timeLimit,
+      voteOptions: data.voteOptions,
+    },
+  };
+}
+
+// This will have to change as currently there is no
+// way to query users using GraphQL (that I can see at least)
+async function addUserToRoom(_, { userData: { name }, roomID }) {
+  const { data } = await FaunaClient.query(
+    Update(
+      Select('ref', Get(Match(Index("rooms_by_id"), roomID))),
+      {
+        data: {
+          users: {
+            [name]: false,
+          }
+        }
+      }
+    )
+  );
+
+  const userData = Object.entries(data.users).map(([name, voteData]) => {
     return {
-      code: "200",
-      success: true,
-      message: "room added",
-      room: {
-        name: response.data.name,
-        id: response.ref.id,
-        timeLimit: response.data.timeLimit,
-      },
-    };
-  },
-};
+      name,
+      voteData
+    }
+  });
 
-module.exports = RoomsResolver;
+  console.log(userData, 'HELLOOOOOOOOOOOOOOOOOOO')
+
+  return {
+    code: "200",
+    success: true,
+    message: "room updated",
+    roomData: {
+      id: data.roomID,
+      name: data.name,
+      timeLimit: data.timeLimit,
+    },
+    userData,
+  }
+}
+
+module.exports = {
+  addRoom,
+  addUserToRoom,
+};

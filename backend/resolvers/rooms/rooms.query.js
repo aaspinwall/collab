@@ -1,5 +1,4 @@
-require("dotenv").config();
-const rooms = require("./rooms.data");
+const FaunaClient = require('../../fauna.config');
 const faunadb = require("faunadb");
 
 const client = new faunadb.Client({
@@ -8,15 +7,13 @@ const client = new faunadb.Client({
 const { Get, Ref, Collection } = faunadb.query;
 
 const RoomsQuery = {
-  rooms: () => rooms,
   //CAREFUL! the first argument is empty
   //the second argument is what's passed by the query
   async roomByID(_, args) {
     const {
       data: result,
       ref: { id },
-    } = await client.query(Get(Ref(Collection("rooms"), args.id)));
-    console.log(result);
+    } = await FaunaClient.query(Get(Ref(Collection("rooms"), args.id)));
     //queries expect an iterable object, that's why we return an array
     return [{ ...result, id }];
   },
