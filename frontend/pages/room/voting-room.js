@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "../../styles/colors";
 
 import Timer from "../../components/timer";
+import UserForm from "../../components/UserForm";
 
 export default function VotingRoom() {
   return (

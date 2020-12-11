@@ -1,3 +1,4 @@
+import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { COLORS } from "../../styles/colors";
@@ -35,7 +36,7 @@ const Header = styled.h1`
   text-align: center;
   margin-top: 0;
   padding-top: 15px;
-  font-size: 3rem;
+  font-size: 2rem;
 `;
 
 const Description = styled.p`

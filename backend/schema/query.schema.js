@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const QueryType = gql`
   # The "Query" type is special: it lists all of the available
@@ -10,15 +10,8 @@ const QueryType = gql`
     "Get all users"
     users: [User]
 
-    "a test function, returns 'cool beans!'"
-    test: String
-
-    """
-    a test function
-    accept a 'word' string variable
-    return the same string, reversed
-    """
-    reverse (word: String) : String
+    "Get room by id"
+    roomByID(id: String): [Room]
   }
 `;
 

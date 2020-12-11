@@ -57,7 +57,11 @@ git clone git@github.com:aaspinwall/collab.git collab
 cd collab
 ```
 
-**2. Install the dependencies and start the local server.**
+**2. On the backend folder, duplicate the `env.sample` file and rename the copy `.env`**
+
+Since this repository is public, we don't want to share our API keys. Please go on the [slack group](https://join.slack.com/t/collab-centre/shared_invite/zt-izqi8c7p-qzOXc48kkdQDXfpCPmtIZA) to get our keys. Alternatively, you can generate your own API keys and test everything using your own accounts.
+
+**3. Install the dependencies and start the local server.**
 
 On the command line, run:
 
