@@ -6,25 +6,53 @@
 
 We aim to build a functional and well-presented web-based app, with an emphasis on maintaining a respectful, collaborative environment. Our group presents opportunities for members to learn and teach, whether in programming/tools or other parts of the project, such as organization and design. And most importantly... we want to have fun!
 
-## Community guidelines
+## What are we building right now?
 
-- Exercise mutual respect
-- Everyone is invited to contribute, regardless of their level of experience – don’t be afraid to make mistakes and ask questions!
-- You can commit to as much or as little work as you want – but please respect the time of your fellow teammates and honour commitments to the best of your ability
-- Communication: Join our [slack group](https://join.slack.com/t/collab-centre/shared_invite/zt-izqi8c7p-qzOXc48kkdQDXfpCPmtIZA)
+**Working title:** Agora
 
-Note: If you have a specific problem that does not involve everyone, don’t spam – create a separate slack channel or talk directly to the contributor.
+**Description:** Decision Maker App
+
+We're currently working on the MVP. Here's a quick rundown of the app flow.
+
+**Landing** Welcome screen and a prompt to create a new room.
+
+**Room** The room author can set the configuration of the vote. ie: Time limit, voting style, maximum amount of choices per participant. The user will get a sharable link.
+
+**Choices** (If the room author picked the options, skip this screen) When the other users get the link, they’ll open this page. They’ll be able to add their choices within the time limit. Once everybody submits their choices (or the time runs out) the voting can start.
+
+Voting - The voting takes place. Depending on the voting style, each participant votes one or more times.
+
+Results - A celebratory screen where the result is displayed. (edited) 
+
+Here is a development [preview](https://collab-git-main.aaspinwall.vercel.app/). It's automatically deployed from the main branch from Vercel.
+
+## Where are we at?
+
+### From wireframe to styled flow
+
+We worked out a wireframe with an initial app flow. Right now we're starting to develop styled components that go into the app.
+
+
+You can follow our UI ideas on [figma](https://www.figma.com/file/8tF9s4A400dTrWmzpTOy4X/Agora?node-id=0%3A1)
+![Screen Shot 2020-12-11 at 11 27 01 AM](https://user-images.githubusercontent.com/17233773/101928642-d8ec3980-3ba3-11eb-81c0-33822cd19ea2.png).
+
+## What's next?
+
+- More styling (bring your design skills)!
+- GraphQL extravaganza! We're merging the backend soon!
+- Putting it all together. An MVP that works and looks nice.
+
 
 ## Contributing
 
-Are you ready to start collaborating? Head to our [Trello board](https://trello.com/b/1ujX8BDZ/collab) and pick up a task.
+Are you ready to start collaborating? Head to our [Project page](https://github.com/aaspinwall/collab/projects/1) and pick up a task. Comment that you would like to work on it and we'll assign it to you. That will let others know that you're working on it and can reach out to you if they want to help. Note: In order for us to assign you one, **you have to comment on the issue**.
 
 ## Getting Started
 
 **1. Clone this repository:**
 
 ```bash
-git clone git@github.com:ShaiGilboa/collab.git collab
+git clone git@github.com:aaspinwall/collab.git collab
 
 cd collab
 ```
@@ -56,10 +84,17 @@ yarn dev
 - frontend: Next.js app
 - backend: GraphQL server
 
-Each section of the app can be it's own separate unit, all things FE will be in the `frontend` and nothing but `frontend`,
-and the same goes for the `backend` folder.
+Our main branch is stable. If you decide to contribute, you can work off that branch. Our [backend branch](https://github.com/aaspinwall/collab/tree/backend) can get confusing at first glance since we're testing out features there.
 
-The main benefit I see for this is that I find in organized :) and if we decide to host each part on a different platform, it's easier because they are already separated
+
+## Community guidelines
+
+- Exercise mutual respect
+- Everyone is invited to contribute, regardless of their level of experience – don’t be afraid to make mistakes and ask questions!
+- You can commit to as much or as little work as you want – but please respect the time of your fellow teammates and honour commitments to the best of your ability
+- Communication: Join our [slack group](https://join.slack.com/t/collab-centre/shared_invite/zt-izqi8c7p-qzOXc48kkdQDXfpCPmtIZA)
+
+Note: If you have a specific problem that does not involve everyone, don’t spam – create a separate slack channel or talk directly to the contributor.
 
 ### Collab-ers:
 
