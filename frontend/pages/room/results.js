@@ -18,7 +18,11 @@ export default function ResultsPage() {
 
 const Container = styled.div`
   /* background-color: ${COLORS.MAIN}; */
-  background: linear-gradient(to left top, ${COLORS.SHADES.WHITE} 50%, ${COLORS.MAIN} 50%);
+  background: linear-gradient(
+    to left top,
+    ${COLORS.SHADES.WHITE} 50%,
+    ${COLORS.MAIN} 50%
+  );
   height: 100vh;
   display: flex;
   align-items: center;

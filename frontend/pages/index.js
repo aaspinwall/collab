@@ -7,25 +7,29 @@ export default function LandingPage() {
     <Container>
       <Header>Agora</Header>
       <div className="card">
-      <Link href="/room/create-room">
-        <a>Create A Room</a>
-      </Link>
-      <Link href="/room/voting-room">
-        <a>Voting Room</a>
-      </Link>
-      <Link href="/room/results">
-        <a>Results</a>
-      </Link>
-      <Link href="/info">
-        <a>About Us</a>
-      </Link>
+        <Link href="/room/create-room">
+          <a>Create A Room</a>
+        </Link>
+        <Link href="/room/voting-room">
+          <a>Voting Room</a>
+        </Link>
+        <Link href="/room/results">
+          <a>Results</a>
+        </Link>
+        <Link href="/info">
+          <a>About Us</a>
+        </Link>
       </div>
     </Container>
   );
 }
 
 const Container = styled.div`
-  background: linear-gradient(to left top, ${COLORS.SHADES.WHITE} 50%, ${COLORS.MAIN} 50%);
+  background: linear-gradient(
+    to left top,
+    ${COLORS.SHADES.WHITE} 50%,
+    ${COLORS.MAIN} 50%
+  );
   height: 100vh;
   display: flex;
   align-items: center;
@@ -61,7 +65,6 @@ const Container = styled.div`
     padding: 3.5rem;
     box-shadow: 0 0 5px 3px ${COLORS.SHADES.DARKGREY};
   }
-
 `;
 
 const Header = styled.h1`
