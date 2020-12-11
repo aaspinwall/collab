@@ -23,11 +23,12 @@ async function addRoom(_, args) {
       name,
       timeLimit,
       id,
+      voteOptions
     },
   } = args;
 
   const { data } = await FaunaClient.query(
-    Create(Collection("rooms"), { data: { name, timeLimit, id } })
+    Create(Collection("rooms"), { data: { name, timeLimit, id, voteOptions } })
   );
 
   return {
@@ -38,6 +39,7 @@ async function addRoom(_, args) {
       name: data.name,
       id: data.id,
       timeLimit: data.timeLimit,
+      voteOptions: data.voteOptions,
     },
   };
 }

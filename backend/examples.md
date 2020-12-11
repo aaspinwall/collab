@@ -86,7 +86,7 @@ query {
 
 ```javascript
 mutation {
-  addRoom(room: { name: "Thanksgiving!", timeLimit: "2020/11/21", id: "EAR2" }){
+  addRoom(room: { name: "Thanksgiving!", timeLimit: "2020/11/21", id: "EAR2", voteOptions: ["apple", "pears", "plums", "table"] }){
     code
     success
     message
@@ -94,6 +94,7 @@ mutation {
       name
       timeLimit
       id
+      voteOptions
     }
   }
 }
