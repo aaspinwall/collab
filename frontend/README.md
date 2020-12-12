@@ -1,5 +1,9 @@
 ## Getting Started
 
+**Important**: Make sure you duplicate the `env.sample` file and rename the copy `.env`
+
+Since this repository is public, we don't want to share our API keys. Please go on the [slack group](https://join.slack.com/t/collab-centre/shared_invite/zt-izqi8c7p-qzOXc48kkdQDXfpCPmtIZA) to get our keys. Alternatively, you can generate your own API keys and test everything using your own accounts.
+
 First, run the development server:
 
 ```bash

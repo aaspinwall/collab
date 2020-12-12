@@ -10,6 +10,18 @@ const MutationType = gql`
     addUser(user: NewUserInput): AddUserMutationResponse
 
     """
+    POST: accepts {name: string, timeLimit: string, id: string}
+    returns a Room type
+    """
+    addRoom(room: NewRoomInput): AddRoomMutationResponse
+
+    """
+    POST: accepts {name: string}, roomID: string
+    returns a Room type
+    """
+    addUserToRoom(userData: NewUserToRoomInput, roomID: String!): AddUserToRoomMutationResponse
+
+    """
     DELETE: accepts ID
     returns boolean of success
     """

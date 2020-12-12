@@ -10,15 +10,8 @@ const QueryType = gql`
     "Get all users"
     users: [User]
 
-    "a test function, returns 'cool beans!'"
-    test: String
-
-    """
-    a test function
-    accept a 'word' string variable
-    return the same string, reversed
-    """
-    reverse (word: String) : String
+    "Get room by id"
+    roomByID(id: String): [Room]
   }
 `;
 
