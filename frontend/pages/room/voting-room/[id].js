@@ -1,20 +1,44 @@
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
-import Timer from "../../components/timer";
-import UserForm from '../../components/UserForm'
+import Layout from "../../../components/layout";
+import Timer from "../../../components/timer";
+import UserForm from '../../../components/UserForm';
+import { GET_ROOM_BY_ID } from '../../../components/polloTest/GetRoomData';
+import { useLazyQuery } from '@apollo/client';
+import { useRouter } from 'next/router'
 
-export default function LandingPage() {
+export default function VotingRoom() {
+  const { query } = useRouter();
+
+  const [roomData, setRoomData] = useState(null);
+  const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
+    onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData)
+  });
+
+  useEffect(() => {
+    getRoomByID({ variables: { id: query.id } });
+  }, [query]);
+
   return (
     <Layout title='Now Voting!'>
       <Container>
         <Header>Voting Page</Header>
-
+        {/* Time should be based of roomData.timeLimit **********/ }
         <Timer key={200} onTimeIsUp={(message) => alert(message)} />
 
         <Description>
           This page will be where the voting itself takes place
         </Description>
+        {roomData && roomData.voteOptions.map((option, id) => {
+
+          // TODO: options.length return a checkbox in a form for each one
+          return (
+            <div key={`vote-option-${id}`}>
+              <span>{option}</span>
+            </div>
+          )
+        })}
         <Link href='/landing'>
           <Button>Home</Button>
         </Link>

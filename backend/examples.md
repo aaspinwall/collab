@@ -16,6 +16,9 @@ query {
       timeLimit
       voteOptions
     }
+    code
+    success
+    message
   }
 }
 ```
