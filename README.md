@@ -39,7 +39,6 @@ You can follow our UI ideas on [figma](https://www.figma.com/file/8tF9s4A400dTrW
 ## What's next?
 
 - More styling (bring your design skills)!
-- GraphQL extravaganza! We're merging the backend soon!
 - Putting it all together. An MVP that works and looks nice.
 
 
