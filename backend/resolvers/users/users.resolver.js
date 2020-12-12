@@ -1,6 +1,6 @@
-const FaunaClient = require("../../fauna.config");
-const faunadb = require("faunadb");
-const users = require("./users.data");
+const faunadb = require('faunadb');
+const FaunaClient = require('../../fauna.config');
+const users = require('./users.data');
 
 const { Create, Collection } = faunadb.query;
 
@@ -8,9 +8,9 @@ let idIndex = 3;
 
 async function addUser(_, args) {
   console.log({ args });
-  const user = args.user;
+  const { user } = args;
 
-  idIndex++;
+  idIndex += 1;
 
   const newUser = {
     name: user.name,
@@ -18,14 +18,14 @@ async function addUser(_, args) {
     id: idIndex.toString(),
   };
   try {
-  await FaunaClient.query(Create(Collection("users"), { data: newUser }));
+    await FaunaClient.query(Create(Collection('users'), { data: newUser }));
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
   return {
-    code: "200",
+    code: '200',
     success: true,
-    message: "user added",
+    message: 'user added',
     user: newUser,
   };
 }
@@ -37,18 +37,17 @@ function updateUserEmail(_, args) {
     const newUser = { ...users[foundUserIndex] };
     newUser.email = args.email;
     return {
-      code: "200",
+      code: '200',
       success: true,
-      message: "user updates",
+      message: 'user updates',
       user: newUser,
     };
-  } else {
-    return {
-      code: "404",
-      success: false,
-      message: "user not found",
-    };
   }
+  return {
+    code: '404',
+    success: false,
+    message: 'user not found',
+  };
 }
 
 function updateUserName(_, args) {
@@ -58,18 +57,17 @@ function updateUserName(_, args) {
     const newUser = { ...users[foundUserIndex] };
     newUser.email = args.name;
     return {
-      code: "200",
+      code: '200',
       success: true,
-      message: "user updates",
+      message: 'user updates',
       user: newUser,
     };
-  } else {
-    return {
-      code: "404",
-      success: false,
-      message: "user not found",
-    };
   }
+  return {
+    code: '404',
+    success: false,
+    message: 'user not found',
+  };
 }
 
 function deleteUser(_, args) {
@@ -78,17 +76,16 @@ function deleteUser(_, args) {
   if (foundUserIndex > -1) {
     users.splice(foundUserIndex, 1);
     return {
-      code: "200",
+      code: '200',
       success: true,
-      message: "user removed",
-    };
-  } else {
-    return {
-      code: "404",
-      success: false,
-      message: "user not found",
+      message: 'user removed',
     };
   }
+  return {
+    code: '404',
+    success: false,
+    message: 'user not found',
+  };
 }
 
 module.exports = {

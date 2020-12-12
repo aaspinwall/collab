@@ -1,26 +1,28 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
+import { COLORS } from "../../styles/colors";
 
-export default function LandingPage() {
+export default function ResultsPage() {
   return (
-    <Layout title="Results">
-      <Container>
-        <Header>Results</Header>
-        <Description>
-          This page will be used to display the results of the vote
-        </Description>
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Results</Header>
+      <Description>
+        This page will be used to display the results of the vote
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
-  background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
+  /* background-color: ${COLORS.MAIN}; */
+  background: linear-gradient(
+    to left top,
+    ${COLORS.SHADES.WHITE} 50%,
+    ${COLORS.MAIN} 50%
+  );
   height: 100vh;
   display: flex;
   align-items: center;
@@ -50,8 +52,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:active {
-    background: #e5e5e5;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
+    background: ${COLORS.SHADES.GREY};
+    box-shadow: inset 0px 0px 5px ${COLORS.SHADES.DARKGREY};
     outline: none;
     transform: scale(0.9);
   }

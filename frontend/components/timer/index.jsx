@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createRef } from "react";
 
-const Timer = ({ time = 180, onTimeIsUp }) => {
-  const [seconds, setSeconds] = useState(time);
+const Timer = ({ time, onTimeIsUp }) => {
+  const [seconds, setSeconds] = useState(time || 200);
+  const userTime = createRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userTimeElement = userTime.current;
+    setSeconds(userTimeElement.value);
+    userTimeElement.value = "";
+  };
 
   useEffect(() => {
     let interval = setInterval(() => {
@@ -16,10 +24,16 @@ const Timer = ({ time = 180, onTimeIsUp }) => {
   }, [seconds]);
 
   return (
-    <div className='grid'>
-      <div className='card'>
-        <span>{seconds} s</span>
+    <div className="grid">
+      <div className="card">
+        <span className="timer-seconds">
+          {seconds >= 1 ? seconds + "s" : "Time is up!"}
+        </span>
         <p>Timer component</p>
+        <form onSubmit={handleSubmit}>
+          <input ref={userTime} type="number" />
+          <button type="submit">Set Time</button>
+        </form>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../styles/colors";
 
 //These styles are the default nextjs ones, we'll be changing them as we go
 
@@ -15,12 +16,11 @@ const LayoutWrapper = styled.div`
   .navbar {
     display: flex;
     justify-content: space-evenly;
-    color: #eb5e28;
+    color: ${COLORS.MAIN};
     background-color: #293241;
     font-weight: bold;
-    padding : 1rem;
+    padding: 1rem;
   }
-
 
   .main {
     padding: 5rem 0;

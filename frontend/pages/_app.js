@@ -1,22 +1,19 @@
-import { ApolloProvider } from '@apollo/client';
+import PropTypes from "prop-types";
+import Layout from "../components/layout";
+import GlobalStyles from "../styles/GlobalStyles";
 
-import '../styles/globals.css'
-
-// this imports the "client"- which is the connection
-// to the BE
-// (at the moment the be is "localhost", when we will
-// have it hosted we can change it)
-import ApolloClient from '../apollo';
+MyApp.propTypes = {
+  Component: PropTypes.func,
+  pageProps: PropTypes.object,
+};
 
 function MyApp({ Component, pageProps }) {
   return (
-    // so that we can make the calls anywhere in the app
-    // we wrap it in a provider.
-    // this way we can use the hooks in the app
-    <ApolloProvider client={ApolloClient}>
+    <Layout>
+      <GlobalStyles />
       <Component {...pageProps} />
-    </ApolloProvider>
-  )
+    </Layout>
+  );
 }
 
-export default MyApp
+export default MyApp;

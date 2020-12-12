@@ -1,32 +1,33 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
+import { COLORS } from "../../styles/colors";
+
 import Timer from "../../components/timer";
-import UserForm from '../../components/UserForm'
 
-export default function LandingPage() {
+export default function VotingRoom() {
   return (
-    <Layout title='Now Voting!'>
-      <Container>
-        <Header>Voting Page</Header>
+    <Container>
+      <Header>Voting Page</Header>
 
-        <Timer key={200} onTimeIsUp={(message) => alert(message)} />
+      <Timer onTimeIsUp={(message) => alert(message)} />
 
-        <Description>
-          This page will be where the voting itself takes place
-        </Description>
-        <Link href='/landing'>
-          <Button>Home</Button>
-        </Link>
-      </Container>
-      <UserForm />
-    </Layout>
+      <Description>
+        This page will be where the voting itself takes place
+      </Description>
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
-  background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
+  /* background-color: ${COLORS.MAIN}; */
+  background: linear-gradient(
+    to left top,
+    ${COLORS.SHADES.WHITE} 50%,
+    ${COLORS.MAIN} 50%
+  );
   height: 100vh;
   display: flex;
   align-items: center;
@@ -56,8 +57,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:active {
-    background: #e5e5e5;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
+    background: ${COLORS.SHADES.GREY};
+    box-shadow: inset 0px 0px 5px ${COLORS.SHADES.DARKGREY};
     outline: none;
     transform: scale(0.9);
   }
