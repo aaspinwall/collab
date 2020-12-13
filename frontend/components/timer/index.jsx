@@ -26,7 +26,7 @@ const Timer = ({ time, onTimeIsUp }) => {
   return (
     <div className="grid">
       <div className="card">
-        <span>{seconds}'s remaining!</span>
+        <span className="timer-seconds">{seconds}'s remaining!</span>
       </div>
     </div>
   );
