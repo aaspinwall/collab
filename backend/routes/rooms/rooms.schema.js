@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const RoomType = gql`
   # Comments in GraphQL strings (such as this one) start with
@@ -55,7 +55,6 @@ const UserToRoomMutationResponse = gql`
     users: [User]!
   }
 `;
-
 
 module.exports = gql`
   ${RoomType}
