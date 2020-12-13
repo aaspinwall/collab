@@ -39,7 +39,6 @@ You can follow our UI ideas on [figma](https://www.figma.com/file/8tF9s4A400dTrW
 ## What's next?
 
 - More styling (bring your design skills)!
-- GraphQL extravaganza! We're merging the backend soon!
 - Putting it all together. An MVP that works and looks nice.
 
 
@@ -57,11 +56,7 @@ git clone git@github.com:aaspinwall/collab.git collab
 cd collab
 ```
 
-**2. On the backend folder, duplicate the `env.sample` file and rename the copy `.env`**
-
-Since this repository is public, we don't want to share our API keys. Please go on the [slack group](https://join.slack.com/t/collab-centre/shared_invite/zt-izqi8c7p-qzOXc48kkdQDXfpCPmtIZA) to get our keys. Alternatively, you can generate your own API keys and test everything using your own accounts.
-
-**3. Install the dependencies and start the local server.**
+**2. Install the dependencies and start the local server.**
 
 On the command line, run:
 
