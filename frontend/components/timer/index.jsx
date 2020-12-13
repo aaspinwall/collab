@@ -18,8 +18,7 @@ const Timer = ({ time = 180, onTimeIsUp }) => {
   return (
     <div className='grid'>
       <div className='card'>
-        <span>{seconds} s</span>
-        <p>Timer component</p>
+        <span>{seconds}'s remaining!</span>
       </div>
     </div>
   );
