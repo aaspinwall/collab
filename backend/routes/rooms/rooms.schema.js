@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const RoomType = gql`
   # Comments in GraphQL strings (such as this one) start with
@@ -21,7 +21,7 @@ const RoomType = gql`
 `;
 
 const RoomMutationResponse = gql`
-  type AddRoomMutationResponse implements MutationResponse {
+  type AddRoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
@@ -46,28 +46,21 @@ const NewUserToRoomInput = gql`
   }
 `;
 
-const UserInRoom = gql`
-  type UserInRoom {
-    name: String!
-    voteData: Boolean!
-  }
-`;
-
 const UserToRoomMutationResponse = gql`
-  type AddUserToRoomMutationResponse implements MutationResponse {
+  type AddUserToRoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
-    roomData: Room
-    userData: [UserInRoom]!
+    roomData: Room!
+    users: [User]!
   }
 `;
+
 
 module.exports = gql`
   ${RoomType}
   ${RoomMutationResponse}
   ${NewRoomInput}
   ${NewUserToRoomInput}
-  ${UserInRoom}
   ${UserToRoomMutationResponse}
 `;
