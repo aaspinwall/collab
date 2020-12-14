@@ -9,7 +9,7 @@ export default function LandingPage() {
     <Container>
       <Header>Name Generator</Header>
       <NameGenerator />
-      <Link href="/landing">
+      <Link href="/">
         <Button>Home</Button>
       </Link>
     </Container>

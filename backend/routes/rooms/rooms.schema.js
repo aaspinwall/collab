@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const RoomType = gql`
   # Comments in GraphQL strings (such as this one) start with
@@ -17,11 +17,15 @@ const RoomType = gql`
     id: String!
     "Voting Options"
     voteOptions: [String!]
+    # we might need to have the voter
+    # as an array, and not an object ¯_(ツ)_/¯
+    # "Voters in room, hasVoted?"
+    # voters: [Voter!]
   }
 `;
 
 const RoomMutationResponse = gql`
-  type AddRoomMutationResponse implements MutationResponse {
+  type AddRoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
@@ -40,26 +44,19 @@ const NewRoomInput = gql`
   }
 `;
 
-const NewUserToRoomInput = gql`
-  input NewUserToRoomInput {
+const NewVoterToRoomInput = gql`
+  input NewVoterToRoomInput {
     name: String!
   }
 `;
 
-const UserInRoom = gql`
-  type UserInRoom {
-    name: String!
-    voteData: Boolean!
-  }
-`;
-
-const UserToRoomMutationResponse = gql`
-  type AddUserToRoomMutationResponse implements MutationResponse {
+const VoterToRoomMutationResponse = gql`
+  type AddVoterToRoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
-    roomData: Room
-    userData: [UserInRoom]!
+    roomData: Room!
+    voters: [Voter]!
   }
 `;
 
@@ -67,7 +64,6 @@ module.exports = gql`
   ${RoomType}
   ${RoomMutationResponse}
   ${NewRoomInput}
-  ${NewUserToRoomInput}
-  ${UserInRoom}
-  ${UserToRoomMutationResponse}
+  ${NewVoterToRoomInput}
+  ${VoterToRoomMutationResponse}
 `;

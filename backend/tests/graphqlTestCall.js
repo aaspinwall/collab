@@ -1,8 +1,11 @@
-const { graphql } = require('graphql');
-const { makeExecutableSchema } = require('graphql-tools');
+// Check this file... resolvers.root doesn't exist
 
-const typeDefs = require('../schema/schema.root');
-const resolvers = require('../resolvers/resolvers.root');
+const { graphql } = require("graphql");
+const { makeExecutableSchema } = require("graphql-tools");
+
+const typeDefs = require("../routes/schema.root.js");
+
+const resolvers = require("../routes/resolvers.root.js");
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 

@@ -28,8 +28,8 @@ When we want to make a query, we must respect the typing defined in this schema.
 The resolvers works similarly to how an express endpoint wold work. When given some query, perform some action and return what was asked.
 
 There are two types of resolvers:
-- __query__: Query's simply return the requested data. For example, getting a user with a specified email address.
-- __mutation__: Which _mutate_ (or change) the requested data. For example, a mutation might delete a specified user from the database.
+- __query__: Query's simply return the requested data. For example, getting a voter with a specified email address.
+- __mutation__: Which _mutate_ (or change) the requested data. For example, a mutation might delete a specified voter from the database.
 
 ### Contributing
 
