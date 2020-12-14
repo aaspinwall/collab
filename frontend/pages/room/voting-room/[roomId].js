@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../../components/layout";
 import Timer from "../../../components/timer";
-import UserForm from "../../../components/UserForm";
 import { GET_ROOM_BY_ID } from "../../../components/polloTest/GetRoomData";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -13,12 +11,12 @@ export default function VotingRoom() {
   const { query } = useRouter();
 
   const [roomData, setRoomData] = useState(null);
-  const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
-    onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData),
+  const [getRoomById, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
+    onCompleted: ({ roomById: { roomData } }) => setRoomData(roomData),
   });
 
   useEffect(() => {
-    getRoomByID({ variables: { id: query.id } });
+    getRoomById({ variables: { id: query.roomId } });
     console.log(roomData);
   }, [query]);
 

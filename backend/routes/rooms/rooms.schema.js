@@ -13,7 +13,7 @@ const RoomType = gql`
     name: String!
     "Time limit"
     timeLimit: String!
-    "a unique id"
+    "a unique roomId"
     id: String!
     "Voting Options"
     voteOptions: [String!]

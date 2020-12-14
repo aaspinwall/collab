@@ -11,7 +11,7 @@ export default function LandingPage() {
   // this is the individual option being set in the form that's pushed to the array of total options
   const individualOption = createRef(null);
   // Creates the room ID (Will be replaced by automated function)
-  const createRoomID = createRef(null);
+  const createRoomId = createRef(null);
   // this creates the room name
   const createRoomName = createRef(null);
   // this creates the rooms times limit in seconds (TODO: Change seconds to minutes and
@@ -29,10 +29,11 @@ export default function LandingPage() {
   };
   // this adds the array of options to the database
   const submitRoom = () => {
+    console.log('here')
     addRoom({
       variables: {
         name: createRoomName.current.value, // to change
-        id: createRoomID.current.value, // we will generate this on backend
+        id: createRoomId.current.value, // we will generate this on backend
         timeLimit: createTimeLimit.current.value,
         voteOptions: options,
       },
@@ -40,6 +41,7 @@ export default function LandingPage() {
     console.log(
       createRoomName.current.value,
       createTimeLimit.current.value,
+      createRoomId.current.value,
       options
     );
     // clears the List
@@ -69,7 +71,7 @@ export default function LandingPage() {
           <div>
             <label>
               Room ID (ex: 1A3E)
-              <input type="text" placeholder="Room ID" ref={createRoomID} />
+              <input type="text" placeholder="Room ID" ref={createRoomId} />
             </label>
           </div>
           <div>

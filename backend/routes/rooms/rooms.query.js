@@ -6,12 +6,12 @@ const { Get, Match, Index } = faunadb.query;
 const RoomsQuery = {
   // CAREFUL! the first argument is empty
   // the second argument is what's passed by the query
-  async roomByID(_, { id }) {
+  async roomByID(_, { roomId }) {
     try {
       const {
         data,
       } = await FaunaClient.query(
-        Get(Match(Index('rooms_by_id'), id)),
+        Get(Match(Index('rooms_by_id'), roomId)),
       );
   
       console.log(data);
@@ -21,7 +21,7 @@ const RoomsQuery = {
         success: true,
         message: 'room retrieved',
         roomData: {
-          id: data.id,
+          roomId: data.roomId,
           name: data.name,
           timeLimit: data.timeLimit,
           voteOptions: data.voteOptions,
