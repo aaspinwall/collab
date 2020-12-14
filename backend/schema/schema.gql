@@ -11,13 +11,13 @@ type Choice {
   room: Room
 }
 
-type User {
+type Voter {
   name: String!
 }
 
 type Query {
   allRooms: [Room!]
-  allUsers: [User!]
+  allVoters: [Voter!]
   getRoomByName(name: String!): [Room]
 }
 

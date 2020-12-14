@@ -1,4 +1,4 @@
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const MutationType = gql`
   "All the Mutations we can do"
@@ -10,10 +10,10 @@ const MutationType = gql`
     addRoom(room: NewRoomInput): AddRoomMutationResponse
 
     """
-    POST: accepts {name: string}, id: string
+    POST: accepts {name: string}, roomId: string
     returns a Room type
     """
-    addUserToRoom(userData: NewUserToRoomInput, id: String!): AddUserToRoomMutationResponse
+    addVoterToRoom(voterData: NewVoterToRoomInput, roomId: String!): AddVoterToRoomMutationResponse
   }
 `;
 
