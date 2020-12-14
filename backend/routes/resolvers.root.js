@@ -12,7 +12,7 @@ const resolvers = {
 
   // to relieve the error 
   // "Type ******  is missing a “__resolveType” resolver. Pass false into “resolverValidationOptions.requireResolversForResolveType” to disable this warning."
-  MutationResponse: {
+  Response: {
     __resolveType(Response, context, info){
       return null;
     },
