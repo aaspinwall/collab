@@ -1,4 +1,3 @@
-import Layout from "../../components/layout";
 import SampleButton from "../../components/ui/sample_button";
 
 export default function Home() {

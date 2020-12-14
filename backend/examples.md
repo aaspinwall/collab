@@ -5,82 +5,25 @@
 
 ### Our Query Resolvers
 
-**get all users**:
+**`retrieve room data with id` returns room data**
 
 ```javascript
 query {
-  users {
-    name
-    email
-    id
-  }
-}
-```
-
-### Our Mutation Resolvers
-
-**`add user` returns a response object**:
-
-```javascript
-  mutation {
-    addUser(user: {name: "ANY_NAME", email: "ANY_EMAIL"}){
-      user {
-        name
-        email
-        id
-      }
+  roomByID(id: "EAR2") {
+    roomData {
+      id
+      name
+      timeLimit
+      voteOptions
     }
     code
     success
     message
   }
+}
 ```
 
-**`update email` returns a response object**:
-
-```javascript
-   mutation {
-     updateUserEmail(id: "1", email: "NEW_EMAIL"){
-       user {
-         name
-         email
-         id
-       }
-       code
-       success
-       message
-     }
-   }
-```
-
-**`update name` returns a response object**:
-
-```javascript
-   mutation {
-     updateUserName(id: "1", name: "NEW_NAME"){
-       user {
-         name
-         email
-         id
-       }
-       code
-       success
-       message
-     }
-   }
-```
-
-**`delete user` returns a response object**:
-
-```javascript
- mutation{
-   deleteUser(id: "1"){
-     success
-     code
-     message
-   }
- }
-```
+### Our Mutation Resolvers
 
 **`create a room` returns a response object**:
 
@@ -100,11 +43,11 @@ mutation {
 }
 ```
 
-**`add a user to a room` returns a response object with the users in the room and the room data**:
+**`add a voter to a room` returns a response object with the voters in the room and the room data**:
 
 ```javascript
 mutation {
-  addUserToRoom(userData: { name: "Sir Frekerik! the four"}, roomID: "EE202"){
+  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, id: "EE202"){
     code
     success
     message
@@ -112,9 +55,11 @@ mutation {
       id
       name
       timeLimit
+      voteOptions
     }
-    users {
-      [name]
+    voters {
+      name
+      voteData
     }
   }
 }

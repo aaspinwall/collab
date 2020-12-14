@@ -9,7 +9,7 @@ export default function LandingPage() {
     <Container>
       <Header>Name Generator</Header>
       <NameGenerator />
-      <Link href="/landing">
+      <Link href="/">
         <Button>Home</Button>
       </Link>
     </Container>
@@ -17,7 +17,7 @@ export default function LandingPage() {
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
+  /* background-color: ${COLORS.MAIN}; */
   background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
   height: 100vh;
   display: flex;

@@ -11,10 +11,11 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint **/*.{js,ts,tsx} --ignore-path .eslintignore",
+    "lint": "eslint . --ignore-path .eslintignore",
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
-    "lint-test": "eslint . && jest --no-cache ./*"
+    "lint-test": "eslint . && jest --no-cache ./*",
+    "lint-local": "eslint . --fix"
   },
   "dependencies": {
     "@apollo/client": "^3.2.9",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import React, { useState } from "react";
+import { COLORS } from "../../../styles/colors";
 
 // import MenuIcon from "../../hamburgerMenu/index";
 // HamburgerMenu svg can be used in place of the current → being used
@@ -54,7 +55,7 @@ export default Navbar;
 const Nav = styled.nav`
   background-color: #1d3557;
   position: relative;
-  color: #eb5e28;
+  color: ${COLORS.MAIN};
   padding: 15px;
   display: flex;
   justify-content: space-evenly;
@@ -90,6 +91,6 @@ const Button = styled.button`
 `;
 
 const ButtonText = styled.span`
-  color: #eb5e28;
+  color: ${COLORS.MAIN};
   font-size: 26px;
 `;
