@@ -45,14 +45,14 @@ async function addRoom(_, args) {
 }
 
 // This will have to change as currently there is no
-// way to query users using GraphQL (that I can see at least)
-async function addUserToRoom(_, { userData: { name }, id }) {
+// way to query Voters using GraphQL (that I can see at least)
+async function addVoterToRoom(_, { voterData: { name }, roomId }) {
   const { data } = await FaunaClient.query(
     Update(
-      Select('ref', Get(Match(Index("rooms_by_id"), id))),
+      Select('ref', Get(Match(Index("rooms_by_id"), roomId))),
       {
         data: {
-          users: {
+          voters: {
             [name]: false,
           }
         }
@@ -60,7 +60,7 @@ async function addUserToRoom(_, { userData: { name }, id }) {
     )
   );
 
-  const users = Object.entries(data.users).map(([name, voteData]) => {
+  const voters = Object.entries(data.voters).map(([name, voteData]) => {
     return {
       name,
       voteData
@@ -77,11 +77,11 @@ async function addUserToRoom(_, { userData: { name }, id }) {
       timeLimit: data.timeLimit,
       voteOptions: data.voteOptions,
     },
-    users,
+    voters,
   }
 }
 
 module.exports = {
   addRoom,
-  addUserToRoom,
+  addVoterToRoom,
 };

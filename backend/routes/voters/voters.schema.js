@@ -1,10 +1,10 @@
 const { gql } = require("apollo-server");
 
-const User = gql`
-  type User {
+const Voter = gql`
+  type Voter {
     name: String!
     voteData: Boolean!
   }
 `;
 
-module.exports = User;
+module.exports = Voter;

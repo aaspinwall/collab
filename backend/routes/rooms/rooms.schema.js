@@ -17,6 +17,8 @@ const RoomType = gql`
     id: String!
     "Voting Options"
     voteOptions: [String!]
+    "Voters in room, hasVoted?"
+    voters: [Voter!]
   }
 `;
 
@@ -40,19 +42,19 @@ const NewRoomInput = gql`
   }
 `;
 
-const NewUserToRoomInput = gql`
-  input NewUserToRoomInput {
+const NewVoterToRoomInput = gql`
+  input NewVoterToRoomInput {
     name: String!
   }
 `;
 
-const UserToRoomMutationResponse = gql`
-  type AddUserToRoomMutationResponse implements Response {
+const VoterToRoomMutationResponse = gql`
+  type AddVoterToRoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
     roomData: Room!
-    users: [User]!
+    voters: [Voter]!
   }
 `;
 
@@ -61,6 +63,6 @@ module.exports = gql`
   ${RoomType}
   ${RoomMutationResponse}
   ${NewRoomInput}
-  ${NewUserToRoomInput}
-  ${UserToRoomMutationResponse}
+  ${NewVoterToRoomInput}
+  ${VoterToRoomMutationResponse}
 `;
