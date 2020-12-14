@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const QueryType = gql`
   # The "Query" type is special: it lists all of the available

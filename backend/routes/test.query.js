@@ -1,9 +1,9 @@
 const TestQuery = {
   test() {
-    return 'cool beans!';
+    return "cool beans!";
   },
   reverse(_, args) {
-    return args.word.split('').reverse().join('');
+    return args.word.split("").reverse().join("");
   },
 };
 

@@ -1,5 +1,5 @@
-const RoomsQuery = require('./rooms/rooms.query');
-const RoomsResolver = require('./rooms/rooms.resolver');
+const RoomsQuery = require("./rooms/rooms.query");
+const RoomsResolver = require("./rooms/rooms.resolver");
 
 const resolvers = {
   Query: {
@@ -10,10 +10,11 @@ const resolvers = {
     ...RoomsResolver,
   },
 
-  // to relieve the error 
+  // to relieve the error
   // "Type ******  is missing a “__resolveType” resolver. Pass false into “resolverValidationOptions.requireResolversForResolveType” to disable this warning."
+  /* eslint-disable */
   Response: {
-    __resolveType(Response, context, info){
+    __resolveType(Response, context, info) {
       return null;
     },
   },
