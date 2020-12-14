@@ -28,8 +28,8 @@ export default function LandingPage() {
     createOptionsArray();
   };
   // this adds the array of options to the database
-  const submitRoom = () => {
-    addRoom({
+  const submitRoom = async () => {
+    const res = await addRoom({
       variables: {
         name: createRoomName.current.value, // to change
         id: createRoomID.current.value, // we will generate this on backend
@@ -37,13 +37,17 @@ export default function LandingPage() {
         voteOptions: options,
       },
     });
-    console.log(
-      createRoomName.current.value,
-      createTimeLimit.current.value,
-      options
-    );
+
+    const { success, message, room } = res.data.addRoom;
+
     // clears the List
-    setOptions([]);
+    if (success) {
+      alert(message + " check the console for more information");
+      console.log("room created with properties: ", room);
+      setOptions([]);
+    } else {
+      alert(message);
+    }
   };
 
   return (
@@ -66,7 +70,7 @@ export default function LandingPage() {
               <input type="text" placeholder="Room Name" ref={createRoomName} />
             </label>
           </div>
-		  <div>
+          <div>
             <label>
               Room ID (ex: 1A3E)
               <input type="text" placeholder="Room ID" ref={createRoomID} />
