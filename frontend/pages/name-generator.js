@@ -1,29 +1,23 @@
+import NameGenerator from "../components/userNames";
+
 import Link from "next/link";
 import styled from "styled-components";
 import Layout from "../components/layout";
 
 export default function LandingPage() {
   return (
-    <Layout title="Temporary Landing Page">
-      <Container>
-        <Header>Agora</Header>
-
-        <Link href="/room/create-room">
-          <Button>Create A Room</Button>
-        </Link>
-        <Link href="/room/voting-room">
-          <Button>Voting Room</Button>
-        </Link>
-        <Link href="/room/results">
-          <Button>Results</Button>
-        </Link>
-      </Container>
-    </Layout>
+    <Container>
+      <Header>Name Generator</Header>
+      <NameGenerator />
+      <Link href="/landing">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
+  /* background-color: ${COLORS.MAIN}; */
   background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
   height: 100vh;
   display: flex;

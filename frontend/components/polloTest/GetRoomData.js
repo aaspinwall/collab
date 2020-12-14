@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from "@apollo/client";
 
 export const GET_ROOM_BY_ID = gql`
   query roomByID($id: String!) {

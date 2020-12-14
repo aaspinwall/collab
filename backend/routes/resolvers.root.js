@@ -1,5 +1,5 @@
-const RoomsQuery = require("./rooms/rooms.query");
-const RoomsResolver = require("./rooms/rooms.resolver");
+const RoomsQuery = require('./rooms/rooms.query');
+const RoomsResolver = require('./rooms/rooms.resolver');
 
 const resolvers = {
   Query: {

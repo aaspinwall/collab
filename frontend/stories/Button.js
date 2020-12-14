@@ -8,7 +8,7 @@ import { action } from "@storybook/addon-actions";
  */
 export const Button = ({ label, ...props }) => {
   return (
-    <SampleButton onClick={() => action("clicked")} type='button' {...props}>
+    <SampleButton onClick={() => action("clicked")} type="button" {...props}>
       {label}
     </SampleButton>
   );
@@ -28,10 +28,6 @@ Button.propTypes = {
    * Does it have sharp corners?
    */
   sharp: PropTypes.bool,
-  /**
-   * What color is the text
-   */
-  color: PropTypes.string,
   /**
    * How large should the button be?
    */

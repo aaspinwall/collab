@@ -4,15 +4,15 @@ import ApolloClient from "../../apollo";
 
 const UserForm = () => {
   const nickName = createRef(null);
-  const email = createRef(null)
+  const email = createRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     testInput();
   };
 
   const testInput = () => {
-	console.log(nickName.current.value);
+    console.log(nickName.current.value);
 
     return ApolloClient.mutate({
       mutation: gql`
@@ -27,7 +27,7 @@ const UserForm = () => {
 		  message
 		}	
 	  }`,
-	}).then(res => console.log(res));
+    }).then((res) => console.log(res));
   };
   return (
     <>

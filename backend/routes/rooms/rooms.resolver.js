@@ -1,5 +1,5 @@
-const FaunaClient = require("../../fauna.config");
-const faunadb = require("faunadb");
+const faunadb = require('faunadb');
+const FaunaClient = require('../../fauna.config');
 
 // TODO
 // MAKKKE DA FOOD 🥓
@@ -8,33 +8,31 @@ const faunadb = require("faunadb");
 // MAKKE DA FAUNAFUNK
 
 const {
-  Create,
-  Collection,
-  Get,
-  Index,
-  Match,
-  Select,
-  Update,
+  Create, Collection, Get, Index, Match, Select, Update,
 } = faunadb.query;
 
 async function addRoom(_, args) {
   const {
     room: {
-      name,
-      timeLimit,
-      id,
-      voteOptions
+      name, timeLimit, id, voteOptions,
     },
   } = args;
 
   const { data } = await FaunaClient.query(
-    Create(Collection("rooms"), { data: { name, timeLimit, id, voteOptions } })
+    Create(Collection('rooms'), {
+      data: {
+        name,
+        timeLimit,
+        id,
+        voteOptions,
+      },
+    }),
   );
 
   return {
-    code: "200",
+    code: '200',
     success: true,
-    message: "room added",
+    message: 'room added',
     room: {
       name: data.name,
       id: data.id,
@@ -68,9 +66,9 @@ async function addVoterToRoom(_, { voterData: { name }, roomId }) {
   });
 
   return {
-    code: "200",
+    code: '200',
     success: true,
-    message: "room updated",
+    message: 'room updated',
     roomData: {
       id: data.id,
       name: data.name,

@@ -115,7 +115,6 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-
   .overflow {
     width: 200px;
     overflow: auto;
@@ -173,7 +172,6 @@ const Button = styled.button`
 	letter-spacing: 2px;
 	border: 3px solid #293241;
 	cursor: pointer;
-
 	&:active {
 		background: #e5e5e5;
 		box-shadow: inset 0px 0px 5px #c1c1c1;
