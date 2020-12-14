@@ -43,11 +43,11 @@ mutation {
 }
 ```
 
-**`add a user to a room` returns a response object with the users in the room and the room data**:
+**`add a voter to a room` returns a response object with the voters in the room and the room data**:
 
 ```javascript
 mutation {
-  addUserToRoom(userData: { name: "Sir Frekerik! the four"}, id: "EE202"){
+  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, id: "EE202"){
     code
     success
     message
@@ -57,7 +57,7 @@ mutation {
       timeLimit
       voteOptions
     }
-    users {
+    voters {
       name
       voteData
     }

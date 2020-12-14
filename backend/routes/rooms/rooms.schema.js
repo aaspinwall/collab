@@ -17,8 +17,10 @@ const RoomType = gql`
     id: String!
     "Voting Options"
     voteOptions: [String!]
-    "Voters in room, hasVoted?"
-    voters: [Voter!]
+    # we might need to have the voter
+    # as an array, and not an object ¯\_(ツ)_/¯
+    # "Voters in room, hasVoted?"
+    # voters: [Voter!]
   }
 `;
 

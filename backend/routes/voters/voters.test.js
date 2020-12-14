@@ -2,7 +2,7 @@ const graphqlTestCall = require('../../tests/graphqlTestCall');
 
 const addVoterMutation = `
   mutation AddVoterMutation($name: String!, $email: String!) {
-    addVoter(user: { name: $name, email: $email }) {
+    addVoter(voter: { name: $name, email: $email }) {
       voter {
         name
         email
@@ -20,7 +20,7 @@ describe('Voters Resolvers', () => {
     const {
       data: {
         addVoter: {
-          user: { name, email },
+          voter: { name, email },
           code,
           success,
         },

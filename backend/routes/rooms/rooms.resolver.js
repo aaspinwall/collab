@@ -17,65 +17,88 @@ async function addRoom(_, args) {
       name, timeLimit, id, voteOptions,
     },
   } = args;
-
-  const { data } = await FaunaClient.query(
-    Create(Collection('rooms'), {
-      data: {
-        name,
-        timeLimit,
-        id,
-        voteOptions,
+  try {
+    const { data } = await FaunaClient.query(
+      Create(Collection('rooms'), {
+        data: {
+          name,
+          timeLimit,
+          id,
+          voteOptions,
+        },
+      }),
+    );
+    return {
+      code: '200',
+      success: true,
+      message: 'room added',
+      room: {
+        name: data.name,
+        id: data.id,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
       },
-    }),
-  );
-
-  return {
-    code: '200',
-    success: true,
-    message: 'room added',
-    room: {
-      name: data.name,
-      id: data.id,
-      timeLimit: data.timeLimit,
-      voteOptions: data.voteOptions,
-    },
-  };
+    };
+  } catch (err) {
+    console.log('err in addRoom: ',err.description)
+    if(err.description === 'document is not unique.') {
+      return {
+        code: "400",
+        success: false,
+        message: "bad request: the id is not unique :(",
+      }
+    }
+    return {
+      code: "500",
+      success: false,
+      message: "there has been an error in the server :(",
+    }
+  }
 }
 
 // This will have to change as currently there is no
 // way to query Voters using GraphQL (that I can see at least)
 async function addVoterToRoom(_, { voterData: { name }, roomId }) {
-  const { data } = await FaunaClient.query(
-    Update(
-      Select('ref', Get(Match(Index("rooms_by_id"), roomId))),
-      {
-        data: {
-          voters: {
-            [name]: false,
+  try {
+    const { data } = await FaunaClient.query(
+      Update(
+        Select('ref', Get(Match(Index("rooms_by_id"), roomId))),
+        {
+          data: {
+            voters: {
+              [name]: false,
+            }
           }
         }
+      )
+    );
+    const voters = Object.entries(data.voters).map(([name, voteData]) => {
+      return {
+        name,
+        voteData
       }
-    )
-  );
-
-  const voters = Object.entries(data.voters).map(([name, voteData]) => {
+    });
+  
     return {
-      name,
-      voteData
+      code: '200',
+      success: true,
+      message: 'room updated',
+      roomData: {
+        id: data.id,
+        name: data.name,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
+      },
+      voters,
     }
-  });
-
-  return {
-    code: '200',
-    success: true,
-    message: 'room updated',
-    roomData: {
-      id: data.id,
-      name: data.name,
-      timeLimit: data.timeLimit,
-      voteOptions: data.voteOptions,
-    },
-    voters,
+    
+  } catch (err) {
+    console.log('err in addVoterToRoom: ',err)
+    return {
+      code: "500",
+      success: false,
+      message: "there has been an error in the server :("
+    }
   }
 }
 
