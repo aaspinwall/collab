@@ -1,7 +1,7 @@
-const graphqlTestCall = require('../../tests/graphqlTestCall');
+// const graphqlTestCall = require("../../tests/graphqlTestCall");
 
-/*--- this is commented out because there is no 
-  --- AddVoterMutation 
+/* --- this is commented out because there is no
+  --- AddVoterMutation
   --- */
 
 // const addVoterMutation = `
@@ -19,8 +19,8 @@ const graphqlTestCall = require('../../tests/graphqlTestCall');
 //   }
 // `;
 
-describe('Voters Resolvers', () => {
-  it('adds a new voter', async () => {
+describe("Voters Resolvers", () => {
+  it("adds a new voter", async () => {
     // const {
     //   data: {
     //     addVoter: {
@@ -38,10 +38,9 @@ describe('Voters Resolvers', () => {
     // expect(success).toBe(true);
     // expect(name).toEqual('Alright');
     // expect(email).toEqual('freddy@notkreuger.com');
-    
-    const one = 1
-    /**--- --- filler should be deleted */
+
+    const one = 1;
+    /** --- --- filler should be deleted */
     expect(one).toEqual(1);
   });
 });
-

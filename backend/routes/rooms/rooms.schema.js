@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 const RoomType = gql`
   # Comments in GraphQL strings (such as this one) start with
@@ -18,7 +18,7 @@ const RoomType = gql`
     "Voting Options"
     voteOptions: [String!]
     # we might need to have the voter
-    # as an array, and not an object ¯\_(ツ)_/¯
+    # as an array, and not an object ¯_(ツ)_/¯
     # "Voters in room, hasVoted?"
     # voters: [Voter!]
   }
