@@ -10,21 +10,16 @@ import DeleteUser from "../components/polloTest/DeleteUser";
 
 const ApolloTest = () => {
   return (
-    <Layout
-      /* Title is metadata, good for SEO  */
-      title="Apollo Test"
-    >
-      <Wrapper>
-        <h1>ApolloTest</h1>
-        <p>
-          all the components and comments are in{" "}
-          <code>components/polloTest</code>
-        </p>
-        <GetAllUsers />
-        <CreateUser />
-        <DeleteUser />
-      </Wrapper>
-    </Layout>
+    <Wrapper>
+      <h1>ApolloTest</h1>
+      <p>
+        all the components and comments are in
+        <code>components/polloTest</code>
+      </p>
+      <GetAllUsers />
+      <CreateUser />
+      <DeleteUser />
+    </Wrapper>
   );
 };
 

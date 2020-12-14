@@ -32,25 +32,23 @@ export default function VotingRoom() {
   }
 
   return (
-    <Layout title="Now Voting!">
-      <Container>
-        <Header>Voting Page</Header>
+    <Container>
+      <Header>Voting Page</Header>
 
-        <Description>
-          This page will be where the voting itself takes place
-        </Description>
-        {/* time has to be Number() as it is passed as a string */}
-        <Timer
-          key={200}
-          time={Number(roomData.timeLimit)}
-          onTimeIsUp={(message) => alert(message)}
-        />
-        <CheckboxForm voteOptions={roomData.voteOptions} />
-        <Link href="/landing">
-          <Button>Home</Button>
-        </Link>
-      </Container>
-    </Layout>
+      <Description>
+        This page will be where the voting itself takes place
+      </Description>
+      {/* time has to be Number() as it is passed as a string */}
+      <Timer
+        key={200}
+        time={Number(roomData.timeLimit)}
+        onTimeIsUp={(message) => alert(message)}
+      />
+      <CheckboxForm voteOptions={roomData.voteOptions} />
+      <Link href="/">
+        <Button>Home</Button>
+      </Link>
+    </Container>
   );
 }
 
