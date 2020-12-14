@@ -46,10 +46,10 @@ async function addRoom(_, args) {
 
 // This will have to change as currently there is no
 // way to query users using GraphQL (that I can see at least)
-async function addUserToRoom(_, { userData: { name }, roomID }) {
+async function addUserToRoom(_, { userData: { name }, id }) {
   const { data } = await FaunaClient.query(
     Update(
-      Select('ref', Get(Match(Index("rooms_by_id"), roomID))),
+      Select('ref', Get(Match(Index("rooms_by_id"), id))),
       {
         data: {
           users: {
@@ -60,25 +60,24 @@ async function addUserToRoom(_, { userData: { name }, roomID }) {
     )
   );
 
-  const userData = Object.entries(data.users).map(([name, voteData]) => {
+  const users = Object.entries(data.users).map(([name, voteData]) => {
     return {
       name,
       voteData
     }
   });
 
-  console.log(userData, 'HELLOOOOOOOOOOOOOOOOOOO')
-
   return {
     code: "200",
     success: true,
     message: "room updated",
     roomData: {
-      id: data.roomID,
+      id: data.id,
       name: data.name,
       timeLimit: data.timeLimit,
+      voteOptions: data.voteOptions,
     },
-    userData,
+    users,
   }
 }
 
