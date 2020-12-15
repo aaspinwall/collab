@@ -2,7 +2,7 @@ import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Head from "next/head";
-import { COLORS } from '../../styles/colors'
+import { COLORS } from "../../styles/colors";
 import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 export default function LandingPage() {
@@ -100,31 +100,47 @@ export default function LandingPage() {
           <div>
             <input type="submit" value="Add Option" />
           </div>
+          {options.length >= 1 ? (
+            <ul className="overflow">
+              {options &&
+                options.map((option, index) => (
+                  <li className="each-option" key={index}>
+                    <p>{option}</p>
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            " "
+          )}
           <button onClick={submitRoom}>Submit Room</button>
         </form>
       </FormContainer>
-      <ul className="overflow">
-        {options &&
-          options.map((option, index) => (
-            <li key={index}>
-              <p>{option}</p>
-            </li>
-          ))}
-      </ul>
     </Container>
   );
 }
 
 const Container = styled.div`
-  background: linear-gradient(to left top, ${COLORS.PURPLES.LIGHT} 50%, ${COLORS.PURPLES.MAIN} 50%);
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   .overflow {
     width: 200px;
+    max-height: 100px;
     overflow: auto;
     list-style-type: none;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+    padding: 5px 8px;
+    text-align: center;
+    }
+  }
+  .each-option {
+    border-bottom: 1px solid black;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `;
 
@@ -154,6 +170,7 @@ const FormContainer = styled.div`
   }
   label {
     font-weight: bold;
+    font-size: 1.6rem;
   }
 `;
 

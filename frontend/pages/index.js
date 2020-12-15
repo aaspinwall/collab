@@ -29,11 +29,6 @@ export default function LandingPage() {
 }
 
 const Container = styled.div`
-  background: linear-gradient(
-    to left top,
-    ${COLORS.PURPLES.MAIN} 50%,
-    ${COLORS.PURPLES.LIGHT} 50%
-  );
   height: 100vh;
   display: flex;
   align-items: center;
