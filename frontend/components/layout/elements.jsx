@@ -16,7 +16,6 @@ const LayoutWrapper = styled.div`
   .navbar {
     display: flex;
     justify-content: space-evenly;
-    color: ${COLORS.MAIN};
     background-color: #293241;
     font-weight: bold;
     padding: 1rem;

@@ -2,6 +2,7 @@ import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Head from "next/head";
+import { COLORS } from '../../styles/colors'
 import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 export default function LandingPage() {
@@ -115,8 +116,7 @@ export default function LandingPage() {
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
-  background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
+  background: linear-gradient(to left top, ${COLORS.PURPLES.LIGHT} 50%, ${COLORS.PURPLES.MAIN} 50%);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -158,7 +158,7 @@ const FormContainer = styled.div`
 `;
 
 const Header = styled.h1`
-  color: #293241;
+  color: ${COLORS.SHADES.OFFWHITE};
   text-align: center;
   margin-top: 0;
   padding-top: 15px;
@@ -166,7 +166,7 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-  color: #293241;
+  color: ${COLORS.SHADES.OFFWHITE};
   margin-left: 1rem;
 `;
 
