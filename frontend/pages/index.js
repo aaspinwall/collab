@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import { COLORS } from "../styles/colors";
@@ -5,6 +6,9 @@ import { COLORS } from "../styles/colors";
 export default function LandingPage() {
   return (
     <Container>
+      <Head>
+        <title>Welcome To Agora</title>
+      </Head>
       <Header>Agora</Header>
       <div className="card">
         <Link href="/room/create-room">

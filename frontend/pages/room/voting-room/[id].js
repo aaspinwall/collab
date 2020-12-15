@@ -6,17 +6,18 @@ import { GET_ROOM_BY_ID } from "../../../components/polloTest/GetRoomData";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import CheckboxForm from "../../../components/ui/form/checkbox";
+import Head from "next/head";
 
 export default function VotingRoom() {
   const { query } = useRouter();
 
   const [roomData, setRoomData] = useState(null);
-  const [getRoomById, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
-    onCompleted: ({ roomById: { roomData } }) => setRoomData(roomData),
+  const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
+    onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData),
   });
 
   useEffect(() => {
-    getRoomById({ variables: { id: query.roomId } });
+    getRoomByID({ variables: { id: query.id } });
     console.log(roomData);
   }, [query]);
 
@@ -31,6 +32,9 @@ export default function VotingRoom() {
 
   return (
     <Container>
+      <Head>
+        <title>Voting Room {`${query.id}`}!</title>
+      </Head>
       <Header>Voting Page</Header>
 
       <Description>

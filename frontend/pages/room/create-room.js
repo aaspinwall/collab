@@ -1,7 +1,7 @@
 import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
+import Head from "next/head";
 import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 export default function LandingPage() {
@@ -52,6 +52,9 @@ export default function LandingPage() {
 
   return (
     <Container>
+      <Head>
+        <title>Create A Room!</title>
+      </Head>
       <Header>Create A Room Page</Header>
       <Description>
         This page will be used to create a room / have the configurations for
