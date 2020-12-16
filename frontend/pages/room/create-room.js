@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
+
 export default function LandingPage() {
   // these are the options being set
   const [options, setOptions] = useState([]);
@@ -57,8 +58,8 @@ export default function LandingPage() {
         This page will be used to create a room / have the configurations for
         the room
       </Description>
-      <Link href="/">
-        <Button>Home</Button>
+      <Link href="/" passHref>
+        <Anchor>Home</Anchor>
       </Link>
       <FormContainer>
         <form onSubmit={handleSubmit}>
@@ -167,7 +168,7 @@ const Description = styled.p`
   margin-left: 1rem;
 `;
 
-const Button = styled.button`
+const Anchor = styled.a`
   margin-top: 15px;
   padding: 8px;
   border-radius: 5px;
