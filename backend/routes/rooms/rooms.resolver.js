@@ -13,8 +13,8 @@ async function addRoom(_, args) {
   const {
     room: { name, timeLimit, id, voteOptions },
   } = args;
-  console.log(id)
-  console.log(name)
+  console.log(id);
+  console.log(name);
   try {
     const { data } = await FaunaClient.query(
       Create(Collection("rooms"), {
@@ -57,7 +57,7 @@ async function addRoom(_, args) {
 // This will have to change as currently there is no
 // way to query Voters using GraphQL (that I can see at least)
 async function addVoterToRoom(_, { voterData: { name }, roomId }) {
-  console.log({ roomId })
+  console.log({ roomId });
   try {
     const { data } = await FaunaClient.query(
       Update(Select("ref", Get(Match(Index("rooms_by_id"), roomId))), {
