@@ -2,7 +2,6 @@ import NameGenerator from "../../components/userNames";
 
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
 
 export default function LandingPage() {
   return (
