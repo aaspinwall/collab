@@ -62,7 +62,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.h1`
-  color: #293241;
+  color: white;
   text-align: center;
   margin-top: 0;
   padding-top: 15px;
@@ -70,7 +70,7 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-  color: #293241;
+  color: white;
   margin-left: 1rem;
 `;
 

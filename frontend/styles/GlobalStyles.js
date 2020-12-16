@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { COLORS } from "./colors";
 const GlobalStyles = createGlobalStyle`
 	html,
 	body {
@@ -14,6 +15,25 @@ const GlobalStyles = createGlobalStyle`
 	a {
 	  color: inherit;
 	  text-decoration: none;
+	}
+
+	button, input {
+		background-color: ${COLORS.PURPLES.LIGHT};
+		border: 2px solid ${COLORS.PURPLES.MAIN};
+		padding: 10px 18px;
+		border-radius: 8px;
+		color: ${COLORS.PURPLES.MAIN};
+		font-weight: bold;
+		letter-spacing: 0.15rem;
+	}
+
+	input[type="text"]{ padding: 20px 10px; line-height: 18px; }
+
+
+	::placeholder {
+		color: black;
+		font-style: italic;
+
 	}
 	
 	* {
