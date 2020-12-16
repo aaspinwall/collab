@@ -55,7 +55,7 @@ export default Navbar;
 const Nav = styled.nav`
   background-color: #1d3557;
   position: relative;
-  color: ${COLORS.MAIN};
+  color: white;
   padding: 15px;
   display: flex;
   justify-content: space-evenly;
@@ -91,6 +91,6 @@ const Button = styled.button`
 `;
 
 const ButtonText = styled.span`
-  color: ${COLORS.MAIN};
+  color: ${COLORS.PURPLES.LIGHT};
   font-size: 26px;
 `;

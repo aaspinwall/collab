@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import { COLORS } from "../styles/colors";
@@ -5,6 +6,9 @@ import { COLORS } from "../styles/colors";
 export default function LandingPage() {
   return (
     <Container>
+      <Head>
+        <title>Welcome To Agora</title>
+      </Head>
       <Header>Agora</Header>
       <div className="card">
         <Link href="/room/create-room">
@@ -25,11 +29,6 @@ export default function LandingPage() {
 }
 
 const Container = styled.div`
-  background: linear-gradient(
-    to left top,
-    ${COLORS.SHADES.WHITE} 50%,
-    ${COLORS.MAIN} 50%
-  );
   height: 100vh;
   display: flex;
   align-items: center;

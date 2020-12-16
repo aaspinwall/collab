@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import { COLORS } from "../../styles/colors";
@@ -5,6 +6,9 @@ import { COLORS } from "../../styles/colors";
 export default function ResultsPage() {
   return (
     <Container>
+      <Head>
+        <title>Results!</title>
+      </Head>
       <Header>Results</Header>
       <Description>
         This page will be used to display the results of the vote
@@ -17,12 +21,6 @@ export default function ResultsPage() {
 }
 
 const Container = styled.div`
-  /* background-color: ${COLORS.MAIN}; */
-  background: linear-gradient(
-    to left top,
-    ${COLORS.SHADES.WHITE} 50%,
-    ${COLORS.MAIN} 50%
-  );
   height: 100vh;
   display: flex;
   align-items: center;

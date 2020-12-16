@@ -9,7 +9,7 @@
 
 ```javascript
 query {
-  roomByID(id: "EAR2") {
+  roomByID(roomId: "EAR2") {
     roomData {
       id
       name
@@ -47,7 +47,7 @@ mutation {
 
 ```javascript
 mutation {
-  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, id: "EE202"){
+  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomId: "EE202"){
     code
     success
     message
