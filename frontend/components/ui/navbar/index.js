@@ -63,8 +63,6 @@ const Nav = styled.nav`
   font-size: 15px;
   height: 70px;
 
-  
-
   a {
     border-right: 1px solid;
     padding: 8px;

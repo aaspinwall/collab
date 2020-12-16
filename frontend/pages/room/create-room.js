@@ -154,7 +154,7 @@ const Container = styled.div`
       border-bottom: none;
     }
   }
-`;
+  `;
 
 const FormContainer = styled.div`
   form {
