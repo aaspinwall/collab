@@ -1,21 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
+import Card from "../../components/ui/card";
 import { COLORS } from "../../styles/colors";
 
 export default function ResultsPage() {
   return (
     <Container>
-      <Head>
-        <title>Results!</title>
-      </Head>
-      <Header>Results</Header>
-      <Description>
-        This page will be used to display the results of the vote
-      </Description>
-      <Link href="/">
-        <Button>Home</Button>
-      </Link>
+      <Card>
+        <Head>
+          <title>Results!</title>
+        </Head>
+        <Header>Results</Header>
+        <Description>
+          This page will be used to display the results of the vote
+        </Description>
+        <Link href="/">
+          <Button>Home</Button>
+        </Link>
+      </Card>
     </Container>
   );
 }
