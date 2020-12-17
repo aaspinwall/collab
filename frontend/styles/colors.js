@@ -11,4 +11,5 @@ export const COLORS = {
     MAIN: "#3220A0",
   },
   MAIN: "#eb5e28",
+  MAINDARKGREY: '#293241',
 };
