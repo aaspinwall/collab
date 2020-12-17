@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
-import AssignmentOutlinedIcon from "@material-ui/icons/AssignmentOutlined";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import { FaClipboardList as AssignmentOutlinedIcon } from "react-icons/fa";
+import { IoMdCheckmark as CheckCircleOutlineIcon } from "react-icons/io";
 import styled, { keyframes } from "styled-components";
 
 // Reverted to using both clipboard_api and execCommand
