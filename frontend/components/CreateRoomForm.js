@@ -32,9 +32,9 @@ export default function CreateRoomForm() {
   const SubmitButtonStyles = {
     background: `${COLORS.PURPLES.LIGHT}`,
     background: `linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 0%, ${COLORS.PURPLES.LIGHT} 150%)`,
-    position: 'relative',
-    transition: 'all 0.2s ease-in-out',
-    zIndex: '100',
+    position: "relative",
+    transition: "all 0.2s ease-in-out",
+    zIndex: "100",
     borderRadius: `10px`,
     padding: `10px 20px`,
     fontSize: `1.25em`,
