@@ -97,7 +97,8 @@ const Anchor = styled.a`
   border-radius: 5px;
   font-weight: bold;
   letter-spacing: 2px;
-  border: 3px solid ${COLORS.MAINDARKGREY};
+  border: 3px solid ${COLORS.SHADES.OFFWHITE};
+  color: ${COLORS.SHADES.OFFWHITE};
   cursor: pointer;
   &:active {
     background: #e5e5e5;

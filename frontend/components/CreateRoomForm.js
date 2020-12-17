@@ -1,10 +1,12 @@
 import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-// import { COLORS } from "../../styles/colors";
+import { COLORS } from "../styles/colors";
 import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 import Boop from "./animations/Boop";
+import Button from "./ui/sample_button";
+
 export default function CreateRoomForm() {
   // these are the options being set
   const [options, setOptions] = useState([]);
@@ -27,7 +29,22 @@ export default function CreateRoomForm() {
     setOptions([individualOption.current.value, ...options]);
     individualOption.current.value = "";
   };
-
+  const SubmitButtonStyles = {
+    background: `${COLORS.PURPLES.LIGHT}`,
+    background: `linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 0%, ${COLORS.PURPLES.LIGHT} 150%)`,
+    position: 'relative',
+    transition: 'all 0.2s ease-in-out',
+    zIndex: '100',
+    borderRadius: `10px`,
+    padding: `10px 20px`,
+    fontSize: `1.25em`,
+    letterSpacing: "2px",
+    color: `${COLORS.SHADES.OFFWHITE}`,
+    fontWeight: "bold",
+    border: "none",
+    textTransform: "uppercase",
+    transition: "background 0.2s ease-in-out",
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     createOptionsArray();
@@ -105,7 +122,12 @@ export default function CreateRoomForm() {
           ) : (
             " "
           )}
-          <button onClick={submitRoom}>Submit Room</button>
+          <Button
+            children={"Submit Room"}
+            onClick={submitRoom}
+            styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
+          />
+          {/* <button onClick={submitRoom}>Submit Room</button> */}
         </form>
       </FormContainer>
       {created && (
