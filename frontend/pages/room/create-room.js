@@ -15,8 +15,8 @@ export default function CreateRoomPage() {
         This page will be used to create a room / have the configurations for
         the room
       </Description>
-      <Link href="/">
-        <Button>Home</Button>
+      <Link href="/" passHref>
+        <Anchor>Home</Anchor>
       </Link>
       <CreateRoomForm />
     </Container>
@@ -91,13 +91,14 @@ const Description = styled.p`
   margin-left: 1rem;
 `;
 
-const Button = styled.button`
+const Anchor = styled.a`
   margin-top: 15px;
   padding: 8px;
   border-radius: 5px;
   font-weight: bold;
   letter-spacing: 2px;
-  border: 3px solid #293241;
+  border: 3px solid ${COLORS.SHADES.OFFWHITE};
+  color: ${COLORS.SHADES.OFFWHITE};
   cursor: pointer;
   &:active {
     background: #e5e5e5;

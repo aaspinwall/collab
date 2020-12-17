@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../../styles/colors";
 
 // We will eventually have a design system with proper sizes
 // for now this is a placeholder
@@ -9,19 +10,26 @@ const sizes = {
 };
 
 const Button = styled.button`
-  background: ${(props) => props.background || "#9D8AFF"};
-  border-radius: ${(props) => (props.sharp ? 0 : "40px")};
-  padding: ${(props) => sizes[props.size].padding};
-  font-size: ${(props) => sizes[props.size].fontSize};
-  letter-spacing: 2px;
-  color: ${(props) => props.color || "white"};
-  font-weight: bold;
-  border: none;
-  text-transform: uppercase;
-  transition: filter 0.2s ease-in-out;
-
+  :before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    opacity: 0;
+    z-index: -100;
+    border-radius: 10px;
+    color: ${COLORS.SHADES.OFFWHITE};
+    background: ${COLORS.PURPLES.LIGHT};
+    background: linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 60%, ${COLORS.PURPLES.LIGHT} 150%);
+    transition: all 0.2s ease-in-out;
+  }
   :hover {
-    filter: brightness(1.3);
+    &:before {
+      opacity: 1;
+    }
   }
 `;
+
 export default Button;
