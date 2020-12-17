@@ -1,6 +1,4 @@
-import Layout from "../components/layout";
-
-import CopyToClipBoardButton from "../components/ui/copytoclipboard.jsx";
+import CopyToClipBoardButton from "../../components/ui/copytoclipboard.jsx";
 
 // A temporary page to show case newly created components
 

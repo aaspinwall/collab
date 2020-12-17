@@ -1,74 +1,15 @@
 import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import Layout from "../../components/layout";
-import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
-import { useMutation } from "@apollo/client";
-import Button from '../../components/ui/sample_button/index';
-import { COLORS } from '../../styles/colors';
-
-export default function LandingPage() {
-  // these are the options being set
-  const [options, setOptions] = useState([]);
-  const [addRoom] = useMutation(ADD_ROOM);
-  // this is the individual option being set in the form that's pushed to the array of total options
-  const individualOption = createRef(null);
-  // Creates the room ID (Will be replaced by automated function)
-  const createRoomID = createRef(null);
-  // this creates the room name
-  const createRoomName = createRef(null);
-  // this creates the rooms times limit in seconds (TODO: Change seconds to minutes and
-  // create a function to change minutes to seconds in timer function to simplify it for the user)
-  // function that pushes individual optiuon to total options
-  const createTimeLimit = createRef(null);
-  const createOptionsArray = () => {
-    setOptions([individualOption.current.value, ...options]);
-    individualOption.current.value = "";
-  };
-
-  const SubmitButtonStyles = {
-    background: `${COLORS.MAINDARKGREY}`,
-    background: `linear-gradient(135deg, ${COLORS.MAIN} 0%, ${COLORS.MAINDARKGREY} 82%)`,
-    borderRadius: `40px`,
-    padding: `10px 30px`,
-    fontSize: `1.25em`,
-    letterSpacing: '2px',
-    color: `${COLORS.SHADES.OFFWHITE}`,
-    fontWeight: 'bold',
-    border: 'none',
-    textTransform: 'uppercase',
-    transition: 'filter 0.2s ease-in-out',
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createOptionsArray();
-  };
-  // this adds the array of options to the database
-  const submitRoom = async () => {
-    const res = await addRoom({
-      variables: {
-        name: createRoomName.current.value, // to change
-        id: createRoomID.current.value, // we will generate this on backend
-        timeLimit: createTimeLimit.current.value,
-        voteOptions: options,
-      },
-    });
-
-    const { success, message, room } = res.data.addRoom;
-
-    // clears the List
-    if (success) {
-      alert(message + " check the console for more information");
-      console.log("room created with properties: ", room);
-      setOptions([]);
-    } else {
-      alert(message);
-    }
-  };
-
+import Head from "next/head";
+import { COLORS } from "../../styles/colors";
+import CreateRoomForm from "../../components/CreateRoomForm";
+export default function CreateRoomPage() {
   return (
     <Container>
+      <Head>
+        <title>Create A Room!</title>
+      </Head>
       <Header>Create A Room Page</Header>
       <Description>
         This page will be used to create a room / have the configurations for
@@ -77,71 +18,35 @@ export default function LandingPage() {
       <Link href="/" passHref>
         <Anchor>Home</Anchor>
       </Link>
-      <FormContainer>
-        <form onSubmit={handleSubmit}>
-          {/* Fix variable names */}
-          {/* useRef for the two below input to validate variables: name, timelimit*/}
-          <div>
-            <label>
-              Room Name
-              <input type="text" placeholder="Room Name" ref={createRoomName} />
-            </label>
-          </div>
-          <div>
-            <label>
-              Room ID (ex: 1A3E)
-              <input type="text" placeholder="Room ID" ref={createRoomID} />
-            </label>
-          </div>
-          <div>
-            <label>
-              {" "}
-              Time limit (in seconds)
-              <input
-                type="number"
-                placeholder="Time Limit in seconds"
-                ref={createTimeLimit}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Add some options
-              <input type="text" placeholder="Options" ref={individualOption} />
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Add Option" />
-          </div>
-          <Button children={'Submit Room'} onClick={submitRoom} styles={SubmitButtonStyles} /* props={Whatever else we need } */ />
-          {/* <button onClick={submitRoom}>Submit Room</button> */}
-        </form>
-      </FormContainer>
-      <ul className="overflow">
-        {options &&
-          options.map((option, index) => (
-            <li key={index}>
-              <p>{option}</p>
-            </li>
-          ))}
-      </ul>
+      <CreateRoomForm />
     </Container>
   );
 }
 
 const Container = styled.div`
-  /* background-color: #eb5e28; */
-  background: linear-gradient(to left top, #fff 50%, #eb5e28 50%);
   height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   .overflow {
-    width: 200px;
-    overflow: auto;
-    list-style-type: none;
-  }
-`;
+      width: 200px;
+      max-height: 100px;
+      overflow: auto;
+      list-style-type: none;
+      border: 1px solid black;
+      border-radius: 8px;
+      box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+      padding: 5px 8px;
+      text-align: center;
+    };
+  };
+  .each-option {
+      border-bottom: 1px solid black;
+      &:last-child {
+      border-bottom: none;
+    };
+  };
+  `;
 
 const FormContainer = styled.div`
   form {
@@ -149,7 +54,7 @@ const FormContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background: ghostwhite;
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 25px;
     margin: 15px;
     border-radius: 10px;
@@ -169,11 +74,12 @@ const FormContainer = styled.div`
   }
   label {
     font-weight: bold;
+    font-size: 1.6rem;
   }
 `;
 
 const Header = styled.h1`
-  color: ${COLORS.MAINDARKGREY};
+  color: ${COLORS.SHADES.OFFWHITE};
   text-align: center;
   margin-top: 0;
   padding-top: 15px;
@@ -181,7 +87,7 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-  color: ${COLORS.MAINDARKGREY};
+  color: ${COLORS.SHADES.OFFWHITE};
   margin-left: 1rem;
 `;
 

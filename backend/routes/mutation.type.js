@@ -4,7 +4,7 @@ const MutationType = gql`
   "All the Mutations we can do"
   type Mutation {
     """
-    POST: accepts {name: string, timeLimit: string, id: string}
+    POST: accepts {name: string, timeLimit: string, roomId: string}
     returns a Room type
     """
     addRoom(room: NewRoomInput): AddRoomMutationResponse

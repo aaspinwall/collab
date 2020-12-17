@@ -9,10 +9,10 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "lint": "eslint **/*.{js,ts,tsx} --ignore-path .eslintignore",
+    "lint-local": "eslint . --fix",
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
-    "lint-test": "eslint . && jest --no-cache ./*",
-    "lint-local": "eslint . --fix"
+    "lint-test": "eslint . && jest --no-cache ./*"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",

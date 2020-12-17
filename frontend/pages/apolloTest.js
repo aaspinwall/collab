@@ -1,7 +1,7 @@
-import { useQuery, gql } from "@apollo/client";
+// import { useQuery, gql } from "@apollo/client";
 
-import Layout from "../components/layout";
-import SampleButton from "../components/ui/sample_button";
+// import Layout from "../components/layout";
+// import SampleButton from "../components/ui/sample_button";
 
 import styled from "styled-components";
 import GetAllUsers from "../components/polloTest/GetAllUsers";
