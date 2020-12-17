@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import ADD_ROOM from "../../components/polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
+import Button from '../../components/ui/sample_button/index';
+import { COLORS } from '../../styles/colors';
 
 export default function LandingPage() {
   // these are the options being set
@@ -23,6 +25,20 @@ export default function LandingPage() {
     setOptions([individualOption.current.value, ...options]);
     individualOption.current.value = "";
   };
+
+  const SubmitButtonStyles = {
+    background: `${COLORS.MAINDARKGREY}`,
+    background: `linear-gradient(135deg, ${COLORS.MAIN} 0%, ${COLORS.MAINDARKGREY} 82%)`,
+    borderRadius: `40px`,
+    padding: `10px 30px`,
+    fontSize: `1.25em`,
+    letterSpacing: '2px',
+    color: `${COLORS.SHADES.OFFWHITE}`,
+    fontWeight: 'bold',
+    border: 'none',
+    textTransform: 'uppercase',
+    transition: 'filter 0.2s ease-in-out',
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,7 +113,8 @@ export default function LandingPage() {
           <div>
             <input type="submit" value="Add Option" />
           </div>
-          <button onClick={submitRoom}>Submit Room</button>
+          <Button children={'Submit Room'} onClick={submitRoom} styles={SubmitButtonStyles} /* props={Whatever else we need } */ />
+          {/* <button onClick={submitRoom}>Submit Room</button> */}
         </form>
       </FormContainer>
       <ul className="overflow">
@@ -156,7 +173,7 @@ const FormContainer = styled.div`
 `;
 
 const Header = styled.h1`
-  color: #293241;
+  color: ${COLORS.MAINDARKGREY};
   text-align: center;
   margin-top: 0;
   padding-top: 15px;
@@ -164,7 +181,7 @@ const Header = styled.h1`
 `;
 
 const Description = styled.p`
-  color: #293241;
+  color: ${COLORS.MAINDARKGREY};
   margin-left: 1rem;
 `;
 
@@ -174,7 +191,7 @@ const Anchor = styled.a`
   border-radius: 5px;
   font-weight: bold;
   letter-spacing: 2px;
-  border: 3px solid #293241;
+  border: 3px solid ${COLORS.MAINDARKGREY};
   cursor: pointer;
   &:active {
     background: #e5e5e5;
