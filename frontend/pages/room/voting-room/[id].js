@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Timer from "../../../components/timer";
+import Card from "../../../components/ui/card";
 import { GET_ROOM_BY_ID } from "../../../components/polloTest/GetRoomData";
 import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -41,15 +42,17 @@ export default function VotingRoom() {
         This page will be where the voting itself takes place
       </Description>
       {/* time has to be Number() as it is passed as a string */}
-      <Timer
-        key={200}
-        time={Number(roomData.timeLimit)}
-        onTimeIsUp={(message) => alert(message)}
-      />
-      <CheckboxForm voteOptions={roomData.voteOptions} />
-      <Link href="/">
-        <Button>Home</Button>
-      </Link>
+      <Card>
+        <Timer
+          key={200}
+          time={Number(roomData.timeLimit)}
+          onTimeIsUp={(message) => alert(message)}
+        />
+        <CheckboxForm voteOptions={roomData.voteOptions} />
+        <Link href="/">
+          <Button>Home</Button>
+        </Link>
+      </Card>
     </Container>
   );
 }

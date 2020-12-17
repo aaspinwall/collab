@@ -121,11 +121,11 @@ export default function LandingPage() {
         </form>
       </FormContainer>
       {created && (
-        <Link href={`/room/voting-room/${roomId}`}>
-          <Boop rotation={15}>
+        <Boop rotation={15}>
+          <Link href={`/room/voting-room/${roomId}`}>
             <button>Take Me To The Vote!</button>
-          </Boop>
-        </Link>
+          </Link>
+        </Boop>
       )}
     </Container>
   );
