@@ -9,19 +9,9 @@ const sizes = {
 };
 
 const Button = styled.button`
-  background: ${(props) => props.background || "#9D8AFF"};
-  border-radius: ${(props) => (props.sharp ? 0 : "40px")};
-  padding: ${(props) => sizes[props.size].padding};
-  font-size: ${(props) => sizes[props.size].fontSize};
-  letter-spacing: 2px;
-  color: ${(props) => props.color || "white"};
-  font-weight: bold;
-  border: none;
-  text-transform: uppercase;
-  transition: filter 0.2s ease-in-out;
-
   :hover {
     filter: brightness(1.3);
   }
 `;
+
 export default Button;
