@@ -58,8 +58,8 @@ const CopyToClipBoardButton = ({ text }) => {
       {copy ? (
         <IconWrapper>
           <div className="checked">
-          <CheckCircleOutlineIcon color="primary" />
-          <span>Copied To Clipboard!</span>
+            <CheckCircleOutlineIcon color="primary" />
+            <span>Copied To Clipboard!</span>
           </div>
         </IconWrapper>
       ) : (
@@ -92,7 +92,6 @@ const IconWrapper = styled.div`
   .checked {
     animation: ${fadeIn} 0.8s linear;
   }
-  
 `;
 
 export default CopyToClipBoardButton;
