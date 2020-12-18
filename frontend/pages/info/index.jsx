@@ -1,5 +1,6 @@
 import SampleButton from "../../components/ui/sample_button";
 import Card from "../../components/ui/card";
+import Donut from "../../components/animations/Boop";
 
 export default function Home() {
   // This is called by the onClick event
@@ -24,7 +25,7 @@ export default function Home() {
               time.
             </p>
           </div>
-
+          <Donut />
           <div>
             <p>This is a regular react component</p>
             <p>
