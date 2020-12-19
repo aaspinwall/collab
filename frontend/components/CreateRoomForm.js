@@ -6,6 +6,7 @@ import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 import Boop from "./animations/Boop";
 import Button from "./ui/sample_button";
+import { SubmitButtonStyles, AddOptionStyles } from '../styles/button';
 
 export default function CreateRoomForm() {
   // these are the options being set
@@ -28,22 +29,6 @@ export default function CreateRoomForm() {
   const createOptionsArray = () => {
     setOptions([individualOption.current.value, ...options]);
     individualOption.current.value = "";
-  };
-  const SubmitButtonStyles = {
-    background: `${COLORS.PURPLES.LIGHT}`,
-    background: `linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 0%, ${COLORS.PURPLES.LIGHT} 150%)`,
-    position: "relative",
-    transition: "all 0.2s ease-in-out",
-    zIndex: "100",
-    borderRadius: `10px`,
-    padding: `10px 20px`,
-    fontSize: `1.25em`,
-    letterSpacing: "2px",
-    color: `${COLORS.SHADES.OFFWHITE}`,
-    fontWeight: "bold",
-    border: "none",
-    textTransform: "uppercase",
-    transition: "background 0.2s ease-in-out",
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,9 +92,7 @@ export default function CreateRoomForm() {
               <input type="text" placeholder="Options" ref={individualOption} />
             </label>
           </div>
-          <div>
-            <input type="submit" value="Add Option" />
-          </div>
+            <Button children={'Add Option'} styles={AddOptionStyles} />
           {options.length >= 1 ? (
             <ul className="overflow">
               {options &&
@@ -156,6 +139,7 @@ const Container = styled.div`
       box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
       padding: 5px 8px;
       text-align: center;
+      margin-top: 0;
     };
   };
   .each-option {

@@ -3,6 +3,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import Card from "../../components/ui/card";
 import { COLORS } from "../../styles/colors";
+import Button from "../../components/ui/sample_button";
+import { ReturnHomeStyles } from "../../styles/button";
 
 export default function ResultsPage() {
   return (
@@ -16,7 +18,7 @@ export default function ResultsPage() {
           This page will be used to display the results of the vote
         </Description>
         <Link href="/">
-          <Button>Home</Button>
+          <Button styles={ReturnHomeStyles}>Home</Button>
         </Link>
       </Card>
     </Container>
@@ -41,21 +43,4 @@ const Header = styled.h1`
 const Description = styled.p`
   color: #293241;
   margin-left: 1rem;
-`;
-
-const Button = styled.button`
-  margin-top: 15px;
-  padding: 8px;
-  border-radius: 5px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  border: 3px solid #293241;
-  cursor: pointer;
-
-  &:active {
-    background: ${COLORS.SHADES.GREY};
-    box-shadow: inset 0px 0px 5px ${COLORS.SHADES.DARKGREY};
-    outline: none;
-    transform: scale(0.9);
-  }
 `;
