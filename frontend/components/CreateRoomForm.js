@@ -6,7 +6,7 @@ import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 import Boop from "./animations/Boop";
 import Button from "./ui/sample_button";
-import { SubmitButtonStyles, AddOptionStyles } from '../styles/button';
+import { SubmitButtonStyles, AddOptionStyles } from "../styles/button";
 
 export default function CreateRoomForm() {
   // these are the options being set
@@ -92,7 +92,7 @@ export default function CreateRoomForm() {
               <input type="text" placeholder="Options" ref={individualOption} />
             </label>
           </div>
-            <Button children={'Add Option'} styles={AddOptionStyles} />
+          <Button children={"Add Option"} styles={AddOptionStyles} />
           {options.length >= 1 ? (
             <ul className="overflow">
               {options &&

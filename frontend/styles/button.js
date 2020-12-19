@@ -26,7 +26,7 @@ export const ReturnHomeStyles = {
 
 export const AddOptionStyles = {
   ...ReturnHomeStyles,
-  marginBottom: '10px',
+  marginBottom: "10px",
 };
 
 export const InfoStyles = {
