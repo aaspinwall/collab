@@ -9,12 +9,16 @@
 
 ```javascript
 query {
-  roomByID(roomId: "EAR2") {
+  roomByID(id: "EAR2") {
     roomData {
       id
       name
       timeLimit
       voteOptions
+    }
+    voters {
+      name
+      voteData
     }
     code
     success
@@ -47,7 +51,7 @@ mutation {
 
 ```javascript
 mutation {
-  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomId: "EE202"){
+  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomID: "EAR2"){
     code
     success
     message
