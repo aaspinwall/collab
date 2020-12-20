@@ -22,7 +22,7 @@ We're currently working on the MVP. Here's a quick rundown of the app flow.
 
 Voting - The voting takes place. Depending on the voting style, each participant votes one or more times.
 
-Results - A celebratory screen where the result is displayed. (edited) 
+Results - A celebratory screen where the result is displayed. (edited)
 
 Here is a development [preview](https://collab-git-main.aaspinwall.vercel.app/). It's automatically deployed from the main branch from Vercel.
 
@@ -32,7 +32,6 @@ Here is a development [preview](https://collab-git-main.aaspinwall.vercel.app/).
 
 We worked out a wireframe with an initial app flow. Right now we're starting to develop styled components that go into the app.
 
-
 You can follow our UI ideas on [figma](https://www.figma.com/file/8tF9s4A400dTrWmzpTOy4X/Agora?node-id=0%3A1)
 ![Screen Shot 2020-12-11 at 11 27 01 AM](https://user-images.githubusercontent.com/17233773/101928642-d8ec3980-3ba3-11eb-81c0-33822cd19ea2.png).
 
@@ -40,7 +39,6 @@ You can follow our UI ideas on [figma](https://www.figma.com/file/8tF9s4A400dTrW
 
 - More styling (bring your design skills)!
 - Putting it all together. An MVP that works and looks nice.
-
 
 ## Contributing
 
@@ -85,7 +83,6 @@ yarn dev
 
 Our main branch is stable. If you decide to contribute, you can work off that branch. Our [backend branch](https://github.com/aaspinwall/collab/tree/backend) can get confusing at first glance since we're testing out features there.
 
-
 ## Community guidelines
 
 - Exercise mutual respect
@@ -103,3 +100,12 @@ Note: If you have a specific problem that does not involve everyone, don’t spa
 - Léonard ⚛️🖖 👨‍💻
 - Avtar
 - Alejandro 🎄⚛️👨🏽‍💻
+
+### Troubleshooting and FAQ
+
+**Before you submit a Pull Request**
+
+Run this command:
+
+`npm run lint-fix`
+This will ensure that your PR passes all the tests on our CI/CD pipeline. i.e. Robts are happy, humans are happy 🤖👩‍🎤
