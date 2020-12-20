@@ -33,3 +33,8 @@ export const InfoStyles = {
   ...ReturnHomeStyles,
   padding: "20px",
 };
+
+export const SubmitVote = {
+  ...SubmitButtonStyles,
+  marginTop: "17.5px",
+};

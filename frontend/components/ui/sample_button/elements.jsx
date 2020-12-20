@@ -30,6 +30,9 @@ const Button = styled.button`
       opacity: 1;
     }
   }
+  :disabled {
+    visibility: hidden;
+  }
 `;
 
 export default Button;
