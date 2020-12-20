@@ -2,24 +2,11 @@ const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
 const { votersToIterable } = require("../../utils/helpers");
 
-const {
-  Create,
-  Collection,
-  Get,
-  Index,
-  Match,
-  Select,
-  Update
-} = faunadb.query;
+const { Create, Collection, Get, Index, Match, Select, Update } = faunadb.query;
 
 async function addRoom(_, args) {
   const {
-    room: {
-      name,
-      timeLimit,
-      id,
-      voteOptions
-    },
+    room: { name, timeLimit, id, voteOptions },
   } = args;
 
   try {

@@ -2,11 +2,7 @@ const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
 const { votersToIterable } = require("../../utils/helpers");
 
-const {
-  Get,
-  Match,
-  Index
-} = faunadb.query;
+const { Get, Match, Index } = faunadb.query;
 
 const RoomsQuery = {
   async roomByID(_, { id }) {

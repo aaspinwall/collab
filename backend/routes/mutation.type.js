@@ -5,7 +5,6 @@ const MutationType = gql`
   type Mutation {
     addRoom(room: AddRoomInput): AddRoomMutationResponse
 
-
     addVoterToRoom(
       voterData: AddVoterToRoomInput
       roomID: String!

@@ -34,15 +34,15 @@ query {
 ```javascript
 mutation {
   addRoom(room: { name: "Thanksgiving!", timeLimit: "2020/11/21", id: "EAR2", voteOptions: ["apple", "pears", "plums", "table"] }){
-    code
-    success
-    message
     room {
       name
       timeLimit
       id
       voteOptions
     }
+    code
+    success
+    message
   }
 }
 ```
@@ -52,9 +52,6 @@ mutation {
 ```javascript
 mutation {
   addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomID: "EAR2"){
-    code
-    success
-    message
     roomData {
       id
       name
@@ -65,6 +62,9 @@ mutation {
       name
       voteData
     }
+    code
+    success
+    message
   }
 }
 ```
