@@ -25,10 +25,13 @@ const Button = styled.button`
     background: linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 60%, ${COLORS.PURPLES.LIGHT} 150%);
     transition: all 0.2s ease-in-out;
   }
-  :hover {
+  :hover, :focus {
     &:before {
       opacity: 1;
     }
+  }
+  :disabled {
+    visibility: hidden;
   }
 `;
 
