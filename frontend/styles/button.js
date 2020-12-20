@@ -36,5 +36,5 @@ export const InfoStyles = {
 
 export const SubmitVote = {
   ...SubmitButtonStyles,
-  marginTop: '17.5px',
-}
+  marginTop: "17.5px",
+};

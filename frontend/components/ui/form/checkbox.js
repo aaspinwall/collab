@@ -1,40 +1,50 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from '../sample_button/index';
-import { SubmitVote } from '../../../styles/button'
+import Button from "../sample_button/index";
+import { SubmitVote } from "../../../styles/button";
 
 const CheckboxForm = ({ voteOptions }) => {
   const [radioCheck, setRadioCheck] = useState(false);
 
   const radioClick = () => {
-    const radioButtons = document.getElementsByName('vote-options');
-    radioButtons.forEach(radio => {
+    const radioButtons = document.getElementsByName("vote-options");
+    radioButtons.forEach((radio) => {
       if (radio.checked) {
-        setRadioCheck(radio.value)
+        setRadioCheck(radio.value);
       }
-    })
-  }
+    });
+  };
   const voteSubmit = (ev) => {
     ev.preventDefault();
-    console.log(radioCheck)
+    console.log(radioCheck);
 
     // add functionality to go back to home page instead of having a dedicated home button
-  }
+  };
 
   return (
     <Container>
       <form>
-        <fieldset id={'vote-options'} className={'radio-container'}>
+        <fieldset id={"vote-options"} className={"radio-container"}>
           {voteOptions.map((option, index) => {
             return (
               <div key={`vote-option-${index}`} className="vote-option">
                 <label htmlFor={option}>{option}</label>
-                <input type="radio" name="vote-options" value={option} onClick={radioClick} />
+                <input
+                  type="radio"
+                  name="vote-options"
+                  value={option}
+                  onClick={radioClick}
+                />
               </div>
             );
           })}
         </fieldset>
-        <Button children={'Submit Your Vote'} styles={SubmitVote} disabled={!radioCheck} onClick={voteSubmit} />
+        <Button
+          children={"Submit Your Vote"}
+          styles={SubmitVote}
+          disabled={!radioCheck}
+          onClick={voteSubmit}
+        />
       </form>
     </Container>
   );
