@@ -1,7 +1,0 @@
-**/build/**
-**/tmp/**
-**/lib/**
-**/node_modules/**
-yarn.lock
-package.json
-*.md

@@ -22,10 +22,15 @@ const Button = styled.button`
     border-radius: 10px;
     color: ${COLORS.SHADES.OFFWHITE};
     background: ${COLORS.PURPLES.LIGHT};
-    background: linear-gradient(135deg, ${COLORS.PURPLES.MAIN} 60%, ${COLORS.PURPLES.LIGHT} 150%);
+    background: linear-gradient(
+      135deg,
+      ${COLORS.PURPLES.MAIN} 60%,
+      ${COLORS.PURPLES.LIGHT} 150%
+    );
     transition: all 0.2s ease-in-out;
   }
-  :hover, :focus {
+  :hover,
+  :focus {
     &:before {
       opacity: 1;
     }

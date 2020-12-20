@@ -8,8 +8,6 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "lint": "eslint **/*.{js,ts,tsx} --ignore-path .eslintignore",
-    "lint-local": "eslint . --fix",
     "test": "jest --no-cache ./*",
     "watch": "jest --no-cache --watch ./*",
     "lint-test": "eslint . && jest --no-cache ./*"

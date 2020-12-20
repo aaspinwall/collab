@@ -1,6 +1,6 @@
 import Card from "../../components/ui/card";
 import Button from "../../components/ui/sample_button";
-import { InfoStyles } from '../../styles/button';
+import { InfoStyles } from "../../styles/button";
 
 export default function Home() {
   // This is called by the onClick event
@@ -31,7 +31,11 @@ export default function Home() {
             <p>
               Check <code>pages/index.jsx </code> to see what's going on
             </p>
-            <Button children={'Click Me'} styles={InfoStyles} onClick={handleClick} />
+            <Button
+              children={"Click Me"}
+              styles={InfoStyles}
+              onClick={handleClick}
+            />
           </div>
 
           <div className={"grid"}>
