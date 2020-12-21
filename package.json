@@ -10,7 +10,7 @@
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
     "start": "run-s install:frontend install:backend dev",
-    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:all": "run-s install:frontend install:backend",
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
     "lint": "eslint **/*.{js,jsx} --ignore-path .eslintignore",
