@@ -38,3 +38,13 @@ export const SubmitVote = {
   ...SubmitButtonStyles,
   marginTop: "17.5px",
 };
+
+export const SubmitNameChoice = {
+  ...SubmitButtonStyles,
+  flex: '1',
+}
+
+export const ShuffleNames = {
+  ...SubmitButtonStyles,
+  marginRight: '15px',
+}

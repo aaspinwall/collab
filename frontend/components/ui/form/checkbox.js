@@ -6,7 +6,7 @@ import { SubmitVote } from "../../../styles/button";
 const CheckboxForm = ({ voteOptions }) => {
   const [radioCheck, setRadioCheck] = useState(false);
 
-  const radioClick = () => {
+  const handleRadioClick = () => {
     const radioButtons = document.getElementsByName("vote-options");
     radioButtons.forEach((radio) => {
       if (radio.checked) {
@@ -14,7 +14,7 @@ const CheckboxForm = ({ voteOptions }) => {
       }
     });
   };
-  const voteSubmit = (ev) => {
+  const handleVoteSubmit = (ev) => {
     ev.preventDefault();
     console.log(radioCheck);
 
@@ -33,7 +33,7 @@ const CheckboxForm = ({ voteOptions }) => {
                   type="radio"
                   name="vote-options"
                   value={option}
-                  onClick={radioClick}
+                  onClick={handleRadioClick}
                 />
               </div>
             );
@@ -43,7 +43,7 @@ const CheckboxForm = ({ voteOptions }) => {
           children={"Submit Your Vote"}
           styles={SubmitVote}
           disabled={!radioCheck}
-          onClick={voteSubmit}
+          onClick={handleVoteSubmit}
         />
       </form>
     </Container>
