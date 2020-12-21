@@ -6,8 +6,6 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     steps:
-      env:
-        FAUNA_DB: ${{ secrets.FAUNA_DB }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
