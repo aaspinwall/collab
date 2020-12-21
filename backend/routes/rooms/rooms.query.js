@@ -36,5 +36,5 @@ const RoomsQuery = {
     }
   },
 };
-
+// switched from roomId to id
 module.exports = RoomsQuery;
