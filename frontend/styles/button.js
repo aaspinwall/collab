@@ -41,10 +41,10 @@ export const SubmitVote = {
 
 export const SubmitNameChoice = {
   ...SubmitButtonStyles,
-  flex: '1',
-}
+  flex: "1",
+};
 
 export const ShuffleNames = {
   ...SubmitButtonStyles,
-  marginRight: '15px',
-}
+  marginRight: "15px",
+};
