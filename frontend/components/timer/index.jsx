@@ -24,11 +24,20 @@ const Timer = ({ time, onTimeIsUp }) => {
   }, [seconds]);
 
   return (
-    <div className="grid">
-      <div className="card">
-        <span className="timer-seconds">{seconds}'s remaining!</span>
+    <>
+    <div id="specificChart" class="donut-size">
+      <div class="pie-wrapper">
+        <span class="label">
+          <span class="timer-seconds">{seconds}</span><span class="smaller">'s remaining!</span>
+        </span>
+        <div class="pie">
+          <div class="left-side half-circle"></div>
+          <div class="right-side half-circle"></div>
+        </div>
+        <div class="shadow"></div>
       </div>
     </div>
+  </>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Timer from "../../components/timer";
 
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 
@@ -25,6 +26,7 @@ export default function Development() {
         </form>
       </div>
       <CopyToClipBoardButton text={textToBeCopied} />
+      <Timer />
     </>
   );
 }
