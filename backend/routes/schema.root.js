@@ -4,10 +4,6 @@ const MutationType = require("./mutation.type");
 const RoomsSchema = require("./rooms/rooms.schema");
 const VotersSchema = require("./voters/voters.schema");
 
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-
 module.exports = gql`
   ${QueryType}
   ${MutationType}
