@@ -8,20 +8,10 @@ const QueryType = gql`
   "All the queries we can do"
   type Query {
     "Get room by id"
-    roomByID(id: String): RoomDataResponse
-  }
-`;
-
-const RoomDataResponse = gql`
-  type RoomDataResponse implements Response {
-    roomData: Room
-    code: String!
-    success: Boolean!
-    message: String!
+    roomByID(id: String): RoomByIDResponse
   }
 `;
 
 module.exports = gql`
   ${QueryType}
-  ${RoomDataResponse}
 `;
