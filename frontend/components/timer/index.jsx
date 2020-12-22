@@ -85,7 +85,7 @@ const Timer = (props, { time, onTimeIsUp }) => {
           strokeDasharray={circumference}
           strokeDashoffset={offset}
         ></circle>
-        <text x={center} y={center} className="percentage">
+        <text x={center} y={center} className="percentage timer-seconds">
           {seconds}'s <br />
           remaining!
         </text>
