@@ -72,11 +72,6 @@ const Title = styled.h1`
   letter-spacing: 3.5px;
   margin-bottom: 10px;
   margin-top: 0;
-  @media (min-width: 780px) {
-    /* position: absolute;
-		top: 15px;
-		left: 55px; */
-  }
 `;
 
 const Form = styled.form`
@@ -106,8 +101,6 @@ const Input = styled.input`
     font-family: "Montserrat", sans-serif;
     padding: 1px;
   }
-  @media (min-width: 780px) {
-  }
 `;
 
 const Text = styled.textarea`
@@ -135,8 +128,5 @@ const Send = styled.input`
   &:active {
     color: black;
     background: black;
-  }
-  @media (min-width: 780px) {
-    margin-left: 15px;
   }
 `;
