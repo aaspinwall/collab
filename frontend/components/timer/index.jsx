@@ -24,7 +24,7 @@ const StyledProgress = styled.div`
 
 const Timer = (props, { time, onTimeIsUp }) => {
   const [seconds, setSeconds] = useState(time || 50);
-  const [progress, setProgress] = useState(20);
+  const [progress, setProgress] = useState(null);
   const userTime = createRef(null);
   const [offset, setOffset] = useState(0);
 
@@ -35,17 +35,18 @@ const Timer = (props, { time, onTimeIsUp }) => {
     circleTwoStroke,
     } = props;
 
-    const center = size / 2;
-    const radius = size / 2 - strokeWidth / 2;
-    const circumference = 2 * Math.PI * radius;
+  const center = size / 2;
+  const radius = size / 2 - strokeWidth / 2;
+  const circumference = 2 * Math.PI * radius;
 
-    useEffect(() => {
-      setProgress(seconds)
+  // setting progress just in the first render
+  useEffect(() => {
+    setProgress(seconds)
     }, [])
 
-    useEffect(() => {
-        const progressOffset = ((progress - seconds) / progress) * circumference;
-        setOffset(progressOffset);
+  useEffect(() => {
+      const progressOffset = ((progress - seconds) / progress) * circumference;
+      setOffset(progressOffset);
     }, [setOffset, progress, circumference, offset, seconds]);
 
   const handleSubmit = (e) => {
@@ -70,11 +71,11 @@ const Timer = (props, { time, onTimeIsUp }) => {
 
   return (
     <StyledProgress>
-     <svg
+              <svg
                 className="circular-chart"
                 width={size}
                 height={size}
-            >
+                  >
                 <circle
                     className="circular-bg"
                     stroke={circleOneStroke}
@@ -99,15 +100,9 @@ const Timer = (props, { time, onTimeIsUp }) => {
                     y={center}
                     className="percentage"
                 >
-                    {seconds}%
+                    {seconds}'s <br/>remaining!
                 </text>
             </svg>
-      <div>
-        <span className="label">
-          <span className="timer-seconds">{progress}</span><span className="smaller">'s remaining!</span>
-        </span>
-      </div>
-    
   </StyledProgress>
   );
 };
