@@ -22,15 +22,14 @@ const StyledProgress = styled.div`
     }
 `
 
-const Timer = (props,{ time, onTimeIsUp }) => {
-  const [progress, setProgress] = useState(time || 200);
-  
+const Timer = (props, { time, onTimeIsUp }) => {
+  const [seconds, setSeconds] = useState(time || 50);
+  const [progress, setProgress] = useState(20);
   const userTime = createRef(null);
   const [offset, setOffset] = useState(0);
 
   const {
     size,
-
     strokeWidth,
     circleOneStroke,
     circleTwoStroke,
@@ -41,9 +40,13 @@ const Timer = (props,{ time, onTimeIsUp }) => {
     const circumference = 2 * Math.PI * radius;
 
     useEffect(() => {
-        const progressOffset = ((100 - progress) / 100) * circumference;
+      setProgress(seconds)
+    }, [])
+
+    useEffect(() => {
+        const progressOffset = ((progress - seconds) / progress) * circumference;
         setOffset(progressOffset);
-    }, [setOffset, progress, circumference, offset]);
+    }, [setOffset, progress, circumference, offset, seconds]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,15 +57,16 @@ const Timer = (props,{ time, onTimeIsUp }) => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      if (progress >= 1) {
-        setProgress((seconds) => seconds - 1);
-      } else if (progress === 0) {
+      if (seconds >= 1) {
+        setSeconds((seconds) => seconds - 1);
+      } else if (seconds === 0) {
+        // changed onTimeIsUp prop to alert() to avoid error compilation
         alert("time is up!");
         clearInterval(interval);
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [progress]);
+  }, [seconds]);
 
   return (
     <StyledProgress>
@@ -95,7 +99,7 @@ const Timer = (props,{ time, onTimeIsUp }) => {
                     y={center}
                     className="percentage"
                 >
-                    {progress}%
+                    {seconds}%
                 </text>
             </svg>
       <div>

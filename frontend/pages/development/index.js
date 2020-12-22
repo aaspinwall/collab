@@ -1,6 +1,5 @@
 import React from "react";
 import Timer from "../../components/timer";
-import ProgressBar from "../../components/animations/ProgressBar";
 
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 
@@ -12,7 +11,6 @@ export default function Development() {
 
   const state = {
     size: 250,
-    progress: 30,
     strokeWidth: 15,
     circleOneStroke: "#d9edfe",
     circleTwoStroke: "orange"
