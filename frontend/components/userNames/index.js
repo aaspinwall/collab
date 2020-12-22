@@ -2,7 +2,9 @@ import names from "./userNames.json";
 import styled from "styled-components";
 import React, { useState } from "react";
 import { COLORS } from "../../styles/colors";
-import Button from "../ui/sample_button/index";
+
+import Button from "../ui/sample_button";
+
 import { SubmitNameChoice, ShuffleNames } from "../../styles/button";
 
 // not sure this is the cleanest way to operate
@@ -83,7 +85,7 @@ const NameGenerator = () => {
           {randomAnimals.map((combo, index) => {
             const customName = `${randomAdjectives[index]} ${combo}`;
             return (
-              <>
+              <React.Fragment key={`namechoice-${index}`}>
                 <NameRadio
                   type={"radio"}
                   name={"name-choice"}
@@ -92,7 +94,7 @@ const NameGenerator = () => {
                   onChange={handleRadioClick}
                 />
                 <NameLabel htmlFor={customName}>{customName}</NameLabel>
-              </>
+              </React.Fragment>
             );
           })}
         </NameChoice>

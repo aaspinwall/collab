@@ -9,12 +9,16 @@
 
 ```javascript
 query {
-  roomByID(roomId: "EAR2") {
+  roomByID(id: "EAR2") {
     roomData {
       id
       name
       timeLimit
       voteOptions
+    }
+    voters {
+      name
+      voteData
     }
     code
     success
@@ -30,15 +34,15 @@ query {
 ```javascript
 mutation {
   addRoom(room: { name: "Thanksgiving!", timeLimit: "2020/11/21", id: "EAR2", voteOptions: ["apple", "pears", "plums", "table"] }){
-    code
-    success
-    message
     room {
       name
       timeLimit
       id
       voteOptions
     }
+    code
+    success
+    message
   }
 }
 ```
@@ -47,10 +51,7 @@ mutation {
 
 ```javascript
 mutation {
-  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomId: "EE202"){
-    code
-    success
-    message
+  addVoterToRoom(voterData: { name: "Sir Frekerik! the four"}, roomID: "EAR2"){
     roomData {
       id
       name
@@ -61,6 +62,9 @@ mutation {
       name
       voteData
     }
+    code
+    success
+    message
   }
 }
 ```
