@@ -5,7 +5,7 @@ const CountTheVotes = (choicesObject) => {
 
   // iterate through object and switch array for it's length
   Object.keys(choicesObject).map((choice) => {
-    (choicesObject[choice] = choicesObject[choice].length);
+    choicesObject[choice] = choicesObject[choice].length;
   });
 
   // create array with keys sorted
@@ -17,7 +17,7 @@ const CountTheVotes = (choicesObject) => {
   for (i = 0; i < sortedVotes.length; i++) {
     if (choicesObject[sortedVotes[i]] === choicesObject[sortedVotes[i + 1]]) {
       tied = true;
-      tiedChoices.push(sortedVotes[i + 1])
+      tiedChoices.push(sortedVotes[i + 1]);
     }
   }
 
@@ -28,12 +28,12 @@ const CountTheVotes = (choicesObject) => {
 
   // add tied results
   if (tied) {
-    tiedChoices.unshift(sortedVotes[0])
+    tiedChoices.unshift(sortedVotes[0]);
     votingResult.tiedChoices = tiedChoices;
-    votingResult.winner = 'Tie'
+    votingResult.winner = "Tie";
   }
 
-  console.log(votingResult)
+  console.log(votingResult);
   return votingResult;
 };
 
