@@ -12,7 +12,7 @@ export default function Development() {
 
   const state = {
     size: 250,
-    progress: 10,
+    progress: 30,
     strokeWidth: 15,
     circleOneStroke: "#d9edfe",
     circleTwoStroke: "orange"
@@ -35,8 +35,7 @@ export default function Development() {
         </form>
       </div>
       <CopyToClipBoardButton text={textToBeCopied} />
-      <Timer />
-      <ProgressBar {...state} />
+      <Timer {...state}/>
     </>
   );
 }
