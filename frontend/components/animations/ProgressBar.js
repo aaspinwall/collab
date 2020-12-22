@@ -1,4 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+const StyledProgressDonut = styled.div`
+    .circular-chart {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        max-height: 250px;
+    }
+    .circular-bg {
+        fill: none;
+    }
+    .circle {
+        fill: none;
+    }
+    .percentage {
+        font-size: 1.3rem;
+        text-anchor: middle;
+        fill: #fff;
+        font-weight: bold;
+    }
+`
 
 const ProgressBar = props => {
     const [offset, setOffset] = useState(0);
@@ -20,7 +42,7 @@ const ProgressBar = props => {
     }, [setOffset, progress, circumference, offset]);
 
     return (
-        <div>
+        <StyledProgressDonut>
             <svg
                 className="circular-chart"
                 width={size}
@@ -53,7 +75,7 @@ const ProgressBar = props => {
                     {progress}%
                 </text>
             </svg>
-        </div>
+        </StyledProgressDonut>
     )
 }
 

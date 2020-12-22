@@ -1,5 +1,6 @@
 import React from "react";
 import Timer from "../../components/timer";
+import ProgressBar from "../../components/animations/ProgressBar";
 
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 
@@ -8,6 +9,14 @@ export default function Development() {
   const [textToBeCopied, setTextToBeCopied] = React.useState("");
 
   //   const [text, setText] = React.useState(null);
+
+  const state = {
+    size: 250,
+    progress: 10,
+    strokeWidth: 15,
+    circleOneStroke: "#d9edfe",
+    circleTwoStroke: "orange"
+  }
 
   function handleChange(e) {
     console.log(e, "change");
@@ -27,6 +36,7 @@ export default function Development() {
       </div>
       <CopyToClipBoardButton text={textToBeCopied} />
       <Timer />
+      <ProgressBar {...state} />
     </>
   );
 }
