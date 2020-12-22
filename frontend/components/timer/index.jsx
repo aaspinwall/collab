@@ -3,37 +3,32 @@ import styled from "styled-components";
 
 const StyledProgress = styled.div`
   .circular-chart {
-        display: block;
-        margin: 20px auto;
-        max-width: 100%;
-        max-height: 250px;
-    }
-    .circular-bg {
-        fill: none;
-    }
-    .circle {
-        fill: none;
-    }
-    .percentage {
-        font-size: 1.3rem;
-        text-anchor: middle;
-        fill: #fff;
-        font-weight: bold;
-    }
-`
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    max-height: 250px;
+  }
+  .circular-bg {
+    fill: none;
+  }
+  .circle {
+    fill: none;
+  }
+  .percentage {
+    font-size: 1.3rem;
+    text-anchor: middle;
+    fill: #fff;
+    font-weight: bold;
+  }
+`;
 
 const Timer = (props, { time, onTimeIsUp }) => {
-  const [seconds, setSeconds] = useState(time || 50);
+  const [seconds, setSeconds] = useState(time || 200);
   const [progress, setProgress] = useState(null);
   const userTime = createRef(null);
   const [offset, setOffset] = useState(0);
 
-  const {
-    size,
-    strokeWidth,
-    circleOneStroke,
-    circleTwoStroke,
-    } = props;
+  const { size, strokeWidth, circleOneStroke, circleTwoStroke } = props;
 
   const center = size / 2;
   const radius = size / 2 - strokeWidth / 2;
@@ -41,13 +36,13 @@ const Timer = (props, { time, onTimeIsUp }) => {
 
   // setting progress just in the first render
   useEffect(() => {
-    setProgress(seconds)
-    }, [])
+    setProgress(seconds);
+  }, []);
 
   useEffect(() => {
-      const progressOffset = ((progress - seconds) / progress) * circumference;
-      setOffset(progressOffset);
-    }, [setOffset, progress, circumference, offset, seconds]);
+    const progressOffset = ((progress - seconds) / progress) * circumference;
+    setOffset(progressOffset);
+  }, [setOffset, progress, circumference, offset, seconds]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,39 +66,31 @@ const Timer = (props, { time, onTimeIsUp }) => {
 
   return (
     <StyledProgress>
-              <svg
-                className="circular-chart"
-                width={size}
-                height={size}
-                  >
-                <circle
-                    className="circular-bg"
-                    stroke={circleOneStroke}
-                    cx={center}
-                    cy={center}
-                    r={radius}
-                    strokeWidth={strokeWidth}
-                ></circle>
-                <circle
-                    className="circle"
-                    stroke={circleTwoStroke}
-                    cx={center}
-                    cy={center}
-                    r={radius}
-                    strokeWidth={strokeWidth}
-                    strokeDasharray={circumference}
-                    strokeDashoffset={offset}
-                >
-                </circle>
-                <text
-                    x={center}
-                    y={center}
-                    className="percentage"
-                >
-                    {seconds}'s <br/>remaining!
-                </text>
-            </svg>
-  </StyledProgress>
+      <svg className="circular-chart" width={size} height={size}>
+        <circle
+          className="circular-bg"
+          stroke={circleOneStroke}
+          cx={center}
+          cy={center}
+          r={radius}
+          strokeWidth={strokeWidth}
+        ></circle>
+        <circle
+          className="circle"
+          stroke={circleTwoStroke}
+          cx={center}
+          cy={center}
+          r={radius}
+          strokeWidth={strokeWidth}
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+        ></circle>
+        <text x={center} y={center} className="percentage">
+          {seconds}'s <br />
+          remaining!
+        </text>
+      </svg>
+    </StyledProgress>
   );
 };
 

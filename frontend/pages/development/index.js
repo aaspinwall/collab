@@ -13,8 +13,8 @@ export default function Development() {
     size: 250,
     strokeWidth: 15,
     circleOneStroke: "#d9edfe",
-    circleTwoStroke: "orange"
-  }
+    circleTwoStroke: "orange",
+  };
 
   function handleChange(e) {
     console.log(e, "change");
@@ -33,7 +33,7 @@ export default function Development() {
         </form>
       </div>
       <CopyToClipBoardButton text={textToBeCopied} />
-      <Timer {...state}/>
+      <Timer time={50} {...state} />
     </>
   );
 }
