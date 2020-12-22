@@ -1,4 +1,4 @@
-const RankVotes = (choicesObject) => {
+const CountTheVotes = (choicesObject) => {
   const votingResult = {};
   const tiedChoices = [];
   let tied = false;
@@ -50,6 +50,5 @@ const obj2 = {
   d: [1],
 };
 
-
-RankVotes(obj);
-RankVotes(obj2);
+CountTheVotes(obj);
+CountTheVotes(obj2);
