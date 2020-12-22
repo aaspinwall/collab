@@ -21,17 +21,19 @@ const RoomsQuery = {
           timeLimit: data.timeLimit,
           voteOptions: data.voteOptions,
         },
-        voters: votersToIterable(data.voters) || [],
+        // Please check the votersToIterable function
+        // voters: votersToIterable(data.voters) || [],
+        voters: data.voters,
       };
     } catch (err) {
       console.log("err in getting room by Id:", err);
       return {
         code: "500",
         success: false,
-        message: "there has been an error in the server :(",
+        message: "there has been an error in the server :( boo",
       };
     }
   },
 };
-// switched from roomId to id
+
 module.exports = RoomsQuery;
