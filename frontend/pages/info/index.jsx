@@ -25,7 +25,6 @@ export default function Home() {
               time.
             </p>
           </div>
-
           <div>
             <p>This is a regular react component</p>
             <p>
