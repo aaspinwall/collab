@@ -85,11 +85,12 @@ const Timer = (props, { time, onTimeIsUp }) => {
           strokeDasharray={circumference}
           strokeDashoffset={offset}
         ></circle>
-        <text x={center} y={center} className="percentage timer-seconds">
+        <text x={center} y={center} className="percentage">
           {seconds}'s <br />
           remaining!
         </text>
       </svg>
+      <span className="timer-seconds">{seconds}'s remaining!</span>
     </StyledProgress>
   );
 };
