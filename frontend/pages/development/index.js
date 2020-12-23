@@ -3,6 +3,7 @@ import Timer from "../../components/timer";
 import Card from "../../components/ui/card";
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 import Modal from "../../components/ui/modal";
+import UserForm from "../../components/UserForm"
 
 export default function Development() {
   // Testing Copy to clipboard
@@ -43,7 +44,9 @@ export default function Development() {
         <CopyToClipBoardButton text={textToBeCopied} />
       </Card>
       <Timer time={50} {...state} />
-      <Modal />
+      <Modal>
+        <UserForm />
+      </Modal>
     </>
   );
 }

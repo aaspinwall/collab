@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ClientOnlyPortal from './ClientOnlyPortal';
 
-const Modal = () => {
+const Modal = ({children}) => {
     const [open, setOpen] = useState()
 
     return (
@@ -13,9 +13,7 @@ const Modal = () => {
             <ClientOnlyPortal>
               <div className="backdrop">
                 <div className="modal">
-                  <p>
-                    Hello World!.
-                  </p>
+                 { children }
                   <button type="button" onClick={() => setOpen(false)}>
                     Close Modal
                   </button>
