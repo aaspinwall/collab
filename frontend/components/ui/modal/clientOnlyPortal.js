@@ -6,11 +6,16 @@ const ClientOnlyPortal = ({ children, selector }) => {
     const [mounted, setMounted] = useState(false)
   
     useEffect(() => {
-      ref.current = document.querySelector(selector)
+    let container;
+    const rootContainer = document.createElement('div');
+    const parentElem = document.querySelector('#__next');
+    parentElem.appendChild(rootContainer);
+    container = rootContainer;
+      ref.current = container;
       setMounted(true)
-    }, [selector])
+    }, [selector]);
   
-    return mounted ? createPortal(children, ref.current) : null
+    return mounted ? createPortal(children, ref.current) : null;
   }
 
   export default ClientOnlyPortal;
