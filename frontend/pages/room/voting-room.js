@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "../../styles/colors";
 
 import Timer from "../../components/timer";
+import VotingForm from "../../components/VotingForm/votingForm"
 
 export default function VotingRoom() {
   return (
@@ -10,6 +11,7 @@ export default function VotingRoom() {
       <Header>Voting Page</Header>
 
       <Timer onTimeIsUp={(message) => alert(message)} />
+      <VotingForm/>
 
       <Description>
         This page will be where the voting itself takes place
