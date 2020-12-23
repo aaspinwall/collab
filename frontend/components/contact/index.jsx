@@ -50,7 +50,7 @@ export default function ContactForm() {
               name="message"
             ></Text>
           </Elem>
-          <div>
+          <div className="submit-contact">
             <Send type="submit" value="Send Message"></Send>
           </div>
         </div>
@@ -61,14 +61,18 @@ export default function ContactForm() {
 }
 
 const Wrapper = styled.div`
-  margin: 150px 25px 25px 25px;
+  margin: 50px 25px 25px 25px;
   padding: 15px;
   background-color: white;
   border-radius: 14px;
+  .submit-contact {
+    margin-left: 10px;
+  }
 `;
 
 const Title = styled.h1`
   text-decoration: underline;
+  text-align: center;
   letter-spacing: 3.5px;
   margin-bottom: 10px;
   margin-top: 0;
@@ -96,6 +100,7 @@ const Input = styled.input`
   border-radius: 5px;
   padding: 8px;
   font-style: italic;
+  width: 100%;
   ::placeholder {
     color: black;
     font-family: "Montserrat", sans-serif;

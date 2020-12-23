@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createRef } from "react";
 import Card from "../ui/card";
+import { COLORS } from "../../styles/colors";
 import styled from "styled-components";
 
 const StyledProgress = styled.div`
@@ -18,7 +19,7 @@ const StyledProgress = styled.div`
   .percentage {
     font-size: 1.3rem;
     text-anchor: middle;
-    fill: #fff;
+    fill: ${COLORS.PURPLES.MAIN};
     font-weight: bold;
   }
 `;
@@ -76,6 +77,10 @@ const Timer = (props, { time, onTimeIsUp }) => {
           r={radius}
           strokeWidth={strokeWidth}
         ></circle>
+        <text x={center} y={center} className="percentage">
+          {seconds}'s <br />
+          remaining!
+        </text>
         <circle
           className="circle"
           stroke={circleTwoStroke}
@@ -86,14 +91,7 @@ const Timer = (props, { time, onTimeIsUp }) => {
           strokeDasharray={circumference}
           strokeDashoffset={offset}
         ></circle>
-        <text x={center} y={center} className="percentage">
-          {seconds}'s <br />
-          remaining!
-        </text>
       </svg>
-      <Card>
-        <span className="timer-seconds">{seconds}'s remaining!</span>
-      </Card>
     </StyledProgress>
   );
 };

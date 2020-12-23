@@ -23,6 +23,9 @@ export default function LandingPage() {
         <Link href="/info">
           <a>About Us</a>
         </Link>
+        <Link href="/contact">
+          <a>Contact</a>
+        </Link>
       </div>
     </Container>
   );
@@ -51,6 +54,13 @@ const Container = styled.div`
     background: ${COLORS.GREY};
 
     cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #0070f3;
+      border-color: #0070f3;
+    }
 
     &:active {
       box-shadow: inset 0px 0px 5px ${COLORS.SHADES.DARKGREY};
