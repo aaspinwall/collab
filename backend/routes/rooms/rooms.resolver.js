@@ -2,7 +2,6 @@ const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
 const { votersToIterable, generateId } = require("../../utils/helpers");
 
-
 // TODO
 // MAKKKE DA FOOD 🥓
 // MAKKE DA CODE BETTER
@@ -16,10 +15,12 @@ async function addRoom(_, args) {
     room: { name, timeLimit, voteOptions },
   } = args;
   console.log(name);
-  
   let success;
-  while (!success) {
+  let attempts = 0;
+  const max_attempts = 5;
+  while (!success && attemps < max_attempts) {
     try {
+      attempts++;
       const id = generateId();
       console.log(id);
       const { data } = await FaunaClient.query(
@@ -59,7 +60,7 @@ async function addRoom(_, args) {
         message: "there has been an error in the server :(",
       };
     }
-  } 
+  }
 }
 
 async function addVoterToRoom(_, { voterData: { name }, roomID }) {
