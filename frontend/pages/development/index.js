@@ -3,7 +3,7 @@ import Timer from "../../components/timer";
 import Card from "../../components/ui/card";
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 import Modal from "../../components/ui/modal";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export default function Development() {
   // Testing Copy to clipboard
@@ -57,8 +57,6 @@ export default function Development() {
   );
 }
 
-
-
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -70,5 +68,4 @@ const StyledForm = styled.form`
   .button {
     margin-top: 15px;
   }
-  
-`
+`;
