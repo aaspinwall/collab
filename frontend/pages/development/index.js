@@ -1,5 +1,5 @@
 import React from "react";
-//import Timer from "../../components/timer";
+import Timer from "../../components/timer";
 import Card from "../../components/ui/card";
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
 import Modal from "../../components/ui/modal";
@@ -43,7 +43,7 @@ export default function Development() {
       <Card>
         <CopyToClipBoardButton text={textToBeCopied} />
       </Card>
-        {/*  comment Timer component <Timer time={50} {...state} />*/}
+      <Timer time={50} {...state} />
       <Modal>
         <StyledForm>
           <label>Name</label>
