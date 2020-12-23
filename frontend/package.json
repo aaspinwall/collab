@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.9",
+    "emailjs": "^3.4.0",
+    "emailjs-com": "^2.6.4",
     "graphql": "^15.4.0",
     "next": "10.0.2",
     "react": "17.0.1",

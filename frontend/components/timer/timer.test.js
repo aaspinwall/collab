@@ -1,5 +1,5 @@
 import { shallow } from "enzyme";
-import Timer from "./index";
+import Timer from "./";
 
 describe("Timer", () => {
   it("should set a default time", () => {
