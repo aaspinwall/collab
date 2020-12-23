@@ -39,6 +39,10 @@ const Modal = ({children}) => {
                     left: 10%;
                     padding: 1em;
                   }
+                  & button {
+                      position: relative;
+                      top: 220px;
+                  }
                 `}</style>
               </div>
             </ClientOnlyPortal>
