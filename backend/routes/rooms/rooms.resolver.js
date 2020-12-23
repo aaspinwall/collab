@@ -1,6 +1,6 @@
 const faunadb = require("faunadb");
-const FaunaClient = require("../../fauna.config");
-const helpers = require("../../helpers")
+const FaunaClient = require("../fauna.config");
+const { votersToIterable, generateId } = require("../../utils/helpers");
 
 
 // TODO
@@ -10,7 +10,7 @@ const helpers = require("../../helpers")
 // MAKKE DA FAUNAFUNK
 
 const { Create, Collection, Get, Index, Match, Select, Update } = faunadb.query;
-/*  */
+
 async function addRoom(_, args) {
   const {
     room: { name, timeLimit, voteOptions },
@@ -20,7 +20,7 @@ async function addRoom(_, args) {
   let success;
   while (!success) {
     try {
-      const id = helpers.generateId();
+      const id = generateId();
       console.log(id);
       const { data } = await FaunaClient.query(
         Create(Collection("rooms"), {
@@ -62,13 +62,10 @@ async function addRoom(_, args) {
   } 
 }
 
-// This will have to change as currently there is no
-// way to query Voters using GraphQL (that I can see at least)
-async function addVoterToRoom(_, { voterData: { name }, roomId }) {
-  console.log({ roomId });
+async function addVoterToRoom(_, { voterData: { name }, roomID }) {
   try {
     const { data } = await FaunaClient.query(
-      Update(Select("ref", Get(Match(Index("rooms_by_id"), roomId))), {
+      Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
         data: {
           voters: {
             [name]: false,
@@ -76,10 +73,6 @@ async function addVoterToRoom(_, { voterData: { name }, roomId }) {
         },
       })
     );
-    const voters = Object.entries(data.voters).map(([voterName, voteData]) => ({
-      name: voterName,
-      voteData,
-    }));
 
     return {
       code: "200",
@@ -91,7 +84,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomId }) {
         timeLimit: data.timeLimit,
         voteOptions: data.voteOptions,
       },
-      voters,
+      voters: votersToIterable(data.voters),
     };
   } catch (err) {
     console.log("err in addVoterToRoom: ", err);
