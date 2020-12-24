@@ -18,7 +18,7 @@ async function addRoom(_, args) {
   let success;
   let attempts = 0;
   const max_attempts = 5;
-  while (!success && attemps < max_attempts) {
+  while (!success && attempts < max_attempts) {
     try {
       attempts++;
       const id = generateId();
