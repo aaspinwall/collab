@@ -107,12 +107,14 @@ const LayoutWrapper = styled.div`
     transition: color 0.15s ease, border-color 0.15s ease;
   }
 
-  .card:hover,
+  /* .card:hover,
   .card:focus,
   .card:active {
-    color: #0070f3;
-    border-color: #0070f3;
-  }
+    a {
+      color: #0070f3;
+      border-color: #0070f3;
+    }
+  } */
 
   .card h3 {
     margin: 0 0 1rem 0;
