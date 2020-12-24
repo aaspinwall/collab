@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { COLORS } from "../styles/colors";
 import Card from "../components/ui/card";
 import Link from "next/link";
-import Button from "../components/ui/sample_button";
 
 export default function Custom404() {
   return (
