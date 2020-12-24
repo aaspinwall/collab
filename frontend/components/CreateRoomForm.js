@@ -8,6 +8,7 @@ import Boop from "./animations/Boop";
 import { SubmitButtonStyles, AddOptionStyles } from "../styles/button";
 
 export default function CreateRoomForm() {
+  const placeholderRoomID = '000122';
   // these are the options being set
   const [options, setOptions] = useState([]);
   const [created, setCreated] = useState(false);
@@ -38,7 +39,7 @@ export default function CreateRoomForm() {
     const res = await addRoom({
       variables: {
         name: createRoomName.current.value, // to change
-        id: createRoomId.current.value, // we will generate this on backend
+         id: placeholderRoomID, // being generated on the backend -> taking it out throws a zillion errors
         timeLimit: createTimeLimit.current.value,
         voteOptions: options,
       },
@@ -68,12 +69,9 @@ export default function CreateRoomForm() {
               <input type="text" placeholder="Room Name" ref={createRoomName} />
             </label>
           </div>
-          {/* <div>
-            <label>
-              Room ID (ex: 1A3E)
-              <input type="text" placeholder="Room ID" ref={createRoomId} />
-            </label>
-          </div> */}
+          <div>
+            
+          </div>
           <div>
             <label>
               {" "}
