@@ -2,6 +2,8 @@ import React from "react";
 import Timer from "../../components/timer";
 import Card from "../../components/ui/card";
 import CopyToClipBoardButton from "../../components/ui/copytoclipboard";
+import Modal from "../../components/ui/modal";
+import styled from "styled-components";
 
 export default function Development() {
   // Testing Copy to clipboard
@@ -42,6 +44,28 @@ export default function Development() {
         <CopyToClipBoardButton text={textToBeCopied} />
       </Card>
       <Timer time={50} {...state} />
+      <Modal>
+        <StyledForm>
+          <label>Name</label>
+          <input />
+          <label>Email</label>
+          <input />
+          <button className="button">Submit</button>
+        </StyledForm>
+      </Modal>
     </>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  & label {
+    padding: 10px;
+  }
+  .button {
+    margin-top: 15px;
+  }
+`;

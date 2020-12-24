@@ -1,50 +1,65 @@
 const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
-const { votersToIterable } = require("../../utils/helpers");
+const { votersToIterable, generateId } = require("../../utils/helpers");
+
+// TODO
+// MAKKKE DA FOOD 🥓
+// MAKKE DA CODE BETTER
+// TOGGLE DA VOTE
+// MAKKE DA FAUNAFUNK
 
 const { Create, Collection, Get, Index, Match, Select, Update } = faunadb.query;
 
 async function addRoom(_, args) {
   const {
-    room: { name, timeLimit, id, voteOptions },
+    room: { name, timeLimit, voteOptions },
   } = args;
-
-  try {
-    const { data } = await FaunaClient.query(
-      Create(Collection("rooms"), {
-        data: {
-          name,
-          timeLimit,
-          id,
-          voteOptions,
-        },
-      })
-    );
-    return {
-      code: "200",
-      success: true,
-      message: "room added",
-      room: {
-        name: data.name,
-        id: data.id,
-        timeLimit: data.timeLimit,
-        voteOptions: data.voteOptions,
-      },
-    };
-  } catch (err) {
-    console.log("err in addRoom: ", err.description);
-    if (err.description === "document is not unique.") {
+  console.log(name);
+  let success;
+  let attempts = 0;
+  const max_attempts = 5;
+  while (!success && attempts < max_attempts) {
+    try {
+      attempts++;
+      const id = generateId();
+      console.log(id);
+      const { data } = await FaunaClient.query(
+        Create(Collection("rooms"), {
+          data: {
+            name,
+            timeLimit,
+            id,
+            voteOptions,
+          },
+        })
+      );
+      success = true;
       return {
-        code: "400",
+        code: "200",
+        success: true,
+        message: "room added",
+        room: {
+          name: data.name,
+          id: data.id,
+          timeLimit: data.timeLimit,
+          voteOptions: data.voteOptions,
+        },
+      };
+    } catch (err) {
+      console.log("err in addRoom: ", err.description);
+      if (err.description === "document is not unique.") {
+        return {
+          code: "400",
+          success: false,
+          message: "bad request: the id is not unique :(",
+        };
+      }
+      return {
+        code: "500",
         success: false,
-        message: "bad request: the id is not unique :(",
+        message: "there has been an error in the server :(",
       };
     }
-    return {
-      code: "500",
-      success: false,
-      message: "there has been an error in the server :(",
-    };
   }
 }
 
