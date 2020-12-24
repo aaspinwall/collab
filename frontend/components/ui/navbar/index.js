@@ -54,7 +54,7 @@ const Nav = styled.nav`
     right: 8px;
     top: 18px;
     outline: none;
-    
+
     &:active {
       border: 1px solid;
     }
