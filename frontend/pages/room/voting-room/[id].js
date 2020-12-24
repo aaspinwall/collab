@@ -5,6 +5,7 @@ import Timer from "../../../components/timer";
 import Card from "../../../components/ui/card";
 import { GET_ROOM_BY_ID } from "../../../components/polloTest/GetRoomData";
 import { useLazyQuery } from "@apollo/client";
+import { COLORS } from "../../../styles/colors";
 import { useRouter } from "next/router";
 import CheckboxForm from "../../../components/ui/form/checkbox";
 import Head from "next/head";
@@ -15,8 +16,8 @@ export default function VotingRoom() {
   const timerProps = {
     size: 250,
     strokeWidth: 15,
-    circleOneStroke: "#d9edfe",
-    circleTwoStroke: "orange",
+    circleOneStroke: `${COLORS.PURPLES.MAIN}`,
+    circleTwoStroke: `${COLORS.PURPLES.LIGHT}`,
   };
 
   const [roomData, setRoomData] = useState(null);
@@ -51,7 +52,7 @@ export default function VotingRoom() {
       {/* time has to be Number() as it is passed as a string */}
       <Card>
         <Timer
-          key={200}
+          key={Number(roomData.timeLimit)}
           time={Number(roomData.timeLimit)}
           onTimeIsUp={(message) => alert(message)}
           {...timerProps}
