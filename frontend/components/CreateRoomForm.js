@@ -8,7 +8,7 @@ import Boop from "./animations/Boop";
 import { SubmitButtonStyles, AddOptionStyles } from "../styles/button";
 
 export default function CreateRoomForm() {
-  const placeholderRoomID = '001';
+  const placeholderRoomID = '001'; // roomId is handled by function, needs a placeholder however for some reason
   // these are the options being set
   const [options, setOptions] = useState([]);
   const [created, setCreated] = useState(false);
