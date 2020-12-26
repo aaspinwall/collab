@@ -217,7 +217,7 @@ const OptionList = styled.ul`
   margin: 0 auto 20px auto;
   padding: 0;
   height: 140px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 10px;
 
   &::-webkit-scrollbar {
