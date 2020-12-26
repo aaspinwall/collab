@@ -235,7 +235,7 @@ const Option = styled.p`
   height: 100%;
   width: 150px;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
