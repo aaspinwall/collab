@@ -10,6 +10,7 @@ import {
   SubmitButtonStyles,
   AddOptionStyles,
   RemoveOptionStyles,
+  TakeMeToVoteStyles,
 } from "../styles/button";
 
 export default function CreateRoomForm() {
@@ -132,7 +133,10 @@ export default function CreateRoomForm() {
       {created && (
         <Boop rotation={15}>
           <Link href={`/room/voting-room/${roomId}`}>
-            <button>Take Me To The Vote!</button>
+            <Button
+              children={"Take Me To The Vote!"}
+              styles={TakeMeToVoteStyles}
+            />
           </Link>
         </Boop>
       )}
@@ -145,8 +149,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  };
-  `;
+`;
 
 const FormContainer = styled.form`
   display: flex;
@@ -160,7 +163,6 @@ const FormContainer = styled.form`
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
 `;
 const RoomName = styled.div``;
-
 const Label = styled.label`
   text-align: center;
   font-weight: bold;
@@ -186,6 +188,8 @@ const AddOptionContainer = styled.div`
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
+  height: 40px;
+  width: 240px;
 `;
 const OptionInput = styled.input`
   background-color: ${COLORS.SHADES.OFFWHITE};

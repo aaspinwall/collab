@@ -17,6 +17,7 @@ export const SubmitButtonStyles = {
   textTransform: "uppercase",
   transition: "background 0.2s ease-in-out",
   cursor: "pointer",
+  height: '40px',
 };
 
 export const ReturnHomeStyles = {
@@ -60,3 +61,7 @@ export const ShuffleNames = {
   ...SubmitButtonStyles,
   marginRight: "15px",
 };
+
+export const TakeMeToVoteStyles = {
+  ...SubmitButtonStyles
+}
