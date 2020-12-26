@@ -27,6 +27,33 @@ const GlobalStyles = createGlobalStyle`
 		letter-spacing: 0.15rem;
 	}
 
+	button {
+			margin: 8px;
+			height: 100%;
+			width: 100%;
+			content: "";
+			opacity: 0.8;
+			cursor: pointer;
+			border-radius: 10px;
+			color: ${COLORS.SHADES.OFFWHITE};
+			background: ${COLORS.PURPLES.LIGHT};
+			background: linear-gradient(
+				135deg,
+				${COLORS.PURPLES.MAIN} 60%,
+				${COLORS.PURPLES.LIGHT} 150%
+			);
+			transition: all 0.2s ease-in-out;
+		
+		:hover,
+		:focus {
+			opacity: 1;
+			
+		}
+		:disabled {
+			visibility: hidden;
+		}
+	}
+
 	input[type="text"]{ padding: 20px 10px; line-height: 18px; }
 
 	::placeholder {
