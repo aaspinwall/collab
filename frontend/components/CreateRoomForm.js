@@ -5,10 +5,10 @@ import { COLORS } from "../styles/colors";
 import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
 import Boop from "./animations/Boop";
-import Button from "./ui/sample_button";
 import { SubmitButtonStyles, AddOptionStyles } from "../styles/button";
 
 export default function CreateRoomForm() {
+  const placeholderRoomID = "001"; // roomId is handled by function, needs a placeholder however for some reason
   // these are the options being set
   const [options, setOptions] = useState([]);
   const [created, setCreated] = useState(false);
@@ -39,7 +39,7 @@ export default function CreateRoomForm() {
     const res = await addRoom({
       variables: {
         name: createRoomName.current.value, // to change
-        id: createRoomId.current.value, // we will generate this on backend
+        id: placeholderRoomID, // being generated on the backend -> taking it out throws a zillion errors
         timeLimit: createTimeLimit.current.value,
         voteOptions: options,
       },
@@ -69,12 +69,7 @@ export default function CreateRoomForm() {
               <input type="text" placeholder="Room Name" ref={createRoomName} />
             </label>
           </div>
-          <div>
-            <label>
-              Room ID (ex: 1A3E)
-              <input type="text" placeholder="Room ID" ref={createRoomId} />
-            </label>
-          </div>
+          <div></div>
           <div>
             <label>
               {" "}
@@ -92,7 +87,7 @@ export default function CreateRoomForm() {
               <input type="text" placeholder="Options" ref={individualOption} />
             </label>
           </div>
-          <Button children={"Add Option"} styles={AddOptionStyles} />
+          <button>Add Option</button>
           {options.length >= 1 ? (
             <ul className="overflow">
               {options &&
@@ -105,12 +100,7 @@ export default function CreateRoomForm() {
           ) : (
             " "
           )}
-          <Button
-            children={"Submit Room"}
-            onClick={submitRoom}
-            styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
-          />
-          {/* <button onClick={submitRoom}>Submit Room</button> */}
+          <button onClick={submitRoom}>Submit Room</button>
         </form>
       </FormContainer>
       {created && (
