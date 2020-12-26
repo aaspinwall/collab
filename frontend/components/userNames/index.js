@@ -3,8 +3,6 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import { COLORS } from "../../styles/colors";
 
-import Button from "../ui/sample_button";
-
 import { SubmitNameChoice, ShuffleNames } from "../../styles/button";
 
 // not sure this is the cleanest way to operate

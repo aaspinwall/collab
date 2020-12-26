@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "../sample_button";
 import { SubmitVote } from "../../../styles/button";
 
 const CheckboxForm = ({ voteOptions }) => {
@@ -39,12 +38,9 @@ const CheckboxForm = ({ voteOptions }) => {
             );
           })}
         </fieldset>
-        <Button
-          children={"Submit Your Vote"}
-          styles={SubmitVote}
-          disabled={!radioCheck}
-          onClick={handleVoteSubmit}
-        />
+        <button disabled={!radioCheck} onClick={handleVoteSubmit}>
+          Submit Your Vote!
+        </button>
       </form>
     </Container>
   );

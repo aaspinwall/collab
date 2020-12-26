@@ -1,5 +1,4 @@
 import Card from "../../components/ui/card";
-import Button from "../../components/ui/sample_button";
 import { InfoStyles } from "../../styles/button";
 
 export default function Home() {
@@ -30,11 +29,7 @@ export default function Home() {
             <p>
               Check <code>pages/index.jsx </code> to see what's going on
             </p>
-            <Button
-              children={"Click Me"}
-              styles={InfoStyles}
-              onClick={handleClick}
-            />
+            <button onClick={handleClick}>Click Me!</button>
           </div>
 
           <div className={"grid"}>
