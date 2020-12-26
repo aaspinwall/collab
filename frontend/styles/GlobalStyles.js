@@ -29,7 +29,6 @@ const GlobalStyles = createGlobalStyle`
 
 	input[type="text"]{ padding: 20px 10px; line-height: 18px; }
 
-
 	::placeholder {
 		color: black;
 		font-style: italic;

@@ -11,6 +11,13 @@ import Head from "next/head";
 
 export default function VotingRoom() {
   const { query } = useRouter();
+  // timerProps are passed to the Timer component to style the countdown animation
+  const timerProps = {
+    size: 250,
+    strokeWidth: 15,
+    circleOneStroke: "#d9edfe",
+    circleTwoStroke: "orange",
+  };
 
   const [roomData, setRoomData] = useState(null);
   const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
@@ -47,6 +54,7 @@ export default function VotingRoom() {
           key={200}
           time={Number(roomData.timeLimit)}
           onTimeIsUp={(message) => alert(message)}
+          {...timerProps}
         />
         <CheckboxForm voteOptions={roomData.voteOptions} />
         <Link href="/">

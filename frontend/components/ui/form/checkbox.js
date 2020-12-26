@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "../sample_button/index";
+import Button from "../sample_button";
 import { SubmitVote } from "../../../styles/button";
 
 const CheckboxForm = ({ voteOptions }) => {
