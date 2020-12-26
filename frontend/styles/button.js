@@ -17,7 +17,7 @@ export const SubmitButtonStyles = {
   textTransform: "uppercase",
   transition: "background 0.2s ease-in-out",
   cursor: "pointer",
-  height: '40px',
+  height: "40px",
 };
 
 export const ReturnHomeStyles = {
@@ -27,20 +27,20 @@ export const ReturnHomeStyles = {
 
 export const AddOptionStyles = {
   ...ReturnHomeStyles,
-  width: '35px',
-  height: '35px',
-  padding: '5px',
-  borderRadius: '20px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  width: "35px",
+  height: "35px",
+  padding: "5px",
+  borderRadius: "20px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 export const RemoveOptionStyles = {
   ...AddOptionStyles,
-  width: '20px',
-  height: '20px',
-}
+  width: "20px",
+  height: "20px",
+};
 
 export const InfoStyles = {
   ...ReturnHomeStyles,
@@ -63,5 +63,5 @@ export const ShuffleNames = {
 };
 
 export const TakeMeToVoteStyles = {
-  ...SubmitButtonStyles
-}
+  ...SubmitButtonStyles,
+};
