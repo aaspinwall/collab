@@ -79,12 +79,6 @@ export default function CreateRoomForm() {
             <Input type="text" placeholder="Room Name" ref={createRoomName} />
           </Label>
         </RoomName>
-        <RoomID>
-          <Label>
-            Room ID (ex: 1A3E)
-            <Input type="text" placeholder="Room ID" ref={createRoomId} />
-          </Label>
-        </RoomID>
         <TimeLimit>
           <Label>
             Time limit (in seconds)
@@ -199,9 +193,7 @@ const OptionInput = styled.input`
   margin: 0 0 0 5px;
   width: 195px;
 `;
-const RoomID = styled.div`
-  margin: 8px;
-`;
+
 const TimeLimit = styled.div`
   margin: 8px;
 `;
