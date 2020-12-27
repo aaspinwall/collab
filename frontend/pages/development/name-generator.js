@@ -1,5 +1,4 @@
 import NameGenerator from "../../components/userNames";
-
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -8,8 +7,8 @@ export default function LandingPage() {
     <Container>
       <Header>Name Generator</Header>
       <NameGenerator />
-      <Link href="/">
-        <Button>Home</Button>
+      <Link href="/" passHref>
+        <LinkHome>Home</LinkHome>
       </Link>
     </Container>
   );
@@ -30,7 +29,7 @@ const Header = styled.h1`
   font-size: 3rem;
 `;
 
-const Button = styled.button`
+const LinkHome = styled.a`
   margin-top: 15px;
   padding: 8px;
   border-radius: 5px;
