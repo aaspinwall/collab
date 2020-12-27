@@ -58,8 +58,8 @@ export default function VotingRoom() {
           {...timerProps}
         />
         <CheckboxForm voteOptions={roomData.voteOptions} />
-        <Link href="/">
-          <Button>Home</Button>
+        <Link href="/" passHref>
+          <LinkHome>Home</LinkHome>
         </Link>
       </Card>
     </Container>
@@ -86,7 +86,7 @@ const Description = styled.p`
   margin-left: 1rem;
 `;
 
-const Button = styled.button`
+const LinkHome = styled.a`
   margin-top: 15px;
   padding: 8px;
   border-radius: 5px;
