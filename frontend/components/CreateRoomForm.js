@@ -112,7 +112,7 @@ export default function CreateRoomForm() {
           <OptionList>
             {options &&
               options.map((option, index) => (
-                <OptionContainer>
+                <OptionContainer key={index}>
                   <Option>{option}</Option>
                   <Button
                     children={"-"}
