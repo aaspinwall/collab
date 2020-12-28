@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ClientOnlyPortal from "./ClientOnlyPortal";
+import ClientOnlyPortal from "./clientOnlyPortal";
 
 const Modal = ({ children }) => {
   const [open, setOpen] = useState();
