@@ -1,12 +1,6 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-//NOTE: there is certainly a more optimal way to get the ui going.
-// most of this I didn't code myself, just found solutions and
-// tried to adapt to our needs/my toughts as much as possible. 
-
-
-
-
+//Little behaviour I couldn't get rid of, when clicking repeatedly on a box(because every does that), the text becomes selected.
 
 //for now we use dummy data to display the voting choices
 //Once everything is wired up we will have to change some names in the return.
@@ -22,51 +16,38 @@ import OptionName from "./OptionName";
 
 
 const VotingForm = ({voteOptions, timeLimit})=>{
-    const [checked, setChecked] = useState({})
-    const [isOptionClicked, setIsOptionClicked] = useState(false)
-    const [vote, setVote] = useState("");
-
-
-    // On submit we will send the chosen voteOption and 
-    // the timeLimit previously set by the room creator. 
-    // For now we just have an alert with the voted option. 
-
-    const handleSubmit =  (e, vote) =>{
-        e.preventDefault()
-         //graphql submit poutine goes here ?
-        alert(vote)
-    }
+    const [checked, setChecked] = useState({checked: false, option:""})
 
     // this is to handle wether the input is checked or not for the styling.
-    // I can't seem to be able to wrap all the logic withing this onChange event
-    // so I make onClick that gets other state business done as I intend. 
-    const handleCheckBox = (index) =>{
+    // And also associate the voted option to the correct index.
+
+    const handleCheckBox = (index, option) =>{
             setChecked(checked =>({
-                [index]: !checked[index]
-            }))
+                [index]: !checked[index],
+                option
+            }));
+    };
+    
+    // On submit we will send the chosen voteOption and 
+    // the timeLimit previously set by the room creator. 
+    // For now we just have an alert with the voted option and another one to prevent casting an empty ballot. 
+
+    const getTruthyValue = Object.values(checked)[0];
+
+    const handleSubmit =  (e) =>{
+        e.preventDefault();
+         //graphql submit poutine here
+         if(getTruthyValue === false){
+             alert('Seems like you did not vote for anything')
+         } else{
+            alert(checked.option)
+         } 
     };
 
-
-
-    //handleClick controls the OptionName css and sets the voteOption state
-    // Behaviour is funky right now because I can't disable other options
-    // Once it is resolved I think this
-
-
-    const handleClick= (option, index)=>{
-        console.log('checkedIndez', checked[index])
-            setIsOptionClicked(!isOptionClicked)
-           
-                setVote(option) 
-        
-
-      
-            
-    };
 
     return(
         <>
-    <form onSubmit={(e)=>handleSubmit(e, vote, timeLimit)}>
+    <form onSubmit={(e)=>handleSubmit(e, timeLimit)}>
 
         <VotingOptions>
         {votingOptions.map((option, index) =>{
@@ -77,8 +58,7 @@ const VotingForm = ({voteOptions, timeLimit})=>{
                 value={option}
                 checked={{...checked}}
                 index={index}
-                onChange={()=>handleCheckBox(index)}
-                onClick={()=>handleClick(option, index)}
+                onChange={()=>handleCheckBox(index, option)}
                 />
                 </label>
                 <OptionName checked={{...checked}} 
