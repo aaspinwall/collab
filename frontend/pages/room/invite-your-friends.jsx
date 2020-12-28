@@ -17,13 +17,13 @@ export default function InviteYourFriends() {
         <p>or</p>
         <p>Share to social media</p>
         <SocialMediaContainer>
-          <Link href={'/'}>Instagram</Link>
-          <Link href={'/'}>Facebook</Link>
-          <Link href={'/'}>Twitter</Link>
-          <Link href={'/'}>LinkedIn</Link>
-          <Link href={'/'}>What's App</Link>
-          <Link href={'/'}>Snapchat</Link>
-          <Link href={'/'}>Reddit</Link>
+          <Link href={"/"}>Instagram</Link>
+          <Link href={"/"}>Facebook</Link>
+          <Link href={"/"}>Twitter</Link>
+          <Link href={"/"}>LinkedIn</Link>
+          <Link href={"/"}>What's App</Link>
+          <Link href={"/"}>Snapchat</Link>
+          <Link href={"/"}>Reddit</Link>
         </SocialMediaContainer>
         <button>Go To Voting</button>
       </FormContainer>
@@ -74,6 +74,4 @@ const Header = styled.h1`
   padding-top: 15px;
   font-size: 2rem;
 `;
-const SocialMediaContainer = styled.div`
-
-`
+const SocialMediaContainer = styled.div``;
