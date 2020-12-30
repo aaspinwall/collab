@@ -205,7 +205,7 @@ const OptionContainer = styled.div`
   padding-right: 5px;
   margin-bottom: 5px;
   background-color: ${COLORS.SHADES.OFFWHITE};
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 20px;
 `;
 const OptionList = styled.ul`
