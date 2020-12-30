@@ -1,6 +1,8 @@
 import React, { createRef, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import Card from "../components/ui/card";
+import CopyToClipboard from "../components/ui/copytoclipboard";
 import { COLORS } from "../styles/colors";
 import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
@@ -124,14 +126,21 @@ export default function CreateRoomForm() {
         />
       </FormContainer>
       {created && (
-        <Boop rotation={15}>
-          <Link href={`/room/voting-room/${roomId}`}>
-            <Button
-              children={"Take Me To The Vote!"}
-              styles={TakeMeToVoteStyles}
+        <div>
+          <Card>
+            <div>Share with your friends</div>
+            <CopyToClipboard
+              text={`${location.origin}/room/voting-room/${roomId}`}
             />
-          </Link>
-        </Boop>
+            <Boop rotation={15}>
+              <Link href={`/room/voting-room/${roomId}`}>
+                <Button styles={TakeMeToVoteStyles}>
+                  Take Me To The Vote!
+                </Button>
+              </Link>
+            </Boop>
+          </Card>
+        </div>
       )}
     </Container>
   );
