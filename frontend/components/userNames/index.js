@@ -42,6 +42,7 @@ const NameGenerator = ({ content, callback }) => {
   const handleNameChoiceSubmit = (ev) => {
     ev.preventDefault();
     console.log(nameChosen);
+    localStorage.setItem('name', nameChosen)
     callback(nameChosen);
   };
 
