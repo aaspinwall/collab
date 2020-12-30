@@ -29,6 +29,7 @@ export default function VotingRoom() {
   });
 
   useEffect(() => {
+    setUserName(localStorage.getItem("name"));
     getRoomByID({ variables: { id: query.id } });
     console.log(roomData);
   }, [query]);
