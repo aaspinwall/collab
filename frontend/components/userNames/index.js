@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import names from "./userNames.json";
 import styled from "styled-components";
-import React, { useState } from "react";
 import { COLORS } from "../../styles/colors";
 import Button from "../ui/sample_button";
 import { SubmitNameChoice, ShuffleNames } from "../../styles/button";
@@ -9,7 +9,8 @@ import { SubmitNameChoice, ShuffleNames } from "../../styles/button";
 // the state is only used to rerender when the user presses shuffle
 // the state itself is never used
 
-const NameGenerator = () => {
+const NameGenerator = ({ content, callback }) => {
+  const { title, subtitle, instructions } = content;
   const [choice, setChoice] = useState([]);
 
   let nameChosen;
@@ -40,8 +41,8 @@ const NameGenerator = () => {
 
   const handleNameChoiceSubmit = (ev) => {
     ev.preventDefault();
-
     console.log(nameChosen);
+    callback(nameChosen);
   };
 
   const handleRadioClick = (ev) => {
@@ -56,27 +57,21 @@ const NameGenerator = () => {
 
   const handleShuffle = (ev) => {
     ev.preventDefault();
-
-    // animalsIndexes = [];
-    // adjectivesIndexes = [];
-    // randomAnimals = [];
-    // randomAdjectives = [];
     radioValues = document.getElementsByName("name-choice");
     radioValues.forEach((radio) => {
       if (radio.checked) {
         radio.checked = false;
       }
     });
-
     setChoice([]);
   };
 
   return (
     <Container>
-      <GeneratorTitle>Welcome to</GeneratorTitle>
-      <GeneratorSubTitle>your choosing room</GeneratorSubTitle>
+      <GeneratorTitle>{title || "Welcome to"}</GeneratorTitle>
+      <GeneratorSubTitle>{subtitle || "your choosing room"}</GeneratorSubTitle>
 
-      <p>Pick your name</p>
+      <p>{instructions || "Pick your name"}</p>
 
       <NameForm>
         <NameChoice id={"name-choice"}>

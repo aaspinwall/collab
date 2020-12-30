@@ -9,6 +9,7 @@ import { COLORS } from "../../../styles/colors";
 import { useRouter } from "next/router";
 import CheckboxForm from "../../../components/ui/form/checkbox";
 import Head from "next/head";
+import NameGenerator from "../../../components/userNames";
 
 export default function VotingRoom() {
   const { query } = useRouter();
@@ -19,6 +20,8 @@ export default function VotingRoom() {
     circleOneStroke: `${COLORS.PURPLES.MAIN}`,
     circleTwoStroke: `${COLORS.PURPLES.LIGHT}`,
   };
+
+  const [userName, setUserName] = useState(null);
 
   const [roomData, setRoomData] = useState(null);
   const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
@@ -50,18 +53,26 @@ export default function VotingRoom() {
         This page will be where the voting itself takes place
       </Description>
       {/* time has to be Number() as it is passed as a string */}
-      <Card>
-        <Timer
-          key={Number(roomData.timeLimit)}
-          time={Number(roomData.timeLimit)}
-          onTimeIsUp={(message) => alert(message)}
-          {...timerProps}
+      {!userName ? (
+        <NameGenerator
+          content={{ title: "Welcome to", subtitle: query.id }}
+          callback={(userName) => setUserName(userName)}
         />
-        <CheckboxForm voteOptions={roomData.voteOptions} />
-        <Link href="/" passHref>
-          <LinkHome>Home</LinkHome>
-        </Link>
-      </Card>
+      ) : (
+        <Card>
+          <h3 style={{ textAlign: "center" }}>{userName}</h3>
+          <Timer
+            key={Number(roomData.timeLimit)}
+            time={Number(roomData.timeLimit)}
+            onTimeIsUp={(message) => alert(message)}
+            {...timerProps}
+          />
+          <CheckboxForm voteOptions={roomData.voteOptions} />
+          <Link href="/" passHref>
+            <LinkHome>Home</LinkHome>
+          </Link>
+        </Card>
+      )}
     </Container>
   );
 }
