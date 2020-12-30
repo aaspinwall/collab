@@ -8,6 +8,7 @@ import { GoToVotingStyles, CopyLinkStyles } from "../../styles/button";
 
 export default function InviteYourFriends() {
   const [copySuccess, setCopySuccess] = useState(false);
+
   const textToCopyRef = useRef(null);
 
   const copyToClipboard = (ev) => {
@@ -26,6 +27,10 @@ export default function InviteYourFriends() {
     document.body.removeChild(newTextArea);
 
     setCopySuccess(true);
+  };
+
+  const handleGoToVoting = () => {
+    
   };
 
   return (
@@ -53,7 +58,8 @@ export default function InviteYourFriends() {
         <SocialMediaSharing />
         <Button
           children={"Go To Voting"}
-          styles={GoToVotingStyles} /* onClick={} */
+          styles={GoToVotingStyles}
+          onClick={handleGoToVoting}
         />
       </FormContainer>
     </Container>
