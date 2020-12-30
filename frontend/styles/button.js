@@ -36,6 +36,16 @@ export const AddOptionStyles = {
   justifyContent: "center",
 };
 
+export const GoToVotingStyles = {
+  ...AddOptionStyles,
+  width: '100%',
+}
+
+export const CopyLinkStyles = {
+  ...AddOptionStyles,
+  width: '80%'
+}
+
 export const RemoveOptionStyles = {
   ...AddOptionStyles,
   width: "20px",
