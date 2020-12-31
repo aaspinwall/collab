@@ -3,7 +3,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import Card from "../../components/ui/card";
 import { COLORS } from "../../styles/colors";
-import Button from "../../components/ui/sample_button";
 import { ReturnHomeStyles } from "../../styles/button";
 
 export default function ResultsPage() {
@@ -18,7 +17,7 @@ export default function ResultsPage() {
           This page will be used to display the results of the vote
         </Description>
         <Link href="/">
-          <Button styles={ReturnHomeStyles}>Home</Button>
+          <button>Home</button>
         </Link>
       </Card>
     </Container>

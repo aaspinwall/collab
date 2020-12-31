@@ -15,6 +15,8 @@ const StyledProgress = styled.div`
   }
   .circle {
     fill: none;
+    transform-origin: center;
+    transition: 1s linear all;
   }
   .percentage {
     font-size: 1.3rem;
@@ -25,7 +27,8 @@ const StyledProgress = styled.div`
 `;
 
 const Timer = (props, { time, onTimeIsUp }) => {
-  const [seconds, setSeconds] = useState(time || 200);
+  const [seconds, setSeconds] = useState(props.time);
+  // console.log(props.time)
   const [progress, setProgress] = useState(null);
   const userTime = createRef(null);
   const [offset, setOffset] = useState(0);
