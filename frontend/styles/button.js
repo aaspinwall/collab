@@ -38,13 +38,13 @@ export const AddOptionStyles = {
 
 export const GoToVotingStyles = {
   ...AddOptionStyles,
-  width: '100%',
-}
+  width: "100%",
+};
 
 export const CopyLinkStyles = {
   ...AddOptionStyles,
-  width: '80%'
-}
+  width: "80%",
+};
 
 export const RemoveOptionStyles = {
   ...AddOptionStyles,

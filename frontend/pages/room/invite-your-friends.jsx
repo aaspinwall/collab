@@ -29,9 +29,7 @@ export default function InviteYourFriends() {
     setCopySuccess(true);
   };
 
-  const handleGoToVoting = () => {
-    
-  };
+  const handleGoToVoting = () => {};
 
   return (
     <Container>
