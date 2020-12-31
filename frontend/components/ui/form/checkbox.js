@@ -16,6 +16,7 @@ const CheckboxForm = ({ voteOptions }) => {
   const handleVoteSubmit = (ev) => {
     ev.preventDefault();
     console.log(radioCheck);
+    // TODO: push radioCheck to DB
 
     // add functionality to go back to home page instead of having a dedicated home button
   };

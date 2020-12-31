@@ -15,6 +15,8 @@ const StyledProgress = styled.div`
   }
   .circle {
     fill: none;
+    transform-origin: center;
+    transition: 1s linear all;
   }
   .percentage {
     font-size: 1.3rem;
