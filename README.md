@@ -1,16 +1,17 @@
 # Welcome to our Collab project!
 
-![facebook_cover_photo_2](https://user-images.githubusercontent.com/17233773/99539534-5c878180-297c-11eb-8c14-dd1e10abaf0f.png)
+![Twitter header](https://user-images.githubusercontent.com/17233773/103695875-5caf0100-4f6b-11eb-82e2-677d7a782ce2.png)
+
+You can reach us on:
+🦆 [Twitter](https://twitter.com/CollabWebApp)
 
 ## Mission
 
-We aim to build a functional and well-presented web-based app, with an emphasis on maintaining a respectful, collaborative environment. Our group presents opportunities for members to learn and teach, whether in programming/tools or other parts of the project, such as organization and design. And most importantly... we want to have fun!
+We are an open source community, with an emphasis on maintaining a respectful, collaborative environment. Our group presents opportunities for members to learn and teach, whether in programming/tools or other parts of the project, such as organization and design. And most importantly... we want to have fun!
 
 ## What are we building right now?
 
-**Working title:** Agora
-
-**Description:** Decision Maker App
+**Working title:** Decision Maker App
 
 We're currently working on the MVP. Here's a quick rundown of the app flow.
 
@@ -94,7 +95,7 @@ Note: If you have a specific problem that does not involve everyone, don’t spa
 
 ### Collab-ers:
 
-- Andrew 🐦🦩🦚🐧
+- Andrew 🐦🦚🐧
 - Kolby 🖖 👨🏼‍💻 🏌🏼 ⚛️
 - Shai 👋 👨‍💻 👨‍🏫 ⚛️
 - Léonard ⚛️🖖 👨‍💻
