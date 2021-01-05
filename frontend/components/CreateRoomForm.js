@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Card from "../components/ui/card";
 import CopyToClipboard from "../components/ui/copytoclipboard";
+import Social from "../components/SocialMediaSharing";
 import { COLORS } from "../styles/colors";
 import ADD_ROOM from "./polloTest/CreateVoteOptions";
 import { useMutation } from "@apollo/client";
@@ -129,6 +130,7 @@ export default function CreateRoomForm() {
         <div>
           <Card>
             <div>Share with your friends</div>
+            <Social url={`${location.origin}/room/voting-room/${roomId}`} />
             <CopyToClipboard
               text={`${location.origin}/room/voting-room/${roomId}`}
             />
