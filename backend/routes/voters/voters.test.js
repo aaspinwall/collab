@@ -41,10 +41,10 @@ describe("Voters Resolvers", () => {
     expect(code).toEqual("200");
     expect(success).toBe(true);
 
-    expect(roomName).toEqual("Thanksgiving!");
+    expect(roomName).toEqual("Christmas Room");
     expect(id).toEqual("EAR2");
-    expect(timeLimit).toEqual("2020/11/21");
-    expect(voteOptions).toEqual(["apple", "pears", "plums", "table"]);
+    expect(timeLimit).toEqual("444");
+    expect(voteOptions).toEqual(["D", "C", "B", "A"]);
 
     expect(addedVoter.name).toEqual("Alright");
     expect(addedVoter.voteData).toEqual(false);
