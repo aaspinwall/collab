@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { COLORS } from "../../styles/colors";
+import { COLORS } from "../../../styles/colors";
 
-import Timer from "../../components/timer";
-import VotingForm from "../../components/VotingForm";
+import Timer from "../../../components/timer";
+import VotingForm from "../../../components/VotingForm";
 
 export default function VotingRoom() {
   return (
