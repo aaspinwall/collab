@@ -14,7 +14,7 @@ async function addRoom(_, args) {
   const {
     room: { name, timeLimit, voteOptions },
   } = args;
-  console.log(name);
+  // console.log(name);
   let success;
   let attempts = 0;
   const max_attempts = 5;
@@ -22,7 +22,7 @@ async function addRoom(_, args) {
     try {
       attempts++;
       const id = generateId();
-      console.log(id);
+      // console.log(id);
       const { data } = await FaunaClient.query(
         Create(Collection("rooms"), {
           data: {
