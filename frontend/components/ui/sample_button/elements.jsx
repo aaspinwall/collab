@@ -19,7 +19,7 @@ const Button = styled.button`
     content: "";
     opacity: 0;
     z-index: -100;
-    border-radius: 10px;
+    border-radius: 20px;
     color: ${COLORS.SHADES.OFFWHITE};
     background: ${COLORS.PURPLES.LIGHT};
     background: linear-gradient(

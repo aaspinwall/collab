@@ -18,10 +18,7 @@ const Navbar = () => {
   return (
     <>
       <Nav className="navbar">
-        <p style={{ display: !menu ? "flex" : "none" }}>
-          Where Democracy Meets
-        </p>
-        <div style={{ display: menu ? "flex" : "none" }}>
+        <div style={{ display: "flex" }}>
           <Link href="/">
             <a>Home</a>
           </Link>
@@ -34,17 +31,6 @@ const Navbar = () => {
             <a>About</a>
           </Link>
         </div>
-        <Button
-          style={{
-            position: "absolute",
-            backgroundColor: "transparent",
-            border: "none",
-          }}
-          onClick={toggleMenu}
-        >
-          {!menu && <ButtonText>&#8594;</ButtonText>}
-          {/* <MenuIcon /> */}
-        </Button>
       </Nav>
     </>
   );
@@ -63,6 +49,17 @@ const Nav = styled.nav`
   font-size: 15px;
   height: 70px;
 
+  .toggle-menu {
+    position: absolute;
+    right: 8px;
+    top: 18px;
+    outline: none;
+
+    &:active {
+      border: 1px solid;
+    }
+  }
+
   a {
     border-right: 1px solid;
     padding: 8px;
@@ -77,16 +74,6 @@ const Nav = styled.nav`
     &:last-of-type {
       border-right: none;
     }
-  }
-`;
-
-const Button = styled.button`
-  position: absolute;
-  right: 8px;
-  top: 18px;
-  outline: none;
-  &:active {
-    border: 1px solid;
   }
 `;
 
