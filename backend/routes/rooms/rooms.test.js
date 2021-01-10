@@ -81,7 +81,7 @@ describe("Room Query", () => {
     expect(roomData.id).toEqual(id);
   });
 
-  it("Returns undefined for an inexisting room", async () => {
+  it("Returns unsuccessful for an inexisting room", async () => {
     const {
       data: {
         roomByID: { code, success },
