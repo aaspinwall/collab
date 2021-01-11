@@ -20,20 +20,20 @@ export default function VotingRoom() {
     circleOneStroke: `${COLORS.PURPLES.MAIN}`,
     circleTwoStroke: `${COLORS.PURPLES.LIGHT}`,
   };
-
+  
   const [userName, setUserName] = useState(null);
-
+  
   const [roomData, setRoomData] = useState(null);
   const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
     onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData),
   });
-
+  
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
     getRoomByID({ variables: { id: query.id } });
     console.log(roomData);
   }, [query]);
-
+  
   if (!roomData) {
     return (
       <div>
@@ -68,7 +68,7 @@ export default function VotingRoom() {
             onTimeIsUp={(message) => alert(message)}
             {...timerProps}
           />
-          <CheckboxForm voteOptions={roomData.voteOptions} />
+          <CheckboxForm roomID={query.id} voteOptions={roomData.voteOptions} />
           <Link href="/" passHref>
             <LinkHome>Home</LinkHome>
           </Link>

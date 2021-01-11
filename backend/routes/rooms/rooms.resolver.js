@@ -69,7 +69,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
       Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
         data: {
           voters: {
-            [name]: false,
+            [name]: "String-Representation-Of-False",
           },
         },
       })
@@ -97,7 +97,42 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
   }
 }
 
+async function addVoterData(_, { voterData: { name, option }, roomID }) {
+  try {
+    const { data } = await FaunaClient.query(
+      Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
+        data: {
+          voters: {
+            [name]: option,
+          },
+        },
+      })
+    );
+    return {
+      code: "200",
+      success: true,
+      message: "room updated",
+      roomData: {
+        id: data.id,
+        name: data.name,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
+      },
+      option: option,
+      voters: votersToIterable(data.voters),
+    };
+  } catch (err) {
+    console.log("err in addVoterToRoom: ", err);
+    return {
+      code: "500",
+      success: false,
+      message: "there has been an error in the server :(",
+    };
+  }
+}
+
 module.exports = {
   addRoom,
   addVoterToRoom,
+  addVoterData,
 };
