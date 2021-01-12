@@ -14,7 +14,7 @@ async function addRoom(_, args) {
   const {
     room: { name, timeLimit, voteOptions },
   } = args;
-  console.log(name);
+  // console.log(name);
   let success;
   let attempts = 0;
   const max_attempts = 5;
@@ -22,7 +22,7 @@ async function addRoom(_, args) {
     try {
       attempts++;
       const id = generateId();
-      console.log(id);
+      // console.log(id);
       const { data } = await FaunaClient.query(
         Create(Collection("rooms"), {
           data: {
@@ -69,7 +69,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
       Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
         data: {
           voters: {
-            [name]: false,
+            [name]: "String-Representation-Of-False",
           },
         },
       })
@@ -97,7 +97,42 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
   }
 }
 
+async function addVoterData(_, { voterData: { name, option }, roomID }) {
+  try {
+    const { data } = await FaunaClient.query(
+      Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
+        data: {
+          voters: {
+            [name]: option,
+          },
+        },
+      })
+    );
+    return {
+      code: "200",
+      success: true,
+      message: "room updated",
+      roomData: {
+        id: data.id,
+        name: data.name,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
+      },
+      option: option,
+      voters: votersToIterable(data.voters),
+    };
+  } catch (err) {
+    console.log("err in addVoterToRoom: ", err);
+    return {
+      code: "500",
+      success: false,
+      message: "there has been an error in the server :(",
+    };
+  }
+}
+
 module.exports = {
   addRoom,
   addVoterToRoom,
+  addVoterData,
 };

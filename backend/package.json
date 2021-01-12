@@ -10,6 +10,7 @@
     "dev": "nodemon server.js",
     "test": "jest --no-cache --passWithNoTests ./*",
     "watch": "jest --no-cache --watch ./*",
+    "lint-fix": "eslint . --fix",
     "lint-test": "eslint . && jest --no-cache ./*"
   },
   "dependencies": {

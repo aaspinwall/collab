@@ -28,6 +28,7 @@ export default function SocialMediaSharing({ url }) {
   const iconStyles = {
     border: `2px solid ${COLORS.PURPLES.MAIN}`,
     borderRadius: "50%",
+    transition: "all 0.1s",
   };
 
   return (
@@ -38,6 +39,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </FacebookShareButton>
       <FacebookMessengerShareButton url={url}>
@@ -121,5 +123,11 @@ const SocialMediaContainer = styled.div`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 40px);
-  margin: 20px 0 30px 0;
+  margin: 20px auto;
+
+  .hover-effect {
+    :hover {
+      transform: scale(1.1);
+    }
+  }
 `;

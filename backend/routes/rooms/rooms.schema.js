@@ -67,6 +67,24 @@ const AddVoterToRoomMutationResponse = gql`
   }
 `;
 
+const AddVoterDataInput = gql`
+  input AddVoterDataInput {
+    name: String!
+    option: String!
+  }
+`;
+
+const AddVoterDataMutationResponse = gql`
+  type AddVoterDataMutationResponse implements Response {
+    roomData: Room!
+    voters: [Voter]!
+    code: String!
+    success: Boolean!
+    message: String!
+    option: String!
+  }
+`;
+
 module.exports = gql`
   ${RoomType}
   ${RoomByIDResponse}
@@ -74,4 +92,6 @@ module.exports = gql`
   ${AddRoomMutationResponse}
   ${AddVoterToRoomInput}
   ${AddVoterToRoomMutationResponse}
+  ${AddVoterDataInput}
+  ${AddVoterDataMutationResponse}
 `;
