@@ -19,13 +19,15 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
   };
   const handleVoteSubmit = async (ev) => {
     ev.preventDefault();
-    const res = await addVoterData({variables: {
-      id: roomID,
-      name: localStorage.getItem("name"),
-      option: radioCheck,
-    }});
+    const res = await addVoterData({
+      variables: {
+        id: roomID,
+        name: localStorage.getItem("name"),
+        option: radioCheck,
+      },
+    });
     // TODO: push radioCheck to DB
-    
+
     // add functionality to go back to home page instead of having a dedicated home button
   };
 

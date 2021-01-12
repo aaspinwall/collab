@@ -18,7 +18,7 @@ export const GET_ROOM_BY_ID = gql`
 
 export const ADD_VOTER_DATA = gql`
   mutation addVoterData($id: String!, $name: String!, $option: String!) {
-    addVoterData(voterData: {name: $name, option: $option}, roomID: $id) {
+    addVoterData(voterData: { name: $name, option: $option }, roomID: $id) {
       roomData {
         id
         name
@@ -34,6 +34,5 @@ export const ADD_VOTER_DATA = gql`
       success
       message
     }
-
   }
 `;

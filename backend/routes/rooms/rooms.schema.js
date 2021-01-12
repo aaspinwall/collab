@@ -65,8 +65,6 @@ const AddVoterToRoomMutationResponse = gql`
     success: Boolean!
     message: String!
   }
-
-  
 `;
 
 const AddVoterDataInput = gql`
@@ -84,7 +82,8 @@ const AddVoterDataMutationResponse = gql`
     success: Boolean!
     message: String!
     option: String!
-  }`
+  }
+`;
 
 module.exports = gql`
   ${RoomType}
