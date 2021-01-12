@@ -35,21 +35,29 @@ export default function CreateRoomForm() {
   // create a function to change minutes to seconds in timer function to simplify it for the user)
   // function that pushes individual optiuon to total options
   const createTimeLimit = createRef(null);
+
+  // this adds the new option to the options array
   const createOptionsArray = () => {
     setOptions([individualOption.current.value, ...options]);
     individualOption.current.value = "";
   };
-  const handleSubmit = (e) => {
+
+  // this checks if the option input is not empty
+  const handleAddOption = (e) => {
     e.preventDefault();
-    createOptionsArray();
+    individualOption.current.value !== "" && createOptionsArray();
   };
+
+  // this removes an option
   const handleRemoveOption = (event, index) => {
     event.preventDefault();
     const updatedOptions = options.filter((option, id) => id !== index);
     setOptions(updatedOptions);
   };
+
   // this adds the array of options to the database
-  const submitRoom = async () => {
+  const submitRoom = async (ev) => {
+    ev.preventDefault();
     const oneMillisecond = 1000;
     const limitInSeconds = createTimeLimit.current.value;
     const limitInMilliseconds = limitInSeconds * oneMillisecond;
@@ -77,7 +85,7 @@ export default function CreateRoomForm() {
 
   return (
     <Container>
-      <FormContainer onSubmit={handleSubmit}>
+      <FormContainer onSubmit={handleAddOption}>
         {/* Fix variable names */}
         {/* useRef for the two below input to validate variables: name, timelimit*/}
         <RoomName>
@@ -133,7 +141,7 @@ export default function CreateRoomForm() {
       {created && (
         <div>
           <Card>
-            <div>Share with your friends</div>
+            <ShareText>Share with your friends</ShareText>
             <Social url={`${location.origin}/room/voting-room/${roomId}`} />
             <CopyToClipboard
               text={`${location.origin}/room/voting-room/${roomId}`}
@@ -192,12 +200,12 @@ const Input = styled.input`
 const AddOptionContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-right: 5px;
+  padding-right: 2.5px;
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   height: 40px;
-  width: 240px;
+  width: 237.5px;
 `;
 const OptionInput = styled.input`
   background-color: ${COLORS.SHADES.OFFWHITE};
@@ -217,7 +225,7 @@ const OptionContainer = styled.div`
   display: flex;
   align-items: center;
   height: 30px;
-  padding-right: 5px;
+  padding-right: 2.5px;
   margin-bottom: 5px;
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
@@ -249,4 +257,10 @@ const Option = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+const ShareText = styled.div`
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 5px;
 `;
