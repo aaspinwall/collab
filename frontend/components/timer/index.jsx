@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createRef } from "react";
-import Card from "../ui/card";
+import { useInterval } from "../../utilities/hooks";
 import { COLORS } from "../../styles/colors";
 import styled from "styled-components";
 
@@ -26,9 +26,13 @@ const StyledProgress = styled.div`
   }
 `;
 
-const Timer = (props, { time, onTimeIsUp }) => {
-  const [seconds, setSeconds] = useState(props.time);
-  // console.log(props.time)
+const Timer = ({ time, onTimeIsUp, ...props }) => {
+  const oneMillisecond = 1000;
+  const timeLimit = time;
+  const diffInMilliseconds = timeLimit - Date.now();
+
+  const [canVote, setCanVote] = useState(true);
+  const [seconds, setSeconds] = useState(diffInMilliseconds / oneMillisecond);
   const [progress, setProgress] = useState(null);
   const userTime = createRef(null);
   const [offset, setOffset] = useState(0);
@@ -41,6 +45,9 @@ const Timer = (props, { time, onTimeIsUp }) => {
 
   // setting progress just in the first render
   useEffect(() => {
+    if (diffInMilliseconds <= 0) {
+      onTimeIsUp(true);
+    }
     setProgress(seconds);
   }, []);
 
@@ -56,18 +63,26 @@ const Timer = (props, { time, onTimeIsUp }) => {
     userTimeElement.value = "";
   };
 
-  useEffect(() => {
-    let interval = setInterval(() => {
-      if (seconds >= 1) {
-        setSeconds((seconds) => seconds - 1);
-      } else if (seconds === 0) {
-        // changed onTimeIsUp prop to alert() to avoid error compilation
-        alert("time is up!");
-        clearInterval(interval);
+  const refresh = () => {
+    if (canVote) {
+      const diffInSeconds = (timeLimit - Date.now()) / oneMillisecond;
+      if (seconds <= 0) {
+        setCanVote(false);
+        setSeconds(0);
+      } else {
+        setSeconds(diffInSeconds);
       }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [seconds]);
+    }
+  };
+
+  useInterval(() => {
+    // Your custom logic here
+    if (canVote) {
+      refresh();
+    } else {
+      onTimeIsUp("TIME IS UP!");
+    }
+  }, 1000);
 
   return (
     <StyledProgress>
@@ -81,7 +96,7 @@ const Timer = (props, { time, onTimeIsUp }) => {
           strokeWidth={strokeWidth}
         ></circle>
         <text x={center} y={center} className="percentage">
-          {seconds}'s <br />
+          {Math.floor(seconds)}'s <br />
           remaining!
         </text>
         <circle

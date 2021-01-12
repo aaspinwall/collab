@@ -22,7 +22,7 @@ export default function VotingRoom() {
   };
 
   const [userName, setUserName] = useState(null);
-
+  const [canVote, setCanVote] = useState(true);
   const [roomData, setRoomData] = useState(null);
   const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
     onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData),
@@ -33,6 +33,12 @@ export default function VotingRoom() {
     getRoomByID({ variables: { id: query.id } });
     console.log(roomData);
   }, [query]);
+
+  useEffect(() => {
+    if (!canVote) {
+      alert("This voting room is closed");
+    }
+  }, [canVote]);
 
   if (!roomData) {
     return (
@@ -65,7 +71,7 @@ export default function VotingRoom() {
           <Timer
             key={Number(roomData.timeLimit)}
             time={Number(roomData.timeLimit)}
-            onTimeIsUp={(message) => alert(message)}
+            onTimeIsUp={() => setCanVote(false)}
             {...timerProps}
           />
           <CheckboxForm voteOptions={roomData.voteOptions} />
