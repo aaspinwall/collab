@@ -9,6 +9,11 @@ const MutationType = gql`
       voterData: AddVoterToRoomInput
       roomID: String!
     ): AddVoterToRoomMutationResponse
+
+    addVoterData(
+      voterData: AddVoterDataInput
+      roomID: String!
+    ): AddVoterDataMutationResponse
   }
 `;
 

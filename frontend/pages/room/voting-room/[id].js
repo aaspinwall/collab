@@ -23,6 +23,7 @@ export default function VotingRoom() {
 
   const [userName, setUserName] = useState(null);
   const [canVote, setCanVote] = useState(true);
+
   const [roomData, setRoomData] = useState(null);
   const [getRoomByID, { loading, data }] = useLazyQuery(GET_ROOM_BY_ID, {
     onCompleted: ({ roomByID: { roomData } }) => setRoomData(roomData),
@@ -74,7 +75,7 @@ export default function VotingRoom() {
             onTimeIsUp={() => setCanVote(false)}
             {...timerProps}
           />
-          <CheckboxForm voteOptions={roomData.voteOptions} />
+          <CheckboxForm roomID={query.id} voteOptions={roomData.voteOptions} />
           <Link href="/" passHref>
             <LinkHome>Home</LinkHome>
           </Link>
