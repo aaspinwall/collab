@@ -138,7 +138,7 @@ export default function CreateRoomForm() {
       {created && (
         <div>
           <Card>
-            <div>Share with your friends</div>
+            <ShareText>Share with your friends</ShareText>
             <Social url={`${location.origin}/room/voting-room/${roomId}`} />
             <CopyToClipboard
               text={`${location.origin}/room/voting-room/${roomId}`}
@@ -254,4 +254,10 @@ const Option = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+const ShareText = styled.div`
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 5px;
 `;
