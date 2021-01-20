@@ -58,12 +58,15 @@ export default function CreateRoomForm() {
   // this adds the array of options to the database
   const submitRoom = async (ev) => {
     ev.preventDefault();
-
+    const oneMillisecond = 1000;
+    const limitInSeconds = createTimeLimit.current.value;
+    const limitInMilliseconds = limitInSeconds * oneMillisecond;
+    const timeLimit = Date.now() + limitInMilliseconds;
     const res = await addRoom({
       variables: {
         name: createRoomName.current.value, // to change
         id: placeholderRoomID, // being generated on the backend -> taking it out throws a zillion errors
-        timeLimit: createTimeLimit.current.value,
+        timeLimit: timeLimit.toString(),
         voteOptions: options,
       },
     });
@@ -138,7 +141,7 @@ export default function CreateRoomForm() {
       {created && (
         <div>
           <Card>
-            <div>Share with your friends</div>
+            <ShareText>Share with your friends</ShareText>
             <Social url={`${location.origin}/room/voting-room/${roomId}`} />
             <CopyToClipboard
               text={`${location.origin}/room/voting-room/${roomId}`}
@@ -254,4 +257,10 @@ const Option = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+const ShareText = styled.div`
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 5px;
 `;

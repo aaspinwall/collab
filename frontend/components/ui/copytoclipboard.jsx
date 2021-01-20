@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
-
-import { FaClipboardList as AssignmentOutlinedIcon } from "react-icons/fa";
-import { IoMdCheckmark as CheckCircleOutlineIcon } from "react-icons/io";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+import { COLORS } from "../../styles/colors";
 
 // Reverted to using both clipboard_api and execCommand
 // we pass the text string as  props to the child component CopyToClipBoardButton
@@ -10,18 +8,17 @@ import styled, { keyframes } from "styled-components";
 //and that will copy the string to the clipboard
 //Paste away!!
 
-//TODO: finetune styling.
-
 const fadeIn = keyframes`
-  from {
-    transform: rotate(0deg) scale(0.1);
-    opacity: 0;
-    
+  0% {
+    transform: rotate(0deg);
   }
 
-  to {
-    transform: rotate(360deg) scale(1);
-    opacity: 1;
+  50% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 `;
 
@@ -35,7 +32,7 @@ const CopyToClipBoardButton = ({ text }) => {
       inputRef.current.select();
       document.execCommand("copy");
     }
-    const textToCopy = inputRef.current.value;
+    const textToCopy = inputRef.current.innerText;
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopy(true);
@@ -45,53 +42,86 @@ const CopyToClipBoardButton = ({ text }) => {
   };
   return (
     <Wrapper>
-      <span>Copy invitation link:</span>
-      <Input
-        ref={inputRef}
-        value={text}
-        readOnly={true}
-        className="ctcbb-input"
-      />
-      <IconWrapper>
-        <AssignmentOutlinedIcon onClick={() => handleClick()} />
-      </IconWrapper>
+      <LinkToCopy ref={inputRef}>{text.slice(7)}</LinkToCopy>
       {copy ? (
-        <IconWrapper>
-          <div className="checked">
-            <CheckCircleOutlineIcon color="primary" />
-            <span>Copied To Clipboard!</span>
-          </div>
-        </IconWrapper>
+        <CopiedWrapper>
+          <span className={"checked"}>Copied!</span>
+        </CopiedWrapper>
       ) : (
-        <></>
+        <CopyWrapper onClick={() => handleClick()}>
+          <span>Copy</span>
+        </CopyWrapper>
       )}
     </Wrapper>
   );
 };
 
-//a minimal styling for now
-
 const Wrapper = styled.div`
   white-space: nowrap;
-  input,
-  div,
-  svg {
+  input {
     display: inline-block;
     white-space: normal;
     vertical-align: middle;
   }
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border: 2px solid ${COLORS.PURPLES.MAIN};
+  border-radius: 10px;
+  height: 35px;
 `;
-const Input = styled.input`
+const LinkToCopy = styled.p`
+  display: flex;
+  align-items: center;
   border: none;
-  border-bottom: 2px solid black;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.85);
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin: 0;
+  padding: 0 10px;
+  flex: 5;
+  font-weight: bold;
+  outline: none;
 `;
 
-//I wrap the icon(an svg) in a div so it's easier to manipulate and place where we want. Couldn't do it without doing that.
-const IconWrapper = styled.div`
+const SharedStyles = css`
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  outline: none;
+`;
+
+const CopyWrapper = styled.button`
+  ${SharedStyles}
+  background-color: ${COLORS.PURPLES.LIGHT};
+  color: ${COLORS.SHADES.WHITE};
+  border: 2px solid ${COLORS.PURPLES.LIGHT};
+
+  :hover {
+    background-color: ${COLORS.PURPLES.MAIN};
+    border: 2px solid ${COLORS.PURPLES.MAIN};
+  }
+`;
+
+const CopiedWrapper = styled.button`
+  ${SharedStyles}
   .checked {
     animation: ${fadeIn} 0.8s linear;
   }
+  background-color: ${COLORS.PURPLES.MAIN};
+  color: ${COLORS.SHADES.WHITE};
+  border: 2px solid ${COLORS.PURPLES.MAIN};
 `;
 
 export default CopyToClipBoardButton;

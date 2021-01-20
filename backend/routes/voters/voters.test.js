@@ -47,6 +47,6 @@ describe("Voters Resolvers", () => {
     expect(voteOptions).toEqual(["D", "C", "B", "A"]);
 
     expect(addedVoter.name).toEqual("Alright");
-    expect(addedVoter.voteData).toEqual(false);
+    expect(addedVoter.voteData).toEqual("String-Representation-Of-False");
   });
 });
