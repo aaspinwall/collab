@@ -85,76 +85,78 @@ export default function CreateRoomForm() {
 
   return (
     <Container>
-      <FormContainer onSubmit={handleAddOption}>
-        {/* Fix variable names */}
-        {/* useRef for the two below input to validate variables: name, timelimit*/}
-        <RoomName>
-          <Label>
-            Room Name
-            <Input type="text" placeholder="Room Name" ref={createRoomName} />
-          </Label>
-        </RoomName>
-        <TimeLimit>
-          <Label>
-            Time limit (in seconds)
-            <Input
-              type="number"
-              placeholder="Time Limit"
-              ref={createTimeLimit}
-            />
-          </Label>
-        </TimeLimit>
-        <Options>
-          <Label>
-            Add some options
-            <AddOptionContainer>
-              <OptionInput
+      {created ? (
+        <Card>
+          <ShareText>Share with your friends</ShareText>
+          <Social url={`${location.origin}/room/voting-room/${roomId}`} />
+          <CopyToClipboard
+            text={`${location.origin}/room/voting-room/${roomId}`}
+          />
+          <Boop rotation={15}>
+            <Link href={`/room/voting-room/${roomId}`}>
+              <Button styles={TakeMeToVoteStyles}>Take Me To The Vote!</Button>
+            </Link>
+          </Boop>
+        </Card>
+      ) : (
+        <FormContainer onSubmit={handleAddOption}>
+          <Header>Create Your Room</Header>
+          {/* Fix variable names */}
+          {/* useRef for the two below input to validate variables: name, timelimit*/}
+          <RoomName>
+            <Label>
+              Room Name
+              <Input
                 type="text"
-                placeholder="Options"
-                ref={individualOption}
+                placeholder="Room Name"
+                ref={createRoomName}
               />
-              <Button children={"+"} styles={AddOptionStyles} />
-            </AddOptionContainer>
-          </Label>
-        </Options>
-        {options.length >= 1 && (
-          <OptionList>
-            {options &&
-              options.map((option, index) => (
-                <OptionContainer key={index}>
-                  <Option>{option}</Option>
-                  <Button
-                    children={"-"}
-                    onClick={(event) => handleRemoveOption(event, index)}
-                    styles={RemoveOptionStyles}
-                  />
-                </OptionContainer>
-              ))}
-          </OptionList>
-        )}
-        <Button
-          children={"Submit Room"}
-          onClick={submitRoom}
-          styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
-        />
-      </FormContainer>
-      {created && (
-        <div>
-          <Card>
-            <ShareText>Share with your friends</ShareText>
-            <Social url={`${location.origin}/room/voting-room/${roomId}`} />
-            <CopyToClipboard
-              text={`${location.origin}/room/voting-room/${roomId}`}
-            />
-            <Boop rotation={15}>
-              <Link href={`/room/voting-room/${roomId}`}>
-                <Button styles={TakeMeToVoteStyles}>
-                  Take Me To The Vote!
-                </Button>
-              </Link>
-            </Boop>
-          </Card>
-        </div>
+            </Label>
+          </RoomName>
+          <TimeLimit>
+            <Label>
+              Time limit (in seconds)
+              <Input
+                type="number"
+                placeholder="Time Limit"
+                ref={createTimeLimit}
+              />
+            </Label>
+          </TimeLimit>
+          <Options>
+            <Label>
+              Add some options
+              <AddOptionContainer>
+                <OptionInput
+                  type="text"
+                  placeholder="Options"
+                  ref={individualOption}
+                />
+                <Button children={"+"} styles={AddOptionStyles} />
+              </AddOptionContainer>
+            </Label>
+          </Options>
+          {options.length >= 1 && (
+            <OptionList>
+              {options &&
+                options.map((option, index) => (
+                  <OptionContainer key={index}>
+                    <Option>{option}</Option>
+                    <Button
+                      children={"-"}
+                      onClick={(event) => handleRemoveOption(event, index)}
+                      styles={RemoveOptionStyles}
+                    />
+                  </OptionContainer>
+                ))}
+            </OptionList>
+          )}
+          <Button
+            children={"Submit Room"}
+            onClick={submitRoom}
+            styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
+          />
+        </FormContainer>
       )}
     </Container>
   );
@@ -177,6 +179,13 @@ const FormContainer = styled.form`
   margin: 15px;
   border-radius: 10px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
+`;
+const Header = styled.h1`
+  color: ${COLORS.SHADES.BLACK};
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 15px;
+  font-size: 2rem;
 `;
 const RoomName = styled.div``;
 const Label = styled.label`
@@ -214,6 +223,7 @@ const OptionInput = styled.input`
   height: 40px;
   margin: 0 0 0 5px;
   width: 195px;
+  outline: none;
 `;
 const TimeLimit = styled.div`
   margin: 8px;
