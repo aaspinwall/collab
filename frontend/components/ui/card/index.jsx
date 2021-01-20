@@ -5,6 +5,7 @@ const Card = styled.div`
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
   padding: 1rem 3rem 3rem;
+  margin: 15px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
 `;
 
