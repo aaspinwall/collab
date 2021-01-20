@@ -94,9 +94,8 @@ const SharedStyles = css`
   align-items: center;
   font-size: 1.2em;
   font-weight: bold;
-  height: 100%;
+  height: 32px;
   width: 100%;
-  padding: 2px;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
   outline: none;
@@ -107,6 +106,7 @@ const CopyWrapper = styled.button`
   background-color: ${COLORS.PURPLES.LIGHT};
   color: ${COLORS.SHADES.WHITE};
   border: 2px solid ${COLORS.PURPLES.LIGHT};
+  margin: 0;
 
   :hover {
     background-color: ${COLORS.PURPLES.MAIN};
@@ -116,12 +116,14 @@ const CopyWrapper = styled.button`
 
 const CopiedWrapper = styled.button`
   ${SharedStyles}
-  .checked {
-    animation: ${fadeIn} 0.8s linear;
-  }
   background-color: ${COLORS.PURPLES.MAIN};
   color: ${COLORS.SHADES.WHITE};
   border: 2px solid ${COLORS.PURPLES.MAIN};
+  margin: 0 -1px;
+
+  .checked {
+    animation: ${fadeIn} 0.8s linear;
+  }
 `;
 
 export default CopyToClipBoardButton;
