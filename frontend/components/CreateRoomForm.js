@@ -106,11 +106,7 @@ export default function CreateRoomForm() {
           <RoomName>
             <Label>
               Room Name
-              <Input
-                type="text"
-                placeholder="Room Name"
-                ref={createRoomName}
-              />
+              <Input type="text" placeholder="Room Name" ref={createRoomName} />
             </Label>
           </RoomName>
           <TimeLimit>
