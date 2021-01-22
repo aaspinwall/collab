@@ -78,6 +78,7 @@ export default function CreateRoomForm() {
       setCreated(true);
       setRoomId(room.id);
       setOptions([]);
+      console.log(res.data);
     } else {
       alert(message);
     }

@@ -26,6 +26,9 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
         option: radioCheck,
       },
     });
+
+    alert("You voted for " + radioCheck + "! Go to the results page below");
+    console.log(res);
     // TODO: push radioCheck to DB
 
     // add functionality to go back to home page instead of having a dedicated home button

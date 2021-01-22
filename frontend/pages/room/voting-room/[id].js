@@ -76,8 +76,8 @@ export default function VotingRoom() {
             {...timerProps}
           />
           <CheckboxForm roomID={query.id} voteOptions={roomData.voteOptions} />
-          <Link href="/" passHref>
-            <LinkHome>Home</LinkHome>
+          <Link href={`/results/${query.id}`} passHref>
+            <LinkHome>Results</LinkHome>
           </Link>
         </Card>
       )}
