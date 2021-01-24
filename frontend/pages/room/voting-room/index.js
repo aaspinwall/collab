@@ -9,7 +9,7 @@ export default function VotingRoomEmpty() {
     e.persist();
     setRoomID(e.target.value);
   };
-
+  // remove useEffect before prod
   useEffect(() => {
     console.log(roomID);
   }, [roomID]);
