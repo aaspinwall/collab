@@ -11,7 +11,7 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint . --ignore-path .eslintignore",
+    "lint-fix": "eslint . --fix",
     "test": "jest --no-cache --passWithNoTests ./*",
     "watch": "jest --no-cache --watch ./*",
     "lint-test": "eslint . && jest --no-cache ./*"

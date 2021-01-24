@@ -38,8 +38,8 @@ export const AddOptionStyles = {
 
 export const RemoveOptionStyles = {
   ...AddOptionStyles,
-  width: "20px",
-  height: "20px",
+  width: "25px",
+  height: "25px",
 };
 
 export const InfoStyles = {

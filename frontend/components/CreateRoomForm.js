@@ -35,26 +35,38 @@ export default function CreateRoomForm() {
   // create a function to change minutes to seconds in timer function to simplify it for the user)
   // function that pushes individual optiuon to total options
   const createTimeLimit = createRef(null);
+
+  // this adds the new option to the options array
   const createOptionsArray = () => {
     setOptions([individualOption.current.value, ...options]);
     individualOption.current.value = "";
   };
-  const handleSubmit = (e) => {
+
+  // this checks if the option input is not empty
+  const handleAddOption = (e) => {
     e.preventDefault();
-    createOptionsArray();
+    individualOption.current.value !== "" && createOptionsArray();
   };
+
+  // this removes an option
   const handleRemoveOption = (event, index) => {
     event.preventDefault();
     const updatedOptions = options.filter((option, id) => id !== index);
     setOptions(updatedOptions);
   };
+
   // this adds the array of options to the database
-  const submitRoom = async () => {
+  const submitRoom = async (ev) => {
+    ev.preventDefault();
+    const oneMillisecond = 1000;
+    const limitInSeconds = createTimeLimit.current.value;
+    const limitInMilliseconds = limitInSeconds * oneMillisecond;
+    const timeLimit = Date.now() + limitInMilliseconds;
     const res = await addRoom({
       variables: {
         name: createRoomName.current.value, // to change
         id: placeholderRoomID, // being generated on the backend -> taking it out throws a zillion errors
-        timeLimit: createTimeLimit.current.value,
+        timeLimit: timeLimit.toString(),
         voteOptions: options,
       },
     });
@@ -66,6 +78,7 @@ export default function CreateRoomForm() {
       setCreated(true);
       setRoomId(room.id);
       setOptions([]);
+      console.log(res.data);
     } else {
       alert(message);
     }
@@ -73,76 +86,74 @@ export default function CreateRoomForm() {
 
   return (
     <Container>
-      <FormContainer onSubmit={handleSubmit}>
-        {/* Fix variable names */}
-        {/* useRef for the two below input to validate variables: name, timelimit*/}
-        <RoomName>
-          <Label>
-            Room Name
-            <Input type="text" placeholder="Room Name" ref={createRoomName} />
-          </Label>
-        </RoomName>
-        <TimeLimit>
-          <Label>
-            Time limit (in seconds)
-            <Input
-              type="number"
-              placeholder="Time Limit"
-              ref={createTimeLimit}
-            />
-          </Label>
-        </TimeLimit>
-        <Options>
-          <Label>
-            Add some options
-            <AddOptionContainer>
-              <OptionInput
-                type="text"
-                placeholder="Options"
-                ref={individualOption}
+      {created ? (
+        <Card>
+          <ShareText>Share with your friends</ShareText>
+          <Social url={`${location.origin}/room/voting-room/${roomId}`} />
+          <CopyToClipboard
+            text={`${location.origin}/room/voting-room/${roomId}`}
+          />
+          <Boop rotation={15}>
+            <Link href={`/room/voting-room/${roomId}`}>
+              <Button styles={TakeMeToVoteStyles}>Take Me To The Vote!</Button>
+            </Link>
+          </Boop>
+        </Card>
+      ) : (
+        <FormContainer onSubmit={handleAddOption}>
+          <Header>Create Your Room</Header>
+          {/* Fix variable names */}
+          {/* useRef for the two below input to validate variables: name, timelimit*/}
+          <RoomName>
+            <Label>
+              Room Name
+              <Input type="text" placeholder="Room Name" ref={createRoomName} />
+            </Label>
+          </RoomName>
+          <TimeLimit>
+            <Label>
+              Time limit (in seconds)
+              <Input
+                type="number"
+                placeholder="Time Limit"
+                ref={createTimeLimit}
               />
-              <Button children={"+"} styles={AddOptionStyles} />
-            </AddOptionContainer>
-          </Label>
-        </Options>
-        {options.length >= 1 && (
-          <OptionList>
-            {options &&
-              options.map((option, index) => (
-                <OptionContainer key={index}>
-                  <Option>{option}</Option>
-                  <Button
-                    children={"-"}
-                    onClick={(event) => handleRemoveOption(event, index)}
-                    styles={RemoveOptionStyles}
-                  />
-                </OptionContainer>
-              ))}
-          </OptionList>
-        )}
-        <Button
-          children={"Submit Room"}
-          onClick={submitRoom}
-          styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
-        />
-      </FormContainer>
-      {created && (
-        <div>
-          <Card>
-            <div>Share with your friends</div>
-            <Social url={`${location.origin}/room/voting-room/${roomId}`} />
-            <CopyToClipboard
-              text={`${location.origin}/room/voting-room/${roomId}`}
-            />
-            <Boop rotation={15}>
-              <Link href={`/room/voting-room/${roomId}`}>
-                <Button styles={TakeMeToVoteStyles}>
-                  Take Me To The Vote!
-                </Button>
-              </Link>
-            </Boop>
-          </Card>
-        </div>
+            </Label>
+          </TimeLimit>
+          <Options>
+            <Label>
+              Add some options
+              <AddOptionContainer>
+                <OptionInput
+                  type="text"
+                  placeholder="Options"
+                  ref={individualOption}
+                />
+                <Button children={"+"} styles={AddOptionStyles} />
+              </AddOptionContainer>
+            </Label>
+          </Options>
+          {options.length >= 1 && (
+            <OptionList>
+              {options &&
+                options.map((option, index) => (
+                  <OptionContainer key={index}>
+                    <Option>{option}</Option>
+                    <Button
+                      children={"-"}
+                      onClick={(event) => handleRemoveOption(event, index)}
+                      styles={RemoveOptionStyles}
+                    />
+                  </OptionContainer>
+                ))}
+            </OptionList>
+          )}
+          <Button
+            children={"Submit Room"}
+            onClick={submitRoom}
+            styles={SubmitButtonStyles} /* props={whateverElseWeNeed} */
+          />
+        </FormContainer>
       )}
     </Container>
   );
@@ -166,6 +177,13 @@ const FormContainer = styled.form`
   border-radius: 10px;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.5);
 `;
+const Header = styled.h1`
+  color: ${COLORS.SHADES.BLACK};
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 15px;
+  font-size: 2rem;
+`;
 const RoomName = styled.div``;
 const Label = styled.label`
   text-align: center;
@@ -188,12 +206,12 @@ const Input = styled.input`
 const AddOptionContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-right: 5px;
+  padding-right: 2.5px;
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   height: 40px;
-  width: 240px;
+  width: 237.5px;
 `;
 const OptionInput = styled.input`
   background-color: ${COLORS.SHADES.OFFWHITE};
@@ -202,6 +220,7 @@ const OptionInput = styled.input`
   height: 40px;
   margin: 0 0 0 5px;
   width: 195px;
+  outline: none;
 `;
 const TimeLimit = styled.div`
   margin: 8px;
@@ -213,7 +232,7 @@ const OptionContainer = styled.div`
   display: flex;
   align-items: center;
   height: 30px;
-  padding-right: 5px;
+  padding-right: 2.5px;
   margin-bottom: 5px;
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
@@ -245,4 +264,10 @@ const Option = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+const ShareText = styled.div`
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 5px;
 `;

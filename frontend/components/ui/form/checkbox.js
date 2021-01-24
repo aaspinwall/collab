@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SubmitVote } from "../../../styles/button";
+import { ADD_VOTER_DATA } from "../../polloTest/GetRoomData";
+import { useMutation } from "@apollo/client";
 
-const CheckboxForm = ({ voteOptions }) => {
+const CheckboxForm = ({ voteOptions, roomID }) => {
+  const [addVoterData] = useMutation(ADD_VOTER_DATA);
+
   const [radioCheck, setRadioCheck] = useState(false);
 
   const handleRadioClick = () => {
@@ -13,9 +17,18 @@ const CheckboxForm = ({ voteOptions }) => {
       }
     });
   };
-  const handleVoteSubmit = (ev) => {
+  const handleVoteSubmit = async (ev) => {
     ev.preventDefault();
-    console.log(radioCheck);
+    const res = await addVoterData({
+      variables: {
+        id: roomID,
+        name: localStorage.getItem("name"),
+        option: radioCheck,
+      },
+    });
+
+    alert("You voted for " + radioCheck + "! Go to the results page below");
+    console.log(res);
     // TODO: push radioCheck to DB
 
     // add functionality to go back to home page instead of having a dedicated home button

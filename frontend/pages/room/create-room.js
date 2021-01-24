@@ -10,7 +10,6 @@ export default function CreateRoomPage() {
       <Head>
         <title>Create A Room!</title>
       </Head>
-      <Header>Create Your Room</Header>
       <CreateRoomForm />
     </Container>
   );
@@ -40,11 +39,3 @@ const Container = styled.div`
     };
   };
   `;
-
-const Header = styled.h1`
-  color: ${COLORS.SHADES.OFFWHITE};
-  text-align: center;
-  margin-top: 0;
-  padding-top: 15px;
-  font-size: 2rem;
-`;

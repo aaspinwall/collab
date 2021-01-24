@@ -11,6 +11,7 @@ const RoomsQuery = {
         Get(Match(Index("rooms_by_id"), id))
       );
 
+      const voters = data.voters ? votersToIterable(data.voters) || [] : [];
       return {
         code: "200",
         success: true,
@@ -20,10 +21,8 @@ const RoomsQuery = {
           name: data.name,
           timeLimit: data.timeLimit,
           voteOptions: data.voteOptions,
+          voters,
         },
-        // Please check the votersToIterable function
-        // voters: votersToIterable(data.voters) || [],
-        voters: data.voters,
       };
     } catch (err) {
       console.log("err in getting room by Id:", err);
