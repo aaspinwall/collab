@@ -113,7 +113,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
     };
   } catch (err) {
     return {
-      code: "500",
+      code: "401",
       success: false,
       message: "there has been an error in the server :(",
     };
@@ -147,7 +147,7 @@ async function addVoterData(_, { voterData: { name, option }, roomID }) {
   } catch (err) {
     console.log("err in addVoterToRoom: ", err);
     return {
-      code: "500",
+      code: "401",
       success: false,
       message: "there has been an error in the server :(",
     };

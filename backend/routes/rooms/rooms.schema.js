@@ -59,6 +59,7 @@ const AddVoterToRoomInput = gql`
 const AddVoterToRoomMutationResponse = gql`
   type AddVoterToRoomMutationResponse implements Response {
     roomData: Room!
+    voters: [Voter]!
     code: String!
     success: Boolean!
     message: String!
