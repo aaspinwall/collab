@@ -41,8 +41,8 @@ const AddRoomInput = gql`
   }
 `;
 
-const AddRoomMutationResponse = gql`
-  type AddRoomMutationResponse implements Response {
+const RoomMutationResponse = gql`
+  type RoomMutationResponse implements Response {
     code: String!
     success: Boolean!
     message: String!
@@ -87,7 +87,7 @@ module.exports = gql`
   ${RoomType}
   ${RoomByIDResponse}
   ${AddRoomInput}
-  ${AddRoomMutationResponse}
+  ${RoomMutationResponse}
   ${AddVoterToRoomInput}
   ${AddVoterToRoomMutationResponse}
   ${AddVoterDataInput}
