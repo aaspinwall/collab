@@ -70,7 +70,7 @@ export const SubmitVoteStyles = {
   ...SubmitButtonStyles,
   borderRadius: `15px`,
   padding: `0 10px`,
-  height: '30px',
-  marginTop: '15px',
-  overflow: 'hidden',
-}
+  height: "30px",
+  marginTop: "15px",
+  overflow: "hidden",
+};

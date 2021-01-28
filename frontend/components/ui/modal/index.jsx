@@ -1,6 +1,6 @@
 import React from "react";
 import ClientOnlyPortal from "./clientOnlyPortal";
-import { COLORS } from '../../../styles/colors';
+import { COLORS } from "../../../styles/colors";
 
 const Modal = ({ children, open }) => {
   return (

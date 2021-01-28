@@ -101,7 +101,6 @@ const Header = styled.h1`
   font-size: 3rem;
 `;
 
-
 const LinkHome = styled.a`
   margin-top: 15px;
   padding: 8px;
@@ -139,4 +138,4 @@ const Links = styled.div`
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
-`
+`;
