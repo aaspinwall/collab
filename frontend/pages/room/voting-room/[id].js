@@ -56,10 +56,6 @@ export default function VotingRoom() {
         <title>Voting Room {`${query.id}`}!</title>
       </Head>
       <Header>Voting Page</Header>
-
-      <Description>
-        This page will be where the voting itself takes place
-      </Description>
       {/* time has to be Number() as it is passed as a string */}
       {!userName ? (
         <NameGenerator
@@ -76,9 +72,14 @@ export default function VotingRoom() {
             {...timerProps}
           />
           <CheckboxForm roomID={query.id} voteOptions={roomData.voteOptions} />
-          <Link href={`/results/${query.id}`} passHref>
-            <LinkHome>Results</LinkHome>
-          </Link>
+          <Links>
+            <Link href={`/results/${query.id}`} passHref>
+              <LinkHome>Results</LinkHome>
+            </Link>
+            <Link href={`/`} passHref>
+              <LinkHome>Home</LinkHome>
+            </Link>
+          </Links>
         </Card>
       )}
     </Container>
@@ -100,24 +101,41 @@ const Header = styled.h1`
   font-size: 3rem;
 `;
 
-const Description = styled.p`
-  color: white;
-  margin-left: 1rem;
-`;
-
 const LinkHome = styled.a`
   margin-top: 15px;
   padding: 8px;
-  border-radius: 5px;
   font-weight: bold;
   letter-spacing: 2px;
-  border: 3px solid #293241;
+  border: 2px solid ${COLORS.PURPLES.MAIN};
+  color: ${COLORS.PURPLES.MAIN};
   cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: all 0.2s;
 
   &:active {
     background: #e5e5e5;
     box-shadow: inset 0px 0px 5px #c1c1c1;
     outline: none;
     transform: scale(0.9);
+  }
+  &:hover {
+    flex: 3;
+    background-color: ${COLORS.PURPLES.MAIN};
+    color: ${COLORS.SHADES.OFFWHITE};
+  }
+`;
+const Links = styled.div`
+  display: flex;
+  align-items: center;
+
+  ${LinkHome}:first-of-type {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none;
+  }
+  ${LinkHome}:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 `;

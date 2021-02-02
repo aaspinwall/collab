@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import ClientOnlyPortal from "./clientOnlyPortal";
+import { COLORS } from "../../../styles/colors";
 
-const Modal = ({ children }) => {
-  const [open, setOpen] = useState();
-
+const Modal = ({ children, open }) => {
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)}>
-        Open Modal
-      </button>
       {open && (
         <ClientOnlyPortal>
           <div className="backdrop">
-            <div className="modal">
-              {children}
-              <button type="button" onClick={() => setOpen(false)}>
-                Close Modal
-              </button>
-            </div>
+            <div className="modal">{children}</div>
             <style jsx>{`
               :global(body) {
                 overflow: hidden;
@@ -31,13 +22,15 @@ const Modal = ({ children }) => {
                 left: 0;
               }
               .modal {
-                background-color: white;
+                background-color: ${COLORS.PURPLES.LIGHT};
+                color: ${COLORS.SHADES.OFFWHITE};
                 position: absolute;
-                top: 10%;
+                top: 20%;
                 right: 10%;
-                bottom: 10%;
+                bottom: 50%;
                 left: 10%;
                 padding: 1em;
+                border-radius: 10px;
               }
               & button {
                 position: relative;

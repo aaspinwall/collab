@@ -36,7 +36,7 @@ const Button = styled.button`
     }
   }
   :disabled {
-    visibility: hidden;
+    display: none;
   }
 `;
 

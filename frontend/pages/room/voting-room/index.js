@@ -25,8 +25,8 @@ export default function VotingRoomEmpty() {
       <div>
         <input type="text" onChange={onChange} />
         <Link href={`voting-room/${roomID}`}>
-            <a>Take me to the room!</a>
-          </Link>
+          <a>Take me to the room!</a>
+        </Link>
       </div>
     </Card>
   );
