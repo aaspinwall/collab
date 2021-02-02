@@ -25,9 +25,8 @@ const RoomsQuery = {
         },
       };
     } catch (err) {
-      console.log("err in getting room by Id:", err);
       return {
-        code: "500",
+        code: "404",
         success: false,
         message: "there has been an error in the server :( boo",
       };
