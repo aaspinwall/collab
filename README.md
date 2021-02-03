@@ -101,6 +101,7 @@ Note: If you have a specific problem that does not involve everyone, don’t spa
 - Léonard ⚛️🖖 👨‍💻
 - Avtar
 - Alejandro 🎄⚛️👨🏽‍💻
+- Hajar
 
 ### Troubleshooting and FAQ
 

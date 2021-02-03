@@ -202,6 +202,7 @@ const Input = styled.input`
   height: 40px;
   background-color: ${COLORS.SHADES.OFFWHITE};
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  outline: none;
 `;
 const AddOptionContainer = styled.div`
   display: flex;
