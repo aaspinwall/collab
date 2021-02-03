@@ -3,7 +3,7 @@ import { useEffect, useState, createRef } from "react";
 import Link from "next/link";
 import Card from "../../../components/ui/card";
 import styled from "styled-components";
-import { COLORS } from '../../../styles/colors'
+import { COLORS } from "../../../styles/colors";
 
 export default function VotingRoomEmpty() {
   const [roomID, setRoomID] = useState("");
@@ -65,6 +65,5 @@ const Container = styled.div`
       color: ${COLORS.PURPLES.MAIN};
       transform: scale(0.95);
     }
-
   }
 `;
