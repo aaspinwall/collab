@@ -107,13 +107,19 @@ export default function CreateRoomForm() {
           <RoomName>
             <Label>
               Room Name
-              <Input type="text" placeholder="Room Name" ref={createRoomName} />
+              <Input
+                required
+                type="text"
+                placeholder="Room Name"
+                ref={createRoomName}
+              />
             </Label>
           </RoomName>
           <TimeLimit>
             <Label>
               Time limit (in seconds)
               <Input
+                required
                 type="number"
                 placeholder="Time Limit"
                 ref={createTimeLimit}
@@ -125,6 +131,7 @@ export default function CreateRoomForm() {
               Add some options
               <AddOptionContainer>
                 <OptionInput
+                  required
                   type="text"
                   placeholder="Options"
                   ref={individualOption}
