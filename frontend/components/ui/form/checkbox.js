@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+
 import { SubmitVote } from "../../../styles/button";
 import { ADD_VOTER_DATA } from "../../polloTest/GetRoomData";
-import { useMutation } from "@apollo/client";
+import { VOTER_VOTED } from "../../../apollo/voters/voters.subscriptions";
+import { useMutation, useSubscription } from "@apollo/client";
 import Modal from "../../ui/modal";
 import Button from "../sample_button";
 import { SubmitVoteStyles } from "../../../styles/button";
@@ -12,9 +14,19 @@ import { isNonEmptyArray } from "@apollo/client/utilities";
 
 const CheckboxForm = ({ voteOptions, roomID }) => {
   const [addVoterData] = useMutation(ADD_VOTER_DATA);
-  const [open, setOpen] = useState(false);
+  const { data, loading } = useSubscription(VOTER_VOTED);
 
+  const [open, setOpen] = useState(false);
   const [radioCheck, setRadioCheck] = useState(false);
+
+  useEffect(() => {
+    if (data) {
+      const { voterVoted } = data;
+      console.log(
+        `Cool! ${voterVoted.name} just voted for ${voterVoted.voteData}`
+      );
+    }
+  }, [data, loading]);
 
   const handleRadioClick = () => {
     const radioButtons = document.getElementsByName("vote-options");

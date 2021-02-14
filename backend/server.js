@@ -10,6 +10,6 @@ const server = new ApolloServer({
   context: () => ({ pubsub }),
 });
 
-server.listen({ path: "graphql", port: 4000 }).then(({ url, ...meh }) => {
+server.listen({ path: "graphql", port: 4000 }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}graphql`);
 });
