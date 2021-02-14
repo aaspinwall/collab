@@ -38,8 +38,8 @@ export const AddOptionStyles = {
 
 export const RemoveOptionStyles = {
   ...AddOptionStyles,
-  width: "20px",
-  height: "20px",
+  width: "25px",
+  height: "25px",
 };
 
 export const InfoStyles = {
@@ -64,4 +64,13 @@ export const ShuffleNames = {
 
 export const TakeMeToVoteStyles = {
   ...SubmitButtonStyles,
+};
+
+export const SubmitVoteStyles = {
+  ...SubmitButtonStyles,
+  borderRadius: `15px`,
+  padding: `0 10px`,
+  height: "30px",
+  marginTop: "15px",
+  overflow: "hidden",
 };

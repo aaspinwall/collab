@@ -28,6 +28,7 @@ export default function SocialMediaSharing({ url }) {
   const iconStyles = {
     border: `2px solid ${COLORS.PURPLES.MAIN}`,
     borderRadius: "50%",
+    transition: "all 0.1s",
   };
 
   return (
@@ -38,6 +39,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </FacebookShareButton>
       <FacebookMessengerShareButton url={url}>
@@ -46,6 +48,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </FacebookMessengerShareButton>
       <EmailShareButton url={url}>
@@ -54,6 +57,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </EmailShareButton>
       <LinkedinShareButton url={url}>
@@ -62,6 +66,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </LinkedinShareButton>
       <PinterestShareButton url={url}>
@@ -70,6 +75,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </PinterestShareButton>
       <RedditShareButton url={url}>
@@ -78,6 +84,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </RedditShareButton>
       <TumblrShareButton url={url}>
@@ -86,6 +93,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </TumblrShareButton>
       <TwitterShareButton url={url}>
@@ -94,6 +102,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </TwitterShareButton>
       <WhatsappShareButton url={url}>
@@ -102,6 +111,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </WhatsappShareButton>
       <WorkplaceShareButton url={url}>
@@ -110,6 +120,7 @@ export default function SocialMediaSharing({ url }) {
           iconFillColor={COLORS.PURPLES.MAIN}
           bgStyle={{ fill: "none" }}
           style={iconStyles}
+          className={"hover-effect"}
         />
       </WorkplaceShareButton>
     </SocialMediaContainer>
@@ -121,5 +132,11 @@ const SocialMediaContainer = styled.div`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 40px);
-  margin: 20px 0 30px 0;
+  margin: 20px auto;
+
+  .hover-effect {
+    :hover {
+      transform: scale(1.1);
+    }
+  }
 `;

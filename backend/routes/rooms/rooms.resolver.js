@@ -2,19 +2,18 @@ const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
 const { votersToIterable, generateId } = require("../../utils/helpers");
 
-// TODO
-// MAKKKE DA FOOD 🥓
-// MAKKE DA CODE BETTER
-// TOGGLE DA VOTE
-// MAKKE DA FAUNAFUNK
+const {
+  Collection,
+  Create,
+  Delete,
+  Get,
+  Index,
+  Match,
+  Select,
+  Update,
+} = faunadb.query;
 
-const { Create, Collection, Get, Index, Match, Select, Update } = faunadb.query;
-
-async function addRoom(_, args) {
-  const {
-    room: { name, timeLimit, voteOptions },
-  } = args;
-  console.log(name);
+async function addRoom(_, { room: { name, timeLimit, voteOptions } }) {
   let success;
   let attempts = 0;
   const max_attempts = 5;
@@ -22,7 +21,7 @@ async function addRoom(_, args) {
     try {
       attempts++;
       const id = generateId();
-      console.log(id);
+
       const { data } = await FaunaClient.query(
         Create(Collection("rooms"), {
           data: {
@@ -45,9 +44,8 @@ async function addRoom(_, args) {
           voteOptions: data.voteOptions,
         },
       };
-    } catch (err) {
-      console.log("err in addRoom: ", err.description);
-      if (err.description === "document is not unique.") {
+    } catch ({ description }) {
+      if (description === "document is not unique.") {
         return {
           code: "400",
           success: false,
@@ -55,11 +53,37 @@ async function addRoom(_, args) {
         };
       }
       return {
-        code: "500",
+        code: "401",
         success: false,
         message: "there has been an error in the server :(",
       };
     }
+  }
+}
+
+async function deleteRoom(_, { roomID }) {
+  try {
+    const { data } = await FaunaClient.query(
+      Delete(Select("ref", Get(Match(Index("rooms_by_id"), roomID))))
+    );
+
+    return {
+      code: "200",
+      success: true,
+      message: "room added",
+      room: {
+        name: data.name,
+        id: data.id,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
+      },
+    };
+  } catch ({ description: message }) {
+    return {
+      code: "401",
+      success: false,
+      message,
+    };
   }
 }
 
@@ -69,7 +93,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
       Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
         data: {
           voters: {
-            [name]: false,
+            [name]: "String-Representation-Of-False",
           },
         },
       })
@@ -88,9 +112,42 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
       voters: votersToIterable(data.voters),
     };
   } catch (err) {
+    return {
+      code: "401",
+      success: false,
+      message: "there has been an error in the server :(",
+    };
+  }
+}
+
+async function addVoterData(_, { voterData: { name, option }, roomID }) {
+  try {
+    const { data } = await FaunaClient.query(
+      Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
+        data: {
+          voters: {
+            [name]: option,
+          },
+        },
+      })
+    );
+    return {
+      code: "200",
+      success: true,
+      message: "room updated",
+      roomData: {
+        id: data.id,
+        name: data.name,
+        timeLimit: data.timeLimit,
+        voteOptions: data.voteOptions,
+      },
+      option: option,
+      voters: votersToIterable(data.voters),
+    };
+  } catch (err) {
     console.log("err in addVoterToRoom: ", err);
     return {
-      code: "500",
+      code: "401",
       success: false,
       message: "there has been an error in the server :(",
     };
@@ -99,5 +156,7 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
 
 module.exports = {
   addRoom,
+  deleteRoom,
   addVoterToRoom,
+  addVoterData,
 };
