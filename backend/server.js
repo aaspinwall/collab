@@ -4,15 +4,12 @@ const resolvers = require("./routes/resolvers.root");
 
 const pubsub = new PubSub();
 
-// The ApolloServer constructor requires two parameters: your schema
-// definition and your set of resolvers.
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req, res }) => ({ req, res, pubsub }),
+  context: () => ({ pubsub }),
 });
 
-// The `listen` method launches a web server.
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+server.listen({ path: "graphql", port: 4000 }).then(({ url, ...meh }) => {
+  console.log(`🚀  Server ready at ${url}graphql`);
 });
