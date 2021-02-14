@@ -41,7 +41,6 @@ const client = new ApolloClient({
       fetchPolicy: "cache-and-network",
     },
   },
-  uri: "http://localhost:4000/",
 });
 
 export default client;
