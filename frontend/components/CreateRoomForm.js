@@ -14,9 +14,12 @@ import {
   AddOptionStyles,
   RemoveOptionStyles,
   TakeMeToVoteStyles,
+  PresetTimeStyles,
 } from "../styles/button";
 
 export default function CreateRoomForm() {
+  const presetTimes = [3, 5, 10];
+  const [presetSelect, setPresetSelect] = useState("");
   const placeholderRoomID = "001"; // roomId is handled by function, needs a placeholder however for some reason
   // these are the options being set
   const [options, setOptions] = useState([]);
@@ -84,6 +87,11 @@ export default function CreateRoomForm() {
     }
   };
 
+  const handlePresetTime = (time) => {
+    setPresetSelect(time);
+    console.log(time);
+  };
+
   return (
     <Container>
       {created ? (
@@ -116,13 +124,28 @@ export default function CreateRoomForm() {
             </Label>
           </RoomName>
           <TimeLimit>
+            <PresetTimes>
+              {presetTimes.map((time) => {
+                return (
+                  <Button
+                    styles={PresetTimeStyles}
+                    type="button"
+                    onClick={() => handlePresetTime(time)}
+                  >
+                    {time} Mins
+                  </Button>
+                );
+              })}
+            </PresetTimes>
             <Label>
-              Time limit (in seconds)
               <Input
+                id="formInput"
                 required
                 type="number"
                 placeholder="Time Limit"
                 ref={createTimeLimit}
+                value={presetSelect ? presetSelect * 60 : ""}
+                // TODO: remove * 60 when we use minutes instead of seconds in the countdown
               />
             </Label>
           </TimeLimit>
@@ -198,6 +221,10 @@ const Label = styled.label`
   font-size: 1.6rem;
   display: block;
   padding: 5px;
+`;
+const PresetTimes = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 const Input = styled.input`
   display: block;
