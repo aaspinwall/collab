@@ -1,6 +1,7 @@
 const faunadb = require("faunadb");
 const FaunaClient = require("../fauna.config");
 const { votersToIterable, generateId } = require("../../utils/helpers");
+const { VOTER_VOTED } = require("../voters/voters.resolver");
 
 const {
   Collection,
@@ -120,8 +121,19 @@ async function addVoterToRoom(_, { voterData: { name }, roomID }) {
   }
 }
 
-async function addVoterData(_, { voterData: { name, option }, roomID }) {
+async function addVoterData(
+  _,
+  { voterData: { name, option }, roomID },
+  { pubsub }
+) {
   try {
+    pubsub.publish(VOTER_VOTED, {
+      voterVoted: {
+        name,
+        voteData: option,
+      },
+    });
+
     const { data } = await FaunaClient.query(
       Update(Select("ref", Get(Match(Index("rooms_by_id"), roomID))), {
         data: {
@@ -131,6 +143,7 @@ async function addVoterData(_, { voterData: { name, option }, roomID }) {
         },
       })
     );
+
     return {
       code: "200",
       success: true,
