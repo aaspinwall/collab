@@ -12,7 +12,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run install:all
-      - run: npm run test
-        env:
-          CI: true
-          FAUNA_DB: ${{secrets.FAUNA_DB}}
+      # - run: npm run test
+      #   env:
+      #     CI: true
+      #     FAUNA_DB: ${{secrets.FAUNA_DB}}
