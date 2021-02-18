@@ -10,6 +10,10 @@ const QueryType = gql`
     "Get room by id"
     roomByID(id: String): RoomByIDResponse
   }
+
+  type Subscription {
+    voterVoted: Voter
+  }
 `;
 
 module.exports = gql`
