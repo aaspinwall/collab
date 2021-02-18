@@ -36,6 +36,19 @@ export const AddOptionStyles = {
   justifyContent: "center",
 };
 
+export const PresetTimeStyles = {
+  ...ReturnHomeStyles,
+  textAlign: "center",
+  width: "50px",
+  height: "50px",
+  paddingLeft: "25px",
+  marginLeft: "10px",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
 export const RemoveOptionStyles = {
   ...AddOptionStyles,
   width: "25px",
