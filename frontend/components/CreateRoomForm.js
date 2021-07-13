@@ -144,8 +144,7 @@ export default function CreateRoomForm() {
                 type="number"
                 placeholder="Time Limit"
                 ref={createTimeLimit}
-                value={presetSelect ? presetSelect * 60 : ""}
-                // TODO: remove * 60 when we use minutes instead of seconds in the countdown
+                value={presetSelect ? presetSelect : ""}
               />
             </Label>
           </TimeLimit>
