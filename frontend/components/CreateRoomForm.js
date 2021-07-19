@@ -92,6 +92,11 @@ export default function CreateRoomForm() {
     console.log(time);
   };
 
+  const handleTimeLimitChange = (e) => {
+    console.log("time limit change value", e.target.value)
+    setPresetSelect(e.target.value)
+  };
+
   return (
     <Container>
       {created ? (
@@ -145,6 +150,7 @@ export default function CreateRoomForm() {
                 placeholder="Time Limit"
                 ref={createTimeLimit}
                 value={presetSelect ? presetSelect : ""}
+                onChange={handleTimeLimitChange}
               />
             </Label>
           </TimeLimit>
