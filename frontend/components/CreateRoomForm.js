@@ -92,8 +92,8 @@ export default function CreateRoomForm() {
   };
 
   const handleTimeLimitChange = (e) => {
-    setPresetSelect(e.target.value) 
-  }
+    setPresetSelect(e.target.value);
+  };
 
   return (
     <Container>
