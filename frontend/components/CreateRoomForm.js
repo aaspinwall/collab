@@ -89,7 +89,10 @@ export default function CreateRoomForm() {
 
   const handlePresetTime = (time) => {
     setPresetSelect(time);
-    console.log(time);
+  };
+
+  const handleTimeLimitChange = (e) => {
+    setPresetSelect(e.target.value);
   };
 
   return (
@@ -144,9 +147,11 @@ export default function CreateRoomForm() {
                 type="number"
                 placeholder="Time Limit"
                 ref={createTimeLimit}
-                value={presetSelect ? presetSelect * 60 : ""}
-                // TODO: remove * 60 when we use minutes instead of seconds in the countdown
-              />
+                value={presetSelect ? presetSelect : ""}
+                min={0}
+                max={15}
+                onChange={handleTimeLimitChange}
+                />
             </Label>
           </TimeLimit>
           <Options>
